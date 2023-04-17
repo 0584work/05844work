@@ -15,7 +15,7 @@
             }}
 		?>
 	<div class='product_item'>
-		<form action="payment.php?action=add&code=<?php echo $productbycode['price'];?>">
+		<form action="payment.php?action=add&code=<?php echo $productbycode['price'];?>"method="post">
 			<div class = "product_image">
 				<img src="<?php echo $productbycode['image'];?>" alt="image">
 			</div>
