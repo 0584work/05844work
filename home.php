@@ -30,6 +30,9 @@
 		<h1>Welcome User!</h1>
 	</div>
 	<div id="product-grid">
+	<form action="customereditdate.php?" method="post">
+		<input type="submit" class="btnadd" value="edit">
+	</form>
 
 <?php 
 //start of loop card
@@ -46,7 +49,7 @@
 				<div class='product-title'><?php echo $product_array["carid"];?></div>
 				<div class='product-price'><?php echo $product_array["price"] . " bath";?></div>
 				<div class='card_action'>
-					<<input type="submit" class="btnadd" value="detail">
+					<input type="submit" class="btnadd" value="detail">
 				</div>
 			</div>
 		</form>

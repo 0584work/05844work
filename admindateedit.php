@@ -9,18 +9,23 @@
 }</style>
 </head>
 <body>
-<form action="home.php?" method="post"><!--homebutton-->
-		<input type="submit" class="btnadd" value="home">
+<form action="adminhome.php?" method="post"><!--homebutton-->
+		<input type="submit" class="btnadd" value="adminhome">
 	</form>
    <form method='post'><!--form info-->
       <label>cusid : </label>
       <input type='num' name ='cusid'><br><br>
       <label>carid : </label>
       <input type='text' name ='car'><br><br>
-	  <label>old date : </label>
+      <label>staffid : </label>
+      <input type='text' name ='staf'><br><br>
+      <label>status : </label>
+      <input type='text' name ='sta'><br><br>
+      <label>old date(not require when add) : </label>
       <input type='text' name ='dat'><br><br>
-      <label>new date : </label>
+      <label>new date(not require when delete) : </label>
       <input type='text' name ='dat2'><br><br>
+      <input type='submit' name='button1'value='add'/>
       <input type='submit' name='button2'value='modify'/>
       <input type='submit' name='button3'value='delete'/>
       <input type='submit' name='button4'value='end process'/>
@@ -53,6 +58,39 @@
    }
    echo "</table>";
    //table data info
+   if(array_key_exists('button1', $_POST)) {
+      button1();
+    }
+      function button1() {
+         class MyDB2 extends SQLite3 {
+            function __construct() {
+               $this->open('db/appointment.db');
+            }
+         }
+      
+         // Open Database 
+         $db2 = new MyDB2();
+         if(!$db2) {
+            echo $db2->lastErrorMsg();
+         }
+         $cusid = $_POST['cusid'];
+         $carid = $_POST['car'];
+         $staff = $_POST['staf'];
+         $stat = $_POST['sta'];
+         $dat2 = $_POST['dat2'];
+      
+         $sql =<<<EOF
+            INSERT INTO booking (cus_id,car_id,appointment_staff_id,status,customer_apointment_date)
+            VALUES ($cusid,$carid, $staff, $stat ,$dat2);
+            EOF;
+      
+         $ret = $db2->exec($sql);
+         if(!$ret) {
+            echo $db2->lastErrorMsg();
+         } else {
+            echo "Records created successfully<br>";
+         }
+   }
    if(array_key_exists('button2', $_POST)) {
     button2();
   }
@@ -70,13 +108,17 @@
        }
        $cusid = $_POST['cusid'];
        $carid = $_POST['car'];
+       $staff = $_POST['staf'];
+       $stat = $_POST['sta'];
        $dat = $_POST['dat'];
-	   $dat2 = $_POST['dat2'];
+       $dat2 = $_POST['dat2'];
 
        $sql =<<<EOF
           UPDATE booking set 
+          aappointment_staff_id=$staff,
+          status=$stat,
           customer_apointment_date=$dat2
-          WHERE cus_id=$cusid and car_id=$carid and customer_apointment_date=$dat;
+          WHERE cus_id=$cusid and car_id=$cari and customer_apointment_date=$dat;
           EOF;
     
        $ret = $db3->exec($sql);
@@ -103,6 +145,8 @@
      }
      $cusid = $_POST['cusid'];
      $carid = $_POST['car'];
+     $staff = $_POST['staf'];
+     $stat = $_POST['sta'];
      $dat = $_POST['dat'];
 
      $sql =<<<EOF
@@ -120,6 +164,7 @@
     button4();
   }
   function button4() {
+    $db2->close();
     $db3->close();
     $db4->close();
   }

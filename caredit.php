@@ -1,22 +1,200 @@
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>th, td {
+  border-bottom: 3px solid #ddd;
+}</style>
+</head>
+<body>
+<form action="sellerhome.php?" method="post"><!--homebutton-->
+		<input type="submit" class="btnadd" value="sellerhome">
+	</form>
+   <form method='post'><!--form info-->
+      <label>carid : </label>
+      <input type='num' name ='carid'><br><br>
+      <label>License palate : </label>
+      <input type='text' name ='lic'><br><br>
+      <label>series : </label>
+      <input type='text' name ='ser'><br><br>
+      <label>year : </label>
+      <input type='num' name ='year'><br><br>
+      <label>color : </label>
+      <input type='text' name ='colo'><br><br>
+      <label>mileage : </label>
+      <input type='num' name ='mill'><br><br>  
+      <label'>car deflect : </label>
+      <textarea cols="20" rows="5" name="def"></textarea><br><br>
+      <label>price : </label>
+      <input type='num' name ='pri'><br><br>
+      <label>desc : </label>
+      <textarea cols="20" rows="5" name="desc"></textarea><br><br>
+      <input type='submit' name='button1'value='add'/>
+      <input type='submit' name='button2'value='modify'/>
+      <input type='submit' name='button3'value='delete'/>
+      <input type='submit' name='button4'value='end process'/>
+   </form>
 <?php
-    session_start();
-    class MyDB extends SQLite3 {
+   // Connect to Database 
+   class MyDB extends SQLite3 {
+      function __construct() {
+         $this->open('db/product.db');
+      }
+   }
+
+   // Open Database 
+   $db = new MyDB();
+   if(!$db) {
+      echo $db->lastErrorMsg();
+   }
+   $sql ="SELECT * from tblproduct";
+   echo "<table id='table1'><tr><th>carid</th><th>License palate</th><th>series</th><th>year</th><th>color</th>
+   <th>mileage</th><th>car deflect</th><th>price</th><th>desc</th></tr>";
+   $ret = $db->query($sql);
+   
+   while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
+      echo "<tr>";
+      echo "<td>". $row['carid'] . "</td>";
+      echo "<td>". $row['license_palate']."</td>";
+      echo "<td>". $row['series'] ."</td>";
+      echo "<td>".$row['year'] ."</td>";
+      echo "<td>".$row['color'] ."</td>";
+      echo "<td>".$row['car_mileage'] ."</td>";
+      echo "<td>".$row['car_defect'] ."</td>";
+      echo "<td>".$row['price'] ."</td>";
+      echo "<td>".$row['desc'] ."</td>";
+      echo "</tr>";
+   }
+   echo "</table>";
+   //table data info
+   if(array_key_exists('button1', $_POST)) {
+      button1();
+    }
+      function button1() {
+         class MyDB2 extends SQLite3 {
+            function __construct() {
+               $this->open('db/product.db');
+            }
+         }
+      
+         // Open Database 
+         $db2 = new MyDB2();
+         if(!$db2) {
+            echo $db2->lastErrorMsg();
+         }
+         $carid = $_POST['carid'];
+         $lic = $_POST['lic'];
+         $ser = $_POST['ser'];
+         $year = $_POST['year'];
+         $colo = $_POST['colo'];
+         $mileage = $_POST['mill'];
+         $def = $_POST['def'];
+         $price = $_POST['pri'];
+         $desc = $_POST['desc'];
+      
+         $sql =<<<EOF
+            INSERT INTO tblproduct (carid,license_palate,series,year,color,car_mileage,car_defect,price,desc)
+            VALUES ($carid,'$lic', '$ser', $year, '$colo',$mileage,'$def',$price,'$desc');
+            EOF;
+      
+         $ret = $db2->exec($sql);
+         if(!$ret) {
+            echo $db2->lastErrorMsg();
+         } else {
+            echo "Records created successfully<br>";
+         }
+   }
+   if(array_key_exists('button2', $_POST)) {
+    button2();
+  }
+    function button2() {
+       class MyDB3 extends SQLite3 {
+          function __construct() {
+             $this->open('db/product.db');
+          }
+       }
+    
+       // Open Database 
+       $db3 = new MyDB3();
+       if(!$db3) {
+          echo $db3->lastErrorMsg();
+       }
+       $carid = $_POST['carid'];
+       $lic = $_POST['lic'];
+       $ser = $_POST['ser'];
+       $year = $_POST['year'];
+       $colo = $_POST['colo'];
+       $mileage = $_POST['mill'];
+       $def = $_POST['def'];
+       $price = $_POST['pri'];
+       $desc = $_POST['desc'];
+    
+       $sql =<<<EOF
+          UPDATE tblproduct set 
+          license_palate='$lic',
+          series='$ser',
+          year=$year,
+          color='$colo',
+          car_mileage=$mileage,
+          car_defect='$def',
+          price=$price,
+          desc='$desc'
+          WHERE carid=$carid;
+          EOF;
+    
+       $ret = $db3->exec($sql);
+       if(!$ret) {
+          echo $db3->lastErrorMsg();
+       } else {
+          echo "Records modify successfully<br>";
+       }
+ }
+ if(array_key_exists('button2', $_POST)) {
+  button3();
+}
+  function button3() {
+     class MyDB4 extends SQLite3 {
         function __construct() {
-          $this->open('db/product.db');
+           $this->open('db/product.db');
         }
-        }
-
-        $db = new MyDB();
-		?>
-        <!--form add modify delete-->
-<form>
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" value="John"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" value="Doe"><br><br>
-  <input type="submit" value="Submit">
-</form> 
-<?php
-  $db->close();      
-?>
+     }
+  
+     // Open Database 
+     $db4 = new MyDB4();
+     if(!$db4) {
+        echo $db4->lastErrorMsg();
+     }
+     $carid = $_POST['carid'];
+     $lic = $_POST['lic'];
+     $ser = $_POST['ser'];
+     $year = $_POST['year'];
+     $colo = $_POST['colo'];
+     $mileage = $_POST['mill'];
+     $def = $_POST['def'];
+     $price = $_POST['pri'];
+     $desc = $_POST['desc'];
+  
+     $sql =<<<EOF
+        DELETE FROM tblproduct WHERE carid=$carid;
+        EOF;
+  
+     $ret = $db4->exec($sql);
+     if(!$ret) {
+        echo $db4->lastErrorMsg();
+     } else {
+        echo "Records delete successfully<br>";
+     }
+  }
+  if(array_key_exists('button4', $_POST)) {
+    button4();
+  }
+  function button4() {
+    $db2->close();
+    $db3->close();
+    $db4->close();
+  }
+    ?>   
+</body>
+</html>

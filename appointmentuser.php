@@ -14,16 +14,20 @@
                     $productbycode = $ret->fetchArray(SQLITE3_ASSOC);
             }}
 		?>
-  <!--this is gonna be form but too laazy to edit-->
-  <form class="d-flex flex-column w-50 align-items-center justify-content-center" action="payment.php?" method="POST">
+  <form action="home.php?" method="post"><!--homebutton-->
+		<input type="submit" class="btnadd" value="home">
+	</form>
+  <!--form to add database and go to payment-->
+  <form class="d-flex flex-column w-50 align-items-center justify-content-center" 
+  action="payment.php?action=add&code=<?php echo $productbycode['carid'];?>" method="POST">
         <input class="w-50" type="text" name="cusid" id="cusid">
         <label for="">cusid</label>
         <input class="w-50" type="text" name="carid" id="carid" value="<?php echo $productbycode['carid'];?>">
         <label for="">carid</label>
-        <input class="w-50" type="text" name="date" id="date" value="YYYY-MM-DD">
+        <input class="w-50" type="text" name="date" id="date" value="">
         <label for="">date</label>
         <div class="d-flex justify-content-between w-50">
-            <button class="btn btn-primary" type="submit" name="send">Submit</button>
+            <button class="btn btn-primary" type="submit" name="send">book</button>
         </div>
     </form>  
 
