@@ -11,4 +11,7 @@
 	$query = "CREATE TABLE IF NOT EXISTS member(mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT, password TEXT, firstname TEXT, lastname TEXT)";
 	//Executing the query
 	$conn->exec($query);
+	
+	
+	//no frontend just use to connect database
 ?>

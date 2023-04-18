@@ -34,4 +34,5 @@
 			header('location:login.php');
 		}
 	}	
+	//no frontend
 ?>

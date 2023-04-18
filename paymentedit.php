@@ -12,7 +12,7 @@
 <form action="adminhome.php?" method="post"><!--homebutton-->
 		<input type="submit" class="btnadd" value="adminhome">
 	</form>
-   <form method='post'><!--form info-->
+   <form method='post'><!--form to edit payment data info-->
       <label>cusid : </label>
       <input type='num' name ='cusid'><br><br>
       <label>carid : </label>
@@ -44,7 +44,7 @@
    $sql ="SELECT * from tblpay";
    echo "<table id='table1'><tr><th>cusid</th><th>carid</th><th>staffid</th><th>accountnumber</th><th>total</th></tr>";
    $ret = $db->query($sql);
-   
+   //table to display all payment in database
    while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
       echo "<tr>";
       echo "<td>". $row['cusid'] . "</td>";
@@ -55,7 +55,6 @@
       echo "</tr>";
    }
    echo "</table>";
-   //table data info
    if(array_key_exists('button1', $_POST)) {
       button1();
     }

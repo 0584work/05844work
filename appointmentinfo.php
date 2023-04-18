@@ -9,6 +9,7 @@
 }</style>
 </head>
 <?php
+session_start();
     class MyDB extends SQLite3 {
         function __construct() {
           $this->open('db/product.db');
@@ -27,6 +28,7 @@
 <form action="home.php?" method="post"><!--homebutton-->
 		<input type="submit" class="btnadd" value="home">
 	</form>
+    <!--form to check day that selected car has been appointment(not sent data to next page)-->
    <form method='post'>
       <label for='idd'>car ID : </label>
       <input type='num' name ='id' value='<?php echo $productbycode['carid'];?>'><br><br>
@@ -34,7 +36,7 @@
       <input type='text' name ='cardate'><br><br>
       <input type='submit' name='button1'value='Submit'/>
    </form>
-   <form action="appointmentuser.php?action=add&code=<?php echo $productbycode['carid'];?>" method="post"><!--nextbutton-->
+   <form action="appointmentuser.php?action=add&code=<?php echo $productbycode['carid'];?>" method="post"><!--go nextbutton-->
 		<input type="submit" class="btnadd" value="next">
 	</form>
 
@@ -59,7 +61,7 @@
     $sql ="SELECT * from booking where car_id = $id";
     echo "<table id='table1'><tr><th>cus_id</th><th>car_id</th><th>status</th><th>appointment_date</th></tr>";
     $ret = $db2->query($sql);
-   
+   //table to display date that has been appoint by selected car
     while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
         echo "<tr>";
         echo "<td>". $row['cus_id'] . "</td>";

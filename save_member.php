@@ -11,14 +11,19 @@
 		$password = $_POST['password'];
 		$firstname = $_POST['firstname'];
 		$lastname = $_POST['lastname'];
+		$phone = $_POST['phone'];
+		$role = 'cus';
 		
 		// Insertion Query
-		$query = "INSERT INTO `member` (username, password, firstname, lastname) VALUES(:username, :password, :firstname, :lastname)";
+		$query = "INSERT INTO `member` (username, password, firstname, lastname,role,phonenumber) VALUES(:username, :password, :firstname,
+		 :lastname, :role, :phonenumber)";
 		$stmt = $conn->prepare($query);
 		$stmt->bindParam(':username', $username);
 		$stmt->bindParam(':password', $password);
 		$stmt->bindParam(':firstname', $firstname);
 		$stmt->bindParam(':lastname', $lastname);
+		$stmt->bindParam(':phonenumber', $phone);
+		$stmt->bindParam(':role', $role);
 		
 		// Check if the execution of query is success
 		if($stmt->execute()){
@@ -30,4 +35,5 @@
 		}
 
 	}
+	//no frontend
 ?>

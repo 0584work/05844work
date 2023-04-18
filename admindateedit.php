@@ -12,7 +12,7 @@
 <form action="adminhome.php?" method="post"><!--homebutton-->
 		<input type="submit" class="btnadd" value="adminhome">
 	</form>
-   <form method='post'><!--form info-->
+   <form method='post'><!--form to insert data-->
       <label>cusid : </label>
       <input type='num' name ='cusid'><br><br>
       <label>carid : </label>
@@ -46,7 +46,7 @@
    $sql ="SELECT * from booking";
    echo "<table id='table1'><tr><th>cusid</th><th>carid</th><th>staffid</th><th>status</th><th>date</th></tr>";
    $ret = $db->query($sql);
-   
+   //table to display database
    while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
       echo "<tr>";
       echo "<td>". $row['cus_id'] . "</td>";
@@ -57,7 +57,7 @@
       echo "</tr>";
    }
    echo "</table>";
-   //table data info
+   //funcion to add data to database
    if(array_key_exists('button1', $_POST)) {
       button1();
     }
@@ -78,6 +78,7 @@
          $staff = $_POST['staf'];
          $stat = $_POST['sta'];
          $dat2 = $_POST['dat2'];
+         //check duplicate day
          if($db2->query("select * from `booking` where car_id=$carid and customer_apointment_date=$dat2") == FALSE){
           $sql =<<<EOF
           INSERT INTO booking (cus_id,car_id,appointment_staff_id,status,customer_apointment_date)
@@ -95,6 +96,7 @@
             echo "error duplicate";
           }
   }
+  //funcion to modify data to database
    if(array_key_exists('button2', $_POST)) {
     button2();
   }
@@ -116,7 +118,7 @@
        $stat = $_POST['sta'];
        $dat = $_POST['dat'];
        $dat2 = $_POST['dat2'];
-
+       //query modify data to database
        $sql =<<<EOF
           UPDATE booking set 
           aappointment_staff_id=$staff,
@@ -131,7 +133,7 @@
        } else {
           echo "Records modify successfully<br>";
        }
- }
+ }//funcion to delete data to database
  if(array_key_exists('button3', $_POST)) {
   button3();
 }
@@ -152,7 +154,7 @@
      $staff = $_POST['staf'];
      $stat = $_POST['sta'];
      $dat = $_POST['dat'];
-
+     //delete row data
      $sql =<<<EOF
         DELETE FROM booking WHERE cus_id=$cusid and car_id=$carid and customer_apointment_date=$dat;
         EOF;

@@ -20,11 +20,11 @@
   <!--form to add database and go to payment-->
   <form class="d-flex flex-column w-50 align-items-center justify-content-center" 
   action="payment.php?action=add&code=<?php echo $productbycode['carid'];?>" method="POST">
-        <input class="w-50" type="text" name="cusid" id="cusid">
+        <input class="w-50" type="text" name="cusid" id="cusid" required="required">
         <label for="">cusid</label>
         <input class="w-50" type="text" name="carid" id="carid" value="<?php echo $productbycode['carid'];?>">
         <label for="">carid</label>
-        <input class="w-50" type="text" name="date" id="date" value="">
+        <input class="w-50" type="text" name="date" id="date" required="required">
         <label for="">date</label>
         <div class="d-flex justify-content-between w-50">
             <button class="btn btn-primary" type="submit" name="send">book</button>
@@ -49,6 +49,7 @@
         $carid = $_POST['carid'];
         $date = $_POST['date'];
         $status = "pending";
+        //check duplicate and add to database
         if($db2->query("select * from `booking` where car_id=$carid and customer_apointment_date=$date") == FALSE){
         $sql =<<<EOF
            INSERT INTO booking (cus_id,car_id ,status,customer_apointment_date)

@@ -29,27 +29,27 @@
 		<a href="login.php">Logout</a>
 		<h1>Welcome User!</h1>
 	</div>
-	<div id="product-grid">
+	<!--button to go to customer appointment edit-->
 	<form action="customereditdate.php?" method="post">
 		<input type="submit" class="btnadd" value="edit">
 	</form>
 
 <?php 
-//start of loop card
+//start of loop card to display simple data of car
 	$ret = $db->query("SELECT * FROM tblproduct ORDER BY carid ASC");
 	while($product_array = $ret->fetchArray(SQLITE3_ASSOC)){
 ?>
 	<div class='product_item'>
 		<form action="detail.php?action=add&code=<?php echo $product_array['carid'];?>" method="post">
 			<div class = "product_image">
-				<img src="<?php echo $product_array['image'];?>" alt="image">
+				<img src="<?php echo $product_array['image'];?>" alt="image"><!--image-->
 			</div>
 			<div class="product-title-footer">
-				<div class='product-title'><?php echo $product_array["series"];?></div>
-				<div class='product-title'><?php echo $product_array["carid"];?></div>
-				<div class='product-price'><?php echo $product_array["price"] . " bath";?></div>
+				<div class='product-title'><?php echo $product_array["series"];?></div><!--name-->
+				<div class='product-title'><?php echo $product_array["carid"];?></div><!--carid-->
+				<div class='product-price'><?php echo $product_array["price"] . " bath";?></div><!--price-->
 				<div class='card_action'>
-					<input type="submit" class="btnadd" value="detail">
+					<input type="submit" class="btnadd" value="detail"><!--button to go to detail page-->
 				</div>
 			</div>
 		</form>

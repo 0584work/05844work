@@ -43,6 +43,10 @@ session_start();
 					<label>Lastname</label>
 					<input type="text" name="lastname" class="form-control" required="required"/>
 				</div>
+				<div class="form-group">
+					<label>phone number</label>
+					<input type="num" name="phone" class="form-control" required="required"/>
+				</div>
 				<?php
 					//checking if the session 'success' is set. Success session is the message that the credetials are successfully saved.
 					if(ISSET($_SESSION['success'])){

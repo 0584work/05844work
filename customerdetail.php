@@ -29,7 +29,7 @@
    echo "<table id='table1'><tr><th>memid</th><th>userneme</th><th>password</th><th>firstname</th><th>lastname</th>
    <th>role</th><th>phonenumber</th></tr>";
    $ret = $db->query($sql);
-   
+   //table to display all customer in database
    while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
       echo "<tr>";
       echo "<td>". $row['mem_id'] . "</td>";

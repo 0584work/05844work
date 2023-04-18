@@ -12,7 +12,7 @@
 <form action="home.php?" method="post"><!--homebutton-->
 		<input type="submit" class="btnadd" value="home">
 	</form>
-   <form method='post'><!--form info-->
+   <form method='post'><!--form to insert data to edit date-->
       <label>cusid : </label>
       <input type='num' name ='cusid'><br><br>
       <label>carid : </label>
@@ -21,8 +21,8 @@
       <input type='text' name ='dat'><br><br>
       <label>new date : </label>
       <input type='text' name ='dat2'><br><br>
-      <input type='submit' name='button2'value='modify'/>
-      <input type='submit' name='button3'value='delete'/>
+      <input type='submit' name='button2'value='modify'/><!--to modify date-->
+      <input type='submit' name='button3'value='delete'/><!--to delete date-->
       <input type='submit' name='button4'value='end process'/>
    </form>
 <?php
@@ -41,7 +41,7 @@
    $sql ="SELECT * from booking";
    echo "<table id='table1'><tr><th>cusid</th><th>carid</th><th>staffid</th><th>status</th><th>date</th></tr>";
    $ret = $db->query($sql);
-   
+   //table to display all date
    while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
       echo "<tr>";
       echo "<td>". $row['cus_id'] . "</td>";

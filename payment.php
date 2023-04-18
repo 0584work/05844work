@@ -17,7 +17,7 @@
   <form action="home.php?" method="post"><!--homebutton-->
 		<input type="submit" class="btnadd" value="home">
 	</form>
-    <!--form add payment-->
+    <!--form to add payment-->
 <div>uipayment wait</div>
 <form class="d-flex flex-column w-50 align-items-center justify-content-center" action="home.php?" method="POST">
         <input class="w-50" type="text" name="cusid" id="cusid">
@@ -37,6 +37,7 @@
     if(array_key_exists('pay', $_POST)) {
       button1();
       }
+      //function to add payment
     function button1() {
       class MyDB2 extends SQLite3 {
       function __construct() {

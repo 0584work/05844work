@@ -12,7 +12,7 @@
 <form action="sellerhome.php?" method="post"><!--homebutton-->
 		<input type="submit" class="btnadd" value="sellerhome">
 	</form>
-   <form method='post'><!--form info-->
+   <form method='post'><!--form to insert car data-->
       <label>carid : </label>
       <input type='num' name ='carid'><br><br>
       <label>License palate : </label>
@@ -31,10 +31,10 @@
       <input type='num' name ='pri'><br><br>
       <label>desc : </label>
       <textarea cols="20" rows="5" name="desc"></textarea><br><br>
-      <input type='submit' name='button1'value='add'/>
-      <input type='submit' name='button2'value='modify'/>
-      <input type='submit' name='button3'value='delete'/>
-      <input type='submit' name='button4'value='end process'/>
+      <input type='submit' name='button1'value='add'/><!--add car data-->
+      <input type='submit' name='button2'value='modify'/><!--modify car data-->
+      <input type='submit' name='button3'value='delete'/><!--delete car data-->
+      <input type='submit' name='button4'value='end process'/><!--end database-->
    </form>
 <?php
    // Connect to Database 
@@ -53,7 +53,7 @@
    echo "<table id='table1'><tr><th>carid</th><th>License palate</th><th>series</th><th>year</th><th>color</th>
    <th>mileage</th><th>car deflect</th><th>price</th><th>desc</th></tr>";
    $ret = $db->query($sql);
-   
+   //table to display all car in database
    while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
       echo "<tr>";
       echo "<td>". $row['carid'] . "</td>";

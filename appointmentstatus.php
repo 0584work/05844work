@@ -28,7 +28,7 @@
    $sql ="SELECT * from booking";
     echo "<table id='table1'><tr><th>cus_id</th><th>car_id</th><th>status</th><th>appointment_date</th></tr>";
     $ret = $db2->query($sql);
-   
+   //table to display all appointment in database
     while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
         echo "<tr>";
         echo "<td>". $row['cus_id'] . "</td>";
