@@ -78,19 +78,23 @@
          $staff = $_POST['staf'];
          $stat = $_POST['sta'];
          $dat2 = $_POST['dat2'];
-      
-         $sql =<<<EOF
-            INSERT INTO booking (cus_id,car_id,appointment_staff_id,status,customer_apointment_date)
-            VALUES ($cusid,$carid, $staff, $stat ,$dat2);
-            EOF;
-      
-         $ret = $db2->exec($sql);
-         if(!$ret) {
-            echo $db2->lastErrorMsg();
-         } else {
-            echo "Records created successfully<br>";
-         }
-   }
+         if($db2->query("select * from `booking` where car_id=$carid and customer_apointment_date=$dat2") == FALSE){
+          $sql =<<<EOF
+          INSERT INTO booking (cus_id,car_id,appointment_staff_id,status,customer_apointment_date)
+          VALUES ($cusid,$carid, $staff, $stat ,$dat2);
+        EOF;
+
+          $ret = $db2->exec($sql);
+          if(!$ret) {
+             echo $db2->lastErrorMsg();
+          } else {
+           echo "Records created successfully<br>";
+          }
+          }
+          else{
+            echo "error duplicate";
+          }
+  }
    if(array_key_exists('button2', $_POST)) {
     button2();
   }

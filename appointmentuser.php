@@ -49,9 +49,9 @@
         $carid = $_POST['carid'];
         $date = $_POST['date'];
         $status = "pending";
-
+        if($db2->query("select * from `booking` where car_id=$carid and customer_apointment_date=$date") == FALSE){
         $sql =<<<EOF
-           INSERT INTO booking (cus_id,car_id,status,customer_apointment_date)
+           INSERT INTO booking (cus_id,car_id ,status,customer_apointment_date)
            VALUES ('$cusid','$carid','$status','$date');
         EOF;
         $ret = $db2->exec($sql);        
@@ -61,6 +61,10 @@
           echo "Records created successfully<br>";
         }
         $db2->close();
+      }
+      else{
+        echo "error duplicate";
+      }
     }
         
 
