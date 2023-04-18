@@ -1,3 +1,4 @@
+<!--no frontend-->
 <?php
 	//starting the session
 	session_start();
@@ -35,5 +36,5 @@
 		}
 
 	}
-	//no frontend
+	
 ?>

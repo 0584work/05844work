@@ -1,3 +1,4 @@
+<!--no frontend-->
 <?php
 	//check if the database file exists and create a new if not
 	if(!is_file('db/db_member.sqlite3')){
