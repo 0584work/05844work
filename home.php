@@ -32,16 +32,18 @@
 	<div id="product-grid">
 
 <?php 
-	$ret = $db->query("SELECT * FROM tblproduct ORDER BY id ASC");
+//start of loop card
+	$ret = $db->query("SELECT * FROM tblproduct ORDER BY carid ASC");
 	while($product_array = $ret->fetchArray(SQLITE3_ASSOC)){
 ?>
 	<div class='product_item'>
-		<form action="detail.php?action=add&code=<?php echo $product_array['code'];?>" method="post">
+		<form action="detail.php?action=add&code=<?php echo $product_array['carid'];?>" method="post">
 			<div class = "product_image">
 				<img src="<?php echo $product_array['image'];?>" alt="image">
 			</div>
 			<div class="product-title-footer">
-				<div class='product-title'><?php echo $product_array["name"];?></div>
+				<div class='product-title'><?php echo $product_array["series"];?></div>
+				<div class='product-title'><?php echo $product_array["carid"];?></div>
 				<div class='product-price'><?php echo $product_array["price"] . " bath";?></div>
 				<div class='card_action'>
 					<<input type="submit" class="btnadd" value="detail">

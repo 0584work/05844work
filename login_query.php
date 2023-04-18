@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	require_once 'conn.php';
 	
 	if(ISSET($_POST['login'])){
@@ -12,14 +11,27 @@
 		$stmt->bindParam(':password', $password);
 		$stmt->execute();
 		$row = $stmt->fetch();
-		
+
 		$count = $row['count'];
-		
-		if($count > 0){
+
+		$temp = "SELECT role FROM `member` WHERE `username` = :username AND `password` = :password";
+		$test = $conn->prepare($temp);
+		$test->bindParam(':username', $username);
+		$test->bindParam(':password', $password);
+		$test->execute();
+		$row = $test->fetch(PDO::FETCH_OBJ);	
+		$role = $row->role;
+		strval($role);
+
+		if($count > 0 && $role == 'cus'){
 			header('location:home.php');
+		}else if($count > 0 && $role == 'app'){
+			header('location:adminhome.php');
+		}else if($count > 0 && $role == 'sel'){
+			header('location:sellerhome.php');
 		}else{
 			$_SESSION['error'] = "Invalid username or password";
 			header('location:login.php');
 		}
-	}
+	}	
 ?>

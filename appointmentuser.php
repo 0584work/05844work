@@ -10,26 +10,54 @@
         if(($_GET["action"])){
             switch($_GET["action"]){
                 case "add":
-                    $ret = $db->query("SELECT * FROM tblproduct WHERE code='".$_GET["code"]."'");
+                    $ret = $db->query("SELECT * FROM tblproduct WHERE carid='".$_GET["code"]."'");
                     $productbycode = $ret->fetchArray(SQLITE3_ASSOC);
             }}
 		?>
-	<div class='product_item'>
-		<form action="payment.php?action=add&code=<?php echo $productbycode['price'];?>"method="post">
-			<div class = "product_image">
-				<img src="<?php echo $productbycode['image'];?>" alt="image">
-			</div>
-			<div class="product-title-footer">
-                <div>uiappointment wait</div>
-				<div class='product-title'><?php echo $productbycode["name"];?></div>
-				<div class='product-price'><?php echo $productbycode["price"] . " bath";?></div>
-				<div class='card_action'>
-					<<input type="submit" class="btnadd" value="detail">
-				</div>
-			</div>
-		</form>
-		
-	</div>
-<?php
-  $db->close();      
+  <!--this is gonna be form but too laazy to edit-->
+  <form class="d-flex flex-column w-50 align-items-center justify-content-center" action="payment.php?" method="POST">
+        <input class="w-50" type="text" name="cusid" id="cusid">
+        <label for="">cusid</label>
+        <input class="w-50" type="text" name="carid" id="carid" value="<?php echo $productbycode['carid'];?>">
+        <label for="">carid</label>
+        <input class="w-50" type="text" name="date" id="date" value="YYYY-MM-DD">
+        <label for="">date</label>
+        <div class="d-flex justify-content-between w-50">
+            <button class="btn btn-primary" type="submit" name="send">Submit</button>
+        </div>
+    </form>  
+
+    <?php  
+    $db->close();   
+    if(array_key_exists('send', $_POST)) {
+      button1();
+      }
+    function button1() {
+      class MyDB2 extends SQLite3 {
+      function __construct() {
+       $this->open('db/appointment.db');
+      }}
+      $db2 = new MyDB2();
+      ?>
+  
+      <?php
+        $cusid = $_POST['cusid'];
+        $carid = $_POST['carid'];
+        $date = $_POST['date'];
+        $status = "pending";
+
+        $sql =<<<EOF
+           INSERT INTO booking (cus_id,car_id,status,customer_apointment_date)
+           VALUES ('$cusid','$carid','$status','$date');
+        EOF;
+        $ret = $db2->exec($sql);        
+        if(!$ret) {
+          echo $db2->lastErrorMsg();
+        } else {
+          echo "Records created successfully<br>";
+        }
+        $db2->close();
+    }
+        
+
 ?>
