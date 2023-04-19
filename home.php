@@ -33,6 +33,9 @@
 	<form action="customereditdate.php?" method="post">
 		<input type="submit" class="btnadd" value="edit">
 	</form>
+	<form action="customercheckdate.php?" method="post">
+		<input type="submit" class="btnadd" value="check">
+	</form>
 
 <?php 
 //start of loop card to display simple data of car

@@ -13,6 +13,7 @@
 		<input type="submit" class="btnadd" value="adminhome">
 	</form>
 <?php
+ session_start()
    // Connect to Database 
    class MyDB extends SQLite3 {
       function __construct() {

@@ -1,6 +1,7 @@
 <!--no frontend-->
 <?php
 	require_once 'conn.php';
+	session_start();
 	
 	if(ISSET($_POST['login'])){
 		$username = $_POST['username'];
@@ -15,14 +16,17 @@
 
 		$count = $row['count'];
 
-		$temp = "SELECT role FROM `member` WHERE `username` = :username AND `password` = :password";
+		$temp = "SELECT mem_id,role FROM `member` WHERE `username` = :username AND `password` = :password";
 		$test = $conn->prepare($temp);
 		$test->bindParam(':username', $username);
 		$test->bindParam(':password', $password);
 		$test->execute();
 		$row = $test->fetch(PDO::FETCH_OBJ);	
 		$role = $row->role;
+		$memid = $row->mem_id;
 		strval($role);
+		intval($memid);
+		$_SESSION['user'] = $memid;
 
 		if($count > 0 && $role == 'cus'){
 			header('location:home.php');

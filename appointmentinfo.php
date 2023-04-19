@@ -30,10 +30,9 @@ session_start();
 	</form>
     <!--form to check day that selected car has been appointment(not sent data to next page)-->
    <form method='post'>
-      <label for='idd'>car ID : </label>
-      <input type='num' name ='id' value='<?php echo $productbycode['carid'];?>'><br><br>
       <label for='nam'>date : </label>
-      <input type='text' name ='cardate'><br><br>
+      <input type='date' name ='cardate'><br><br>
+      <input type='hidden' name ='carid' value="<?php echo $productbycode['carid'];?>">
       <input type='submit' name='button1'value='Submit'/>
    </form>
    <form action="appointmentuser.php?action=add&code=<?php echo $productbycode['carid'];?>" method="post"><!--go nextbutton-->
@@ -49,16 +48,15 @@ session_start();
    if(array_key_exists('button1', $_POST)) {
      button1();
      }
-   function button1() { 
+   
     class MyDB2 extends SQLite3 {
       function __construct() {
          $this->open('db/appointment.db');
       }
    }
     $db2 = new MyDB2();
-    $id = $_POST['id'];
-    $date = $_POST['cardate'];
-    $sql ="SELECT * from booking where car_id = $id";
+    $id = $_SESSION['user'];
+    $sql ="SELECT * from booking where cus_id = $id";
     echo "<table id='table1'><tr><th>cus_id</th><th>car_id</th><th>status</th><th>appointment_date</th></tr>";
     $ret = $db2->query($sql);
    //table to display date that has been appoint by selected car
@@ -72,9 +70,49 @@ session_start();
      }
     // Close database
     echo "</table>";
-
-      $db2->close();
-    }
+   
+        function button1() { 
+          class MyDB3 extends SQLite3 {
+            function __construct() {
+               $this->open('db/appointment.db');
+            }
+         }
+        $db3 = new MyDB3();
+        $cusid = $_SESSION['user'];
+        $carid = $_POST['carid'];
+        $date = $_POST['cardate'];
+        strval($date);
+        $_SESSION['bookingdate'] = $date;
+        $status = "pending";
+        $sql ="SELECT * from booking where car_id = $carid";
+        $ret = $db3->query($sql);
+        $check = 0;
+        while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
+        if ($date == $row['customer_apointment_date']){
+          $check = 1;
+          break;
+        }
+        }//check duplicate and add to database
+        if ($check == 0){$sql =<<<EOF
+           INSERT INTO booking (cus_id,car_id ,status,customer_apointment_date)
+           VALUES ($cusid,$carid,'$status','$date');
+        EOF;
+        $ret = $db3->exec($sql);        
+        if(!$ret) {
+          echo $db3->lastErrorMsg();
+        } else {
+          echo "Records created successfully<br>";
+          header( "refresh:5;url=appointmentuser.php");
+        }
+      }
+      else{
+        echo "data duplicate<br>";
+      }
+        $db3->close();
+      }
+      
+    $db2->close();
+    
     ?>   
 </body>
 </html>

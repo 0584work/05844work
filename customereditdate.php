@@ -1,3 +1,4 @@
+<?php session_start();?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,14 +14,10 @@
 		<input type="submit" class="btnadd" value="home">
 	</form>
    <form method='post'><!--form to insert data to edit date-->
-      <label>cusid : </label>
-      <input type='num' name ='cusid'><br><br>
-      <label>carid : </label>
-      <input type='text' name ='car'><br><br>
-	  <label>old date : </label>
+	   <label>new date : </label>
       <input type='text' name ='dat'><br><br>
-      <label>new date : </label>
-      <input type='text' name ='dat2'><br><br>
+      <label>id : </label>
+      <input type='text' name ='cid'><br><br>
       <input type='submit' name='button2'value='modify'/><!--to modify date-->
       <input type='submit' name='button3'value='delete'/><!--to delete date-->
       <input type='submit' name='button4'value='end process'/>
@@ -38,8 +35,9 @@
    if(!$db) {
       echo $db->lastErrorMsg();
    }
-   $sql ="SELECT * from booking";
-   echo "<table id='table1'><tr><th>cusid</th><th>carid</th><th>staffid</th><th>status</th><th>date</th></tr>";
+   $temp = $_SESSION['user'];
+   $sql ="SELECT * from booking where cus_id=$temp";
+   echo "<table id='table1'><tr><th>cusid</th><th>carid</th><th>staffid</th><th>status</th><th>date</th><th>appointmentid</th></tr>";
    $ret = $db->query($sql);
    //table to display all date
    while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
@@ -49,6 +47,7 @@
       echo "<td>". $row['appointment_staff_id'] ."</td>";
       echo "<td>".$row['status'] ."</td>";
       echo "<td>".$row['customer_apointment_date'] ."</td>";
+      echo "<td>".$row['appointmentid'] ."</td>";
       echo "</tr>";
    }
    echo "</table>";
@@ -68,17 +67,16 @@
        if(!$db3) {
           echo $db3->lastErrorMsg();
        }
-       $cusid = $_POST['cusid'];
-       $carid = $_POST['car'];
+       $cusid = $_SESSION['user'];
+       $appid = $_POST['dat'];
        $dat = $_POST['dat'];
-	   $dat2 = $_POST['dat2'];
 
        $sql =<<<EOF
           UPDATE booking set 
-          customer_apointment_date=$dat2
-          WHERE cus_id=$cusid and car_id=$carid and customer_apointment_date=$dat;
+          customer_apointment_date=$dat
+          WHERE appointmentid=$appid AND cus_id = $cusid;
           EOF;
-    
+          //query modify data to database
        $ret = $db3->exec($sql);
        if(!$ret) {
           echo $db3->lastErrorMsg();
@@ -102,11 +100,11 @@
         echo $db4->lastErrorMsg();
      }
      $cusid = $_POST['cusid'];
-     $carid = $_POST['car'];
+     $appid = $_POST['dat'];
      $dat = $_POST['dat'];
 
      $sql =<<<EOF
-        DELETE FROM booking WHERE cus_id=$cusid and car_id=$carid and customer_apointment_date=$dat;
+        DELETE FROM booking WHERE appointmentid=$appid AND cus_id = $cusid;
         EOF;
   
      $ret = $db4->exec($sql);

@@ -1,3 +1,4 @@
+<?php session_start();?>
 <form action="customerdetail.php?" method="post"><!--to see customerdetail button-->
 		<input type="submit" class="btnadd" value="customerdetail">
 	</form>  

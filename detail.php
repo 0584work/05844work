@@ -21,8 +21,6 @@ session_start();
 		<form action="appointmentinfo.php?action=add&code=<?php echo $productbycode['carid'];?>" method="post">
 			<div class = "product_image"><!--imageproduct-->
 				<img src="<?php echo $productbycode['image'];?>" alt="image">
-				<img src="<?php echo $productbycode['image2'];?>" alt="image">
-				<img src="<?php echo $productbycode['image3'];?>" alt="image">
 			</div>
 			<div class="product-title-footer"><!--detail of car that set in database-->
 				<div class='product-title'><?php echo $productbycode["series"];?></div>

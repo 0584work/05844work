@@ -1,3 +1,4 @@
+<?php session_start();?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,6 +24,8 @@
       <input type='num' name ='year'><br><br>
       <label>color : </label>
       <input type='text' name ='colo'><br><br>
+      <label>pic : </label>
+      <input type='text' name ='pic'><br><br>
       <label>mileage : </label>
       <input type='num' name ='mill'><br><br>  
       <label'>car deflect : </label>
@@ -51,7 +54,7 @@
    }
    $sql ="SELECT * from tblproduct";
    echo "<table id='table1'><tr><th>carid</th><th>License palate</th><th>series</th><th>year</th><th>color</th>
-   <th>mileage</th><th>car deflect</th><th>price</th><th>desc</th></tr>";
+   <th>image</th><th>mileage</th><th>car deflect</th><th>price</th><th>desc</th></tr>";
    $ret = $db->query($sql);
    //table to display all car in database
    while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
@@ -61,6 +64,7 @@
       echo "<td>". $row['series'] ."</td>";
       echo "<td>".$row['year'] ."</td>";
       echo "<td>".$row['color'] ."</td>";
+      echo "<td>".$row['image'] ."</td>";
       echo "<td>".$row['car_mileage'] ."</td>";
       echo "<td>".$row['car_defect'] ."</td>";
       echo "<td>".$row['price'] ."</td>";
@@ -89,14 +93,15 @@
          $ser = $_POST['ser'];
          $year = $_POST['year'];
          $colo = $_POST['colo'];
+         $image = $_POST['pic'];
          $mileage = $_POST['mill'];
          $def = $_POST['def'];
          $price = $_POST['pri'];
          $desc = $_POST['desc'];
       
          $sql =<<<EOF
-            INSERT INTO tblproduct (carid,license_palate,series,year,color,car_mileage,car_defect,price,desc)
-            VALUES ($carid,'$lic', '$ser', $year, '$colo',$mileage,'$def',$price,'$desc');
+            INSERT INTO tblproduct (carid,license_palate,series,year,color,image,car_mileage,car_defect,price,desc)
+            VALUES ($carid,'$lic', '$ser', $year, '$colo','$image',$mileage,'$def',$price,'$desc');
             EOF;
       
          $ret = $db2->exec($sql);
@@ -126,6 +131,7 @@
        $ser = $_POST['ser'];
        $year = $_POST['year'];
        $colo = $_POST['colo'];
+       $image = $_POST['pic'];
        $mileage = $_POST['mill'];
        $def = $_POST['def'];
        $price = $_POST['pri'];
@@ -137,6 +143,7 @@
           series='$ser',
           year=$year,
           color='$colo',
+          image='$image',
           car_mileage=$mileage,
           car_defect='$def',
           price=$price,

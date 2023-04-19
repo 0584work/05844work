@@ -1,3 +1,4 @@
+<?php session_start();?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,13 +17,13 @@
       <label>cusid : </label>
       <input type='num' name ='cusid'><br><br>
       <label>carid : </label>
-      <input type='text' name ='car'><br><br>
+      <input type='num' name ='car'><br><br>
       <label>staffid : </label>
-      <input type='text' name ='staf'><br><br>
+      <input type='num' name ='staf'><br><br>
       <label>accountnumber : </label>
       <input type='num' name ='acc'><br><br>
       <label>total : </label>
-      <input type='text' name ='tot'><br><br>
+      <input type='num' name ='tot'><br><br>
       <input type='submit' name='button1'value='add'/>
       <input type='submit' name='button2'value='modify'/>
       <input type='submit' name='button3'value='delete'/>
@@ -58,12 +59,12 @@
    if(array_key_exists('button1', $_POST)) {
       button1();
     }
-      function button1() {
-         class MyDB2 extends SQLite3 {
-            function __construct() {
-               $this->open('db/payment.db');
-            }
+   function button1() {
+       class MyDB2 extends SQLite3 {
+         function __construct() {
+            $this->open('db/payment.db');
          }
+      }
       
          // Open Database 
          $db2 = new MyDB2();
@@ -77,10 +78,10 @@
          $tot = $_POST['tot'];
       
          $sql =<<<EOF
-            INSERT INTO tblpay (cusid,carid,appointmentstaffid,accountnumber,total)
-            VALUES ($cusid,$carid, $staff, $acc ,$tot);
-            EOF;
-      
+         INSERT INTO tblpay (cusid,carid,appointmentstaffid,accountnumber,total)
+         VALUES ($cusid,$carid,$staff,$acc,$tot);
+         EOF;
+
          $ret = $db2->exec($sql);
          if(!$ret) {
             echo $db2->lastErrorMsg();
@@ -88,6 +89,7 @@
             echo "Records created successfully<br>";
          }
    }
+
    if(array_key_exists('button2', $_POST)) {
     button2();
   }
@@ -116,8 +118,8 @@
           WHERE cusid=$cusid and carid=$carid;
           EOF;
     
-       $ret = $db3->exec($sql);
-       if(!$ret) {
+       $ret3 = $db3->exec($sql);
+       if(!$ret3) {
           echo $db3->lastErrorMsg();
        } else {
           echo "Records modify successfully<br>";
@@ -148,8 +150,8 @@
         DELETE FROM tblpay WHERE cusid=$cusid and carid=$carid;
         EOF;
   
-     $ret = $db4->exec($sql);
-     if(!$ret) {
+     $ret4 = $db4->exec($sql);
+     if(!$ret4) {
         echo $db4->lastErrorMsg();
      } else {
         echo "Records delete successfully<br>";

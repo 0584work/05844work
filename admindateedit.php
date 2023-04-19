@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,19 +17,23 @@
       <label>cusid : </label>
       <input type='num' name ='cusid'><br><br>
       <label>carid : </label>
-      <input type='text' name ='car'><br><br>
+      <input type='num' name ='car'><br><br>
       <label>staffid : </label>
-      <input type='text' name ='staf'><br><br>
-      <label>status : </label>
-      <input type='text' name ='sta'><br><br>
-      <label>old date(not require when add) : </label>
-      <input type='text' name ='dat'><br><br>
-      <label>new date(not require when delete) : </label>
-      <input type='text' name ='dat2'><br><br>
+      <input type='num' name ='staf'><br><br>
+      <label for="cars">Choose a car:</label>
+      <select name="sta">
+         <option value="complete">complete</option>
+         <option value="booking">booking</option>
+         <option value="pending">pending</option>
+         <option value="cancel">cancel</option>
+      </select>
+      <label>date : </label>
+      <input type='date' name ='dat'><br><br>
+      <label>ID : </label>
+      <input type='int' name ='appid'><br><br>
       <input type='submit' name='button1'value='add'/>
       <input type='submit' name='button2'value='modify'/>
       <input type='submit' name='button3'value='delete'/>
-      <input type='submit' name='button4'value='end process'/>
    </form>
 <?php
    // Connect to Database 
@@ -44,7 +49,7 @@
       echo $db->lastErrorMsg();
    }
    $sql ="SELECT * from booking";
-   echo "<table id='table1'><tr><th>cusid</th><th>carid</th><th>staffid</th><th>status</th><th>date</th></tr>";
+   echo "<table id='table1'><tr><th>cusid</th><th>carid</th><th>staffid</th><th>status</th><th>date</th><th>appointmentid</th></tr>";
    $ret = $db->query($sql);
    //table to display database
    while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
@@ -54,6 +59,7 @@
       echo "<td>". $row['appointment_staff_id'] ."</td>";
       echo "<td>".$row['status'] ."</td>";
       echo "<td>".$row['customer_apointment_date'] ."</td>";
+      echo "<td>".$row['appointmentid'] ."</td>";
       echo "</tr>";
    }
    echo "</table>";
@@ -77,12 +83,22 @@
          $carid = $_POST['car'];
          $staff = $_POST['staf'];
          $stat = $_POST['sta'];
-         $dat2 = $_POST['dat2'];
+         $dat2 = $_POST['dat'];
+         $appid = $_POST['appid'];
          //check duplicate day
-         if($db2->query("select * from `booking` where car_id=$carid and customer_apointment_date=$dat2") == FALSE){
+         $sql ="SELECT * from booking where car_id = $carid";
+        $ret = $db2->query($sql);
+        $check = 0;
+        while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
+        if ($date == $row['customer_apointment_date']){
+          $check = 1;
+          break;
+        }
+        }//check duplicate and add to database
+        if ($check == 0){
           $sql =<<<EOF
           INSERT INTO booking (cus_id,car_id,appointment_staff_id,status,customer_apointment_date)
-          VALUES ($cusid,$carid, $staff, $stat ,$dat2);
+          VALUES ($cusid,$carid,$staff,'$stat','$dat2');
         EOF;
 
           $ret = $db2->exec($sql);
@@ -91,11 +107,10 @@
           } else {
            echo "Records created successfully<br>";
           }
-          }
-          else{
-            echo "error duplicate";
-          }
-  }
+      }else{
+         echo "Data duplicate<br>";
+      }
+   }
   //funcion to modify data to database
    if(array_key_exists('button2', $_POST)) {
     button2();
@@ -106,7 +121,6 @@
              $this->open('db/appointment.db');
           }
        }
-    
        // Open Database 
        $db3 = new MyDB3();
        if(!$db3) {
@@ -116,16 +130,14 @@
        $carid = $_POST['car'];
        $staff = $_POST['staf'];
        $stat = $_POST['sta'];
-       $dat = $_POST['dat'];
-       $dat2 = $_POST['dat2'];
+       $dat2 = $_POST['dat'];
+       $appid = $_POST['appid'];
        //query modify data to database
        $sql =<<<EOF
-          UPDATE booking set 
-          aappointment_staff_id=$staff,
-          status=$stat,
-          customer_apointment_date=$dat2
-          WHERE cus_id=$cusid and car_id=$cari and customer_apointment_date=$dat;
-          EOF;
+          UPDATE booking set cus_id = $cusid,car_id = $carid,
+          appointment_staff_id = $staff , status = '$stat', customer_apointment_date = '$dat2'
+          WHERE appointmentid=$appid; 
+       EOF;
     
        $ret = $db3->exec($sql);
        if(!$ret) {
@@ -133,7 +145,9 @@
        } else {
           echo "Records modify successfully<br>";
        }
- }//funcion to delete data to database
+      }
+      
+ //funcion to delete data to database
  if(array_key_exists('button3', $_POST)) {
   button3();
 }
@@ -154,9 +168,10 @@
      $staff = $_POST['staf'];
      $stat = $_POST['sta'];
      $dat = $_POST['dat'];
+     $appid = $_POST['appid'];
      //delete row data
      $sql =<<<EOF
-        DELETE FROM booking WHERE cus_id=$cusid and car_id=$carid and customer_apointment_date=$dat;
+        DELETE FROM booking WHERE appointmentid=$appid;
         EOF;
   
      $ret = $db4->exec($sql);
@@ -165,14 +180,6 @@
      } else {
         echo "Records delete successfully<br>";
      }
-  }
-  if(array_key_exists('button4', $_POST)) {
-    button4();
-  }
-  function button4() {
-    $db2->close();
-    $db3->close();
-    $db4->close();
   }
     ?>   
 </body>

@@ -12,6 +12,7 @@
 <form action="home.php?" method="post"><!--homebutton-->
 		<input type="submit" class="btnadd" value="home">
 	</form>
+<?php session_start();?>
 <?php
    // Connect to Database 
    class MyDB extends SQLite3 {
@@ -25,9 +26,9 @@
    if(!$db) {
       echo $db->lastErrorMsg();
    }
-   $sql ="SELECT * from booking";
+    $sql ="SELECT * from booking";
     echo "<table id='table1'><tr><th>cus_id</th><th>car_id</th><th>status</th><th>appointment_date</th></tr>";
-    $ret = $db2->query($sql);
+    $ret = $db->query($sql);
    //table to display all appointment in database
     while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
         echo "<tr>";

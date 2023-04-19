@@ -1,3 +1,4 @@
+<?php session_start();?>
 <form action="caredit.php?" method="post"><!--button to go to edit car-->
 		<input type="submit" class="btnadd" value="caredit">
 	</form>
