@@ -63,7 +63,7 @@
           echo $db2->lastErrorMsg();
         } else {
           echo "Records created successfully<br>";
-          header( "refresh:5;url=home.php" );
+          header( "refresh:5;url=afterpayment.php" );
         }      
         $db2->close();
      }

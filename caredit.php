@@ -18,6 +18,8 @@
       <input type='num' name ='carid' required="required"><br><br>
       <label>License palate : </label>
       <input type='text' name ='lic' required="required"><br><br>
+      <label>name : </label>
+      <input type='text' name ='nam' required="required"><br><br>
       <label>series : </label>
       <input type='text' name ='ser' required="required"><br><br>
       <label>year : </label>
@@ -53,7 +55,7 @@
       echo $db->lastErrorMsg();
    }
    $sql ="SELECT * from tblproduct";
-   echo "<table id='table1'><tr><th>carid</th><th>License palate</th><th>series</th><th>year</th><th>color</th>
+   echo "<table id='table1'><tr><th>carid</th><th>License palate</th><th>series</th><th>name</th><th>year</th><th>color</th>
    <th>image</th><th>mileage</th><th>car deflect</th><th>price</th><th>desc</th></tr>";
    $ret = $db->query($sql);
    //table to display all car in database
@@ -62,6 +64,7 @@
       echo "<td>". $row['carid'] . "</td>";
       echo "<td>". $row['license_palate']."</td>";
       echo "<td>". $row['series'] ."</td>";
+      echo "<td>". $row['name']."</td>";
       echo "<td>".$row['year'] ."</td>";
       echo "<td>".$row['color'] ."</td>";
       echo "<td>".$row['image'] ."</td>";
@@ -93,6 +96,7 @@
          $ser = $_POST['ser'];
          $year = $_POST['year'];
          $colo = $_POST['colo'];
+         $nam = $_POST['nam'];
          $image = $_POST['pic'];
          $mileage = $_POST['mill'];
          $def = $_POST['def'];
@@ -100,8 +104,8 @@
          $desc = $_POST['desc'];
       
          $sql =<<<EOF
-            INSERT INTO tblproduct (carid,license_palate,series,year,color,image,car_mileage,car_defect,price,desc)
-            VALUES ($carid,'$lic', '$ser', $year, '$colo','$image',$mileage,'$def',$price,'$desc');
+            INSERT INTO tblproduct (carid,license_palate,series,year,color,name,image,car_mileage,car_defect,price,desc)
+            VALUES ($carid,'$lic', '$ser', $year, '$colo','$image',$mileage,'$nam','$def',$price,'$desc');
             EOF;
       
          $ret = $db2->exec($sql);
@@ -132,6 +136,7 @@
        $year = $_POST['year'];
        $colo = $_POST['colo'];
        $image = $_POST['pic'];
+       $nam = $_POST['nam'];
        $mileage = $_POST['mill'];
        $def = $_POST['def'];
        $price = $_POST['pri'];
@@ -144,6 +149,7 @@
           year=$year,
           color='$colo',
           image='$image',
+          name='$nam',
           car_mileage=$mileage,
           car_defect='$def',
           price=$price,

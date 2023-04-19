@@ -30,6 +30,9 @@
 		<a href="login.php">Logout</a>
 		<h1>Welcome User!</h1>
 	</div>
+    <form action="home.php?" method="post"><!--homebutton-->
+		<input type="submit" class="btnadd" value="home">
+	</form>
 	<!--button to go to customer appointment edit-->
 	<form action="customereditdate.php?" method="post">
 		<input type="submit" class="btnadd" value="edit">
@@ -37,38 +40,10 @@
 	<form action="customercheckdate.php?" method="post">
 		<input type="submit" class="btnadd" value="check">
 	</form>
-	<br>
-	<form action="homebmw.php?" method="post">
-		<input type="submit" class="btnadd" value="bmw">
-	</form>
-	<form action="homehonda.php?" method="post">
-		<input type="submit" class="btnadd" value="honda">
-	</form>
-	<form action="homeisuzu.php?" method="post">
-		<input type="submit" class="btnadd" value="isuzu">
-	</form>
-	<form action="homemasda.php?" method="post">
-		<input type="submit" class="btnadd" value="masda">
-	</form>
-	<form action="homemg.php?" method="post">
-		<input type="submit" class="btnadd" value="mg">
-	</form>
-	<form action="homemitsu.php?" method="post">
-		<input type="submit" class="btnadd" value="mitsu">
-	</form>
-	<form action="homenissan.php?" method="post">
-		<input type="submit" class="btnadd" value="nissan">
-	</form>
-	<form action="hometoyota.php?" method="post">
-		<input type="submit" class="btnadd" value="toyota">
-	</form>
-	<form action="homevolvo.php?" method="post">
-		<input type="submit" class="btnadd" value="valvo">
-	</form>
 
 <?php 
 //start of loop card to display simple data of car
-	$ret = $db->query("SELECT * FROM tblproduct ORDER BY carid ASC");
+	$ret = $db->query("SELECT * FROM tblproduct where series='bmw' ORDER BY carid ASC");
 	while($product_array = $ret->fetchArray(SQLITE3_ASSOC)){
 ?>
 	<div class='card'>

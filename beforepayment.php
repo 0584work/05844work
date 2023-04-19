@@ -21,13 +21,8 @@
 	</form>
   <!--form to add database and go to payment-->
   <form class="d-flex flex-column w-50 align-items-center justify-content-center" 
-  action="beforepayment.php?action=add&code=<?php echo $productbycode['carid'];?>" method="POST">
-        <input class="w-50" type="text" name="cusid" id="cusid" value="<?php echo $cusid;?>" readonly>
-        <label for="">cusid</label>
-        <input class="w-50" type="text" name="carid" id="carid" value="<?php echo $productbycode['carid'];?>" readonly>
-        <label for="">carid</label>
-        <input class="w-50" type="text" name="date" id="date" value="<?php echo $date;?>" readonly>
-        <label for="">date</label>
+  action="payment.php?action=add&code=<?php echo $productbycode['carid'];?>" method="POST">
+       <<h1>Booking complete</h1>>
         <div class="d-flex justify-content-between w-50">
             <button class="btn btn-primary" type="submit" name="send">book</button>
         </div>
