@@ -15,11 +15,11 @@
 	</form>
    <form method='post'><!--form to insert data-->
       <label>cusid : </label>
-      <input type='num' name ='cusid'><br><br>
+      <input type='num' name ='cusid' required="required"><br><br>
       <label>carid : </label>
-      <input type='num' name ='car'><br><br>
+      <input type='num' name ='car' required="required"><br><br>
       <label>staffid : </label>
-      <input type='num' name ='staf'><br><br>
+      <input type='num' name ='staf' required="required"><br><br>
       <label for="cars">Choose a car:</label>
       <select name="sta">
          <option value="complete">complete</option>
@@ -28,9 +28,9 @@
          <option value="cancel">cancel</option>
       </select>
       <label>date : </label>
-      <input type='date' name ='dat'><br><br>
+      <input type='date' name ='dat' required="required"><br><br>
       <label>ID : </label>
-      <input type='int' name ='appid'><br><br>
+      <input type='int' name ='appid' required="required"><br><br>
       <input type='submit' name='button1'value='add'/>
       <input type='submit' name='button2'value='modify'/>
       <input type='submit' name='button3'value='delete'/>

@@ -15,23 +15,23 @@
 	</form>
    <form method='post'><!--form to insert car data-->
       <label>carid : </label>
-      <input type='num' name ='carid'><br><br>
+      <input type='num' name ='carid' required="required"><br><br>
       <label>License palate : </label>
-      <input type='text' name ='lic'><br><br>
+      <input type='text' name ='lic' required="required"><br><br>
       <label>series : </label>
-      <input type='text' name ='ser'><br><br>
+      <input type='text' name ='ser' required="required"><br><br>
       <label>year : </label>
-      <input type='num' name ='year'><br><br>
+      <input type='num' name ='year' required="required"><br><br>
       <label>color : </label>
-      <input type='text' name ='colo'><br><br>
+      <input type='text' name ='colo' required="required"><br><br>
       <label>pic : </label>
       <input type='text' name ='pic'><br><br>
       <label>mileage : </label>
-      <input type='num' name ='mill'><br><br>  
+      <input type='num' name ='mill' required="required"><br><br>  
       <label'>car deflect : </label>
       <textarea cols="20" rows="5" name="def"></textarea><br><br>
       <label>price : </label>
-      <input type='num' name ='pri'><br><br>
+      <input type='num' name ='pri' required="required"><br><br>
       <label>desc : </label>
       <textarea cols="20" rows="5" name="desc"></textarea><br><br>
       <input type='submit' name='button1'value='add'/><!--add car data-->

@@ -15,9 +15,9 @@
 	</form>
    <form method='post'><!--form to edit payment data info-->
       <label>cusid : </label>
-      <input type='num' name ='cusid'><br><br>
+      <input type='num' name ='cusid' required="required"><br><br>
       <label>carid : </label>
-      <input type='num' name ='car'><br><br>
+      <input type='num' name ='car' required="required"><br><br>
       <label>staffid : </label>
       <input type='num' name ='staf'><br><br>
       <label>accountnumber : </label>
