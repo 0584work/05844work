@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php 
 //starting the session
+require_once 'startof.php';
 session_start();
 ?>
 <html lang="en">
@@ -56,6 +57,16 @@ session_start();
 				<?php
 					//Unsetting the 'success' session after displaying the message. 
 					unset($_SESSION['success']);
+					}
+				?>
+				<?php
+					$temp = $_SESSION['unsucess'];
+					//checking if the session 'error' is set. Erro session is the message if the 'Username' and 'Password' is not valid.
+					if($temp == "Invalid phone number"){
+				?>
+				<!-- Display Login Error message -->
+					<div class="alert alert-danger"><?php echo $temp?></div>
+				<?php
 					}
 				?>
 				<button class="btn btn-primary btn-block" name="register"><span class="glyphicon glyphicon-save"></span> Register</button>

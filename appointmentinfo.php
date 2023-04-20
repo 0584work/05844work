@@ -31,8 +31,8 @@ session_start();
     <!--form to check day that selected car has been appointment(not sent data to next page)-->
    <form method='post'>
       <label for='nam'>date : </label>
-      <input type='date' name ='cardate' required="required"><br><br>
-      <input type='hidden' name ='carid' value="<?php echo $productbycode['carid'];?>">
+      <input type='datetime-local' name ='cardate' required="required"><br><br>
+      <input type='hidden' name ='carid' value="<?php echo $productbycode['license_palate'];?>">
       <input type='submit' name='button1'value='Submit'/>
    </form>
    <form action="appointmentuser.php?action=add&code=<?php echo $productbycode['carid'];?>" method="post"><!--go nextbutton-->

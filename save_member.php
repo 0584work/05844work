@@ -13,28 +13,35 @@
 		$firstname = $_POST['firstname'];
 		$lastname = $_POST['lastname'];
 		$phone = $_POST['phone'];
-		$role = 'cus';
-		
-		// Insertion Query
+		$role = 'cus'; 
+		if (is_numeric($phone)) { 
+			// Insertion Query
 		$query = "INSERT INTO `member` (username, password, firstname, lastname,role,phonenumber) VALUES(:username, :password, :firstname,
-		 :lastname, :role, :phonenumber)";
-		$stmt = $conn->prepare($query);
-		$stmt->bindParam(':username', $username);
-		$stmt->bindParam(':password', $password);
-		$stmt->bindParam(':firstname', $firstname);
-		$stmt->bindParam(':lastname', $lastname);
-		$stmt->bindParam(':phonenumber', $phone);
-		$stmt->bindParam(':role', $role);
+		:lastname, :role, :phonenumber)";
+	   $stmt = $conn->prepare($query);
+	   $stmt->bindParam(':username', $username);
+	   $stmt->bindParam(':password', $password);
+	   $stmt->bindParam(':firstname', $firstname);
+	   $stmt->bindParam(':lastname', $lastname);
+	   $stmt->bindParam(':phonenumber', $phone);
+	   $stmt->bindParam(':role', $role);
+	   
+	   
+	   // Check if the execution of query is success
+	   if($stmt->execute()){
+		   //setting a 'success' session to save our insertion success message.
+		   $_SESSION['success'] = "Successfully created an account";
+
+		   //redirecting to the index.php 
+		   header('location: index.php');
+	   }
+	}
+	else{
+		$_SESSION['unsucess'] = "Invalid phone number";
+			header('location:index.php');
+	}
+
 		
-		// Check if the execution of query is success
-		if($stmt->execute()){
-			//setting a 'success' session to save our insertion success message.
-			$_SESSION['success'] = "Successfully created an account";
-
-			//redirecting to the index.php 
-			header('location: index.php');
-		}
-
 	}
 	
 ?>

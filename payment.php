@@ -22,14 +22,14 @@
     <!--form to add payment-->
 <div>uipayment wait</div>
 <form class="d-flex flex-column w-50 align-items-center justify-content-center" method="POST">
-        <input class="w-50" type="text" name="cusid" id="cusid" value="<?php echo $cid;?>" readonly>
         <label for="">cusid</label>
-        <input class="w-50" type="text" name="carid" id="carid" value="<?php echo $productbycode['carid'];?>" readonly>
-        <label for="">carid</label>
+        <input class="w-50" type="text" name="cusid" id="cusid" value="<?php echo $cid;?>" readonly>
+        <label for="">license_palate</label>
+        <input class="w-50" type="text" name="carid" id="carid" value="<?php echo $productbycode['license_palate'];?>" readonly>
+        <label for="">รหัสอ้างอิง</label>
         <input class="w-50" type="text" name="accn" id="accn" value="รหัสอ้างอิง" required="required">
-        <label for="">accountnumber</label>
-        <input class="w-50" type="text" name="val" id="val" required="required">
         <label for="">total</label>
+        <input class="w-50" type="text" name="val" id="val" required="required">
         <div class="d-flex justify-content-between w-50">
             <button class="btn btn-primary" type="submit" name="pay">pay</button>
         </div>

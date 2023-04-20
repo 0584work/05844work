@@ -16,7 +16,7 @@
    <form method='post'><!--form to insert data-->
       <label>cusid : </label>
       <input type='num' name ='cusid' required="required"><br><br>
-      <label>carid : </label>
+      <label>license_palate : </label>
       <input type='num' name ='car' required="required"><br><br>
       <label>staffid : </label>
       <input type='num' name ='staf' required="required"><br><br>
@@ -28,7 +28,7 @@
          <option value="cancel">cancel</option>
       </select>
       <label>date : </label>
-      <input type='date' name ='dat' required="required"><br><br>
+      <input type='datetime-local' name ='dat' required="required"><br><br>
       <label>ID : </label>
       <input type='int' name ='appid' required="required"><br><br>
       <input type='submit' name='button1'value='add'/>
@@ -181,6 +181,34 @@
         echo "Records delete successfully<br>";
      }
   }
-    ?>   
+    ?>  
+    <?php
+   // Connect to Database 
+   class MyDB5 extends SQLite3 {
+      function __construct() {
+         $this->open('db/payment.db');
+      }
+   }
+
+   // Open Database 
+   $db5 = new MyDB5();
+   if(!$db5) {
+      echo $db5->lastErrorMsg();
+   }
+   $sql ="SELECT * from tblpay";
+   echo "<table id='table1'><tr><th>PAYMENT</th></tr><tr><th>cusid</th><th>carid</th><th>staffid</th><th>รหัสอ้างอิง</th><th>total</th></tr>";
+   $ret = $db5->query($sql);
+   //table to display all payment in database
+   while($row = $ret->fetchArray(SQLITE3_ASSOC)) {
+      echo "<tr>";
+      echo "<td>". $row['cusid'] . "</td>";
+      echo "<td>". $row['carid']."</td>";
+      echo "<td>".$row['accountnumber'] ."</td>";
+      echo "<td>".$row['total'] ."</td>";
+      echo "</tr>";
+   }
+   echo "</table>";
+   
+    ?>    
 </body>
 </html>

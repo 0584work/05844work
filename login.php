@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <?php 
+require_once 'startof.php';
 session_start();
 //starting the session
+
 ?>
 <html lang="en">
 	<head>
@@ -35,14 +37,13 @@ session_start();
 					<input type="password" name="password" class="form-control" required="required"/>
 				</div>
 				<?php
+					$errmas = $_SESSION['error'];
 					//checking if the session 'error' is set. Erro session is the message if the 'Username' and 'Password' is not valid.
-					if(ISSET($_SESSION['error'])){
+					if($errmas == "Invalid username or password"){
 				?>
 				<!-- Display Login Error message -->
-					<div class="alert alert-danger"><?php echo $_SESSION['error']?></div>
+					<div class="alert alert-danger"><?php echo $errmas?></div>
 				<?php
-					//Unsetting the 'error' session after displaying the message. 
-					session_unset($_SESSION['error']);
 					}
 				?>
 				<button class="btn btn-primary btn-block" name="login"><span class="glyphicon glyphicon-log-in"></span> Login</button>

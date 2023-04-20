@@ -27,6 +27,7 @@
 		strval($role);
 		intval($memid);
 		$_SESSION['user'] = $memid;
+		$_SESSION['error'] = "complete";
 
 		if($count > 0 && $role == 'cus'){
 			header('location:home.php');

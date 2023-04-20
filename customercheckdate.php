@@ -38,7 +38,6 @@
       echo "<td>". $row['appointment_staff_id'] ."</td>";
       echo "<td>".$row['status'] ."</td>";
       echo "<td>".$row['customer_apointment_date'] ."</td>";
-      echo "<td>".$row['appointmentid'] ."</td>";
       echo "</tr>";
    }
    echo "</table>";
