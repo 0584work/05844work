@@ -38,9 +38,6 @@
 		<input type="submit" class="btnadd" value="check">
 	</form>
 	<br>
-	<form action="homebmw.php?" method="post">
-		<input type="submit" class="btnadd" value="bmw">
-	</form>
 	<form action="homehonda.php?" method="post">
 		<input type="submit" class="btnadd" value="honda">
 	</form>
@@ -48,22 +45,13 @@
 		<input type="submit" class="btnadd" value="isuzu">
 	</form>
 	<form action="homemasda.php?" method="post">
-		<input type="submit" class="btnadd" value="masda">
-	</form>
-	<form action="homemg.php?" method="post">
-		<input type="submit" class="btnadd" value="mg">
+		<input type="submit" class="btnadd" value="mazda">
 	</form>
 	<form action="homemitsu.php?" method="post">
 		<input type="submit" class="btnadd" value="mitsu">
 	</form>
-	<form action="homenissan.php?" method="post">
-		<input type="submit" class="btnadd" value="nissan">
-	</form>
 	<form action="hometoyota.php?" method="post">
 		<input type="submit" class="btnadd" value="toyota">
-	</form>
-	<form action="homevolvo.php?" method="post">
-		<input type="submit" class="btnadd" value="valvo">
 	</form>
 
 <?php 

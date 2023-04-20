@@ -2,7 +2,9 @@
 <?php 
 //starting the session
 require_once 'startof.php';
-session_start();
+if (session_status() !== PHP_SESSION_ACTIVE) {
+	session_start();
+  }
 ?>
 <html lang="en">
 	<head>

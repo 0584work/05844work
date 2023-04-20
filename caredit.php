@@ -163,7 +163,7 @@
           echo "Records modify successfully<br>";
        }
  }
- if(array_key_exists('button2', $_POST)) {
+ if(array_key_exists('button3', $_POST)) {
   button3();
 }
   function button3() {
@@ -190,7 +190,7 @@
   
      $sql =<<<EOF
         DELETE FROM tblproduct WHERE carid=$carid;
-        EOF;
+      EOF;
   
      $ret = $db4->exec($sql);
      if(!$ret) {
