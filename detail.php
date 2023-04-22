@@ -41,17 +41,19 @@ session_start();
 				<div class='product-price'>
 					<?php echo $productbycode["car_mileage"] . " กิโลเมตร " . " | " . " สี : " . $productbycode["color"];?>
 				</div>
-				<div class='product-price'>
-					<?php echo $productbycode["car_defect"];?>
-				</div>
-				<div class='product-price'>
+				<div class='product-price' style="color: red;font-weight:600;font-size:1.25rem;">
 					<?php echo $productbycode["price"] . " บาท";?>
+				</div>
+				<br>
+				<div class='product-price'>
+					<?php echo "ร่องรอย/ตำหนิ : " . $productbycode["car_defect"];?>
 				</div>
 				<div class='product-price'>
 					<?php echo "รายละเอียดเพิ่มเติม : " . $productbycode["desc"];?>
 				</div>
-				<div class='card_action'>
-					<input type="submit" class="btn btn-primary" value="booking">
+				<br>
+				<div class='card_action d-grid'>
+					<input type="submit" class="btn btn-primary" value="จองวันทดลองขับ">
 				</div>
 			</div>
 		</form>	
