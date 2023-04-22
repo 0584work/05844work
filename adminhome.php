@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
-	<title>Admin Home</title>
+	<title>Home</title>
 	<style>
 		.circle{
 			margin-top:2rem;
@@ -37,18 +37,24 @@
 			<img src="photo/admin.png" class="rounded mx-auto d-block pic img-thumbnail img-fluid" alt="...">
 		</div>
 	</div>
-<h3 style="margin=2rem;" class="center01">Welcome,</h3>
+<h3 class="center01 m-3">Welcome,</h3>
 
 
 <div class="container text-center center01">
-	<div class="row row-cols-3 center01" style="width: 35rem;">
-
-	<a href="customerdetail.php" role="button" class="btn btn-primary margin01 col " style="width: 10rem; margin-bottom:10px;">customerdetail</a>
-	<a href="admindateedit.php" role="button" class="btn btn-primary margin01 col " style="width: 10rem; margin-bottom:10px;">admindateedit</a>
-	<a href="login.php" role="button" class="btn btn-primary margin01 col " style="width: 10rem; margin-bottom:10px;">login</a>
-	
+	<div class="row row-cols-2 center01" style="width: 30rem;">
+	<a href="customerdetail_ad.php" role="button" class="btn btn-primary margin01 col " style="width: 12rem; margin-bottom:10px;">ข้อมูลลูกค้า</a>
+	<a href="admindateedit.php" role="button" class="btn btn-primary margin01 col " style="width: 12rem; margin-bottom:10px;">จัดการสถานะการจองนัด</a>
 	</div>
 </div>
+<div class="container text-center center01">
+	<hr style="width: 12rem;">
+</div>
+<div class="container text-center center01">
+	<div class="row row-cols-2 center01" style="width: 30rem;">
+	<a href="login.php" role="button" class="btn btn-primary margin01 col " style="width: 12rem; margin-bottom:10px;">logout</a>
+	</div>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>

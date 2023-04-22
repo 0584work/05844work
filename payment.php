@@ -30,6 +30,9 @@
 	</form>
     <!--form to add payment-->
 <div>uipayment wait</div>
+<?php
+  $price = ceil(($productbycode['price'] * 0.01));
+?>
 <form class="d-flex flex-column w-50 align-items-center justify-content-center" method="POST">
         <label for="">cusid</label>
         <input class="w-50" type="text" name="name" id="name" value="<?php echo $username['firstname'];?> <?php echo $username['lastname'];?>" readonly>
@@ -39,7 +42,7 @@
         <label for="">รหัสอ้างอิง</label>
         <input class="w-50" type="text" name="accn" id="accn" value="รหัสอ้างอิง" required="required">
         <label for="">total</label>
-        <input class="w-50" type="text" name="val" id="val" required="required">
+        <input class="w-50" type="text" name="val" id="val" value="<?php echo $price;?>" readonly">
         <div class="d-flex justify-content-between w-50">
             <button class="btn btn-primary" type="submit" name="pay">pay</button>
         </div>
