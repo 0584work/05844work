@@ -15,6 +15,15 @@
                     
             }}
             $cid=$_SESSION['user'];
+      class MyDB5 extends SQLite3 {
+        function __construct() {
+          $this->open('db/db_member.sqlite3');
+          }
+          }
+      
+          $db5 = new MyDB5();
+          $ret2 = $db5->query("SELECT * from member where mem_id=$cid");
+          $username = $ret2->fetchArray(SQLITE3_ASSOC);
 		?>
   <form action="home.php?" method="post"><!--homebutton-->
 		<input type="submit" class="btnadd" value="home">
@@ -23,7 +32,8 @@
 <div>uipayment wait</div>
 <form class="d-flex flex-column w-50 align-items-center justify-content-center" method="POST">
         <label for="">cusid</label>
-        <input class="w-50" type="text" name="cusid" id="cusid" value="<?php echo $cid;?>" readonly>
+        <input class="w-50" type="text" name="name" id="name" value="<?php echo $username['firstname'];?> <?php echo $username['lastname'];?>" readonly>
+        <input type="hidden" name="cusid" id="cusid" value="<?php echo $cid;?>">
         <label for="">license_palate</label>
         <input class="w-50" type="text" name="carid" id="carid" value="<?php echo $productbycode['license_palate'];?>" readonly>
         <label for="">รหัสอ้างอิง</label>
@@ -63,7 +73,7 @@
           echo $db2->lastErrorMsg();
         } else {
           echo "Records created successfully<br>";
-          header( "refresh:5;url=afterpayment.php" );
+          header( "refresh:3;url=afterpayment.php" );
         }      
         $db2->close();
      }

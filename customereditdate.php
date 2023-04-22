@@ -74,7 +74,7 @@
        $sql =<<<EOF
           UPDATE booking set 
           customer_apointment_date=$dat
-          WHERE appointmentid=$appid AND cus_id = $cusid;
+          WHERE appointmentid='$appid' AND cus_id = $cusid;
           EOF;
           //query modify data to database
        $ret = $db3->exec($sql);
@@ -99,12 +99,13 @@
      if(!$db4) {
         echo $db4->lastErrorMsg();
      }
-     $cusid = $_POST['cusid'];
-     $appid = $_POST['dat'];
+     $cusid = $_SESSION['user'];
+     $appid = $_POST['cid'];  
+     strval($appid);
      $dat = $_POST['dat'];
 
      $sql =<<<EOF
-        DELETE FROM booking WHERE appointmentid=$appid AND cus_id = $cusid;
+        DELETE FROM booking WHERE appointmentid='$appid' AND cus_id = $cusid;
         EOF;
   
      $ret = $db4->exec($sql);

@@ -1,0 +1,8 @@
+body {
+  font-family: "Kanit", sans-serif;
+}
+
+.center01 {
+    display: flex;
+    justify-content: center;
+}

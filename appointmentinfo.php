@@ -32,7 +32,8 @@ session_start();
    <form method='post'>
       <label for='nam'>date : </label>
       <input type='datetime-local' name ='cardate' required="required"><br><br>
-      <input type='hidden' name ='carid' value="<?php echo $productbycode['license_palate'];?>">
+      <input type='hidden' name ='carid' value="<?php echo $productbycode['carid'];?>">
+      <input type='hidden' name ='carplate' value="<?php echo $productbycode['license_palate'];?>">
       <input type='submit' name='button1'value='Submit'/>
    </form>
    <form action="appointmentuser.php?action=add&code=<?php echo $productbycode['carid'];?>" method="post"><!--go nextbutton-->
@@ -81,9 +82,13 @@ session_start();
         $cusid = $_SESSION['user'];
         $carid = $_POST['carid'];
         $date = $_POST['cardate'];
+        $carplate = $_POST['carplate'];
+        strval($carplate);
         strval($date);
         $_SESSION['bookingdate'] = $date;
         $status = "pending";
+        $appid = uniqid();
+        strval($appid);
         $sql ="SELECT * from booking where car_id = $carid";
         $ret = $db3->query($sql);
         $check = 0;
@@ -93,16 +98,17 @@ session_start();
           break;
         }
         }//check duplicate and add to database
-        if ($check == 0){$sql =<<<EOF
-           INSERT INTO booking (cus_id,car_id ,status,customer_apointment_date)
-           VALUES ($cusid,$carid,'$status','$date');
+        if ($check == 0){
+          $sql =<<<EOF
+           INSERT INTO booking (cus_id,car_id,status,customer_apointment_date,appointmentid)
+           VALUES ($cusid,'$carplate','$status','$date','$appid');
         EOF;
         $ret = $db3->exec($sql);        
         if(!$ret) {
           echo $db3->lastErrorMsg();
         } else {
           echo "Records created successfully<br>";
-          header( "refresh:5;url=appointmentuser.php");
+          header( "refresh:3;url=appointmentuser.php");
         }
       }
       else{

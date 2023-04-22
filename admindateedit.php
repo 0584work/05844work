@@ -30,7 +30,7 @@
       <label>date : </label>
       <input type='datetime-local' name ='dat' required="required"><br><br>
       <label>ID : </label>
-      <input type='int' name ='appid' required="required"><br><br>
+      <input type='int' name ='appid'><br><br>
       <input type='submit' name='button1'value='add'/>
       <input type='submit' name='button2'value='modify'/>
       <input type='submit' name='button3'value='delete'/>
@@ -84,9 +84,9 @@
          $staff = $_POST['staf'];
          $stat = $_POST['sta'];
          $dat2 = $_POST['dat'];
-         $appid = $_POST['appid'];
+         $appid = uniqid();
          //check duplicate day
-         $sql ="SELECT * from booking where car_id = $carid";
+         $sql ="SELECT * from booking where car_id = '$carid'";
         $ret = $db2->query($sql);
         $check = 0;
         while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
@@ -97,8 +97,8 @@
         }//check duplicate and add to database
         if ($check == 0){
           $sql =<<<EOF
-          INSERT INTO booking (cus_id,car_id,appointment_staff_id,status,customer_apointment_date)
-          VALUES ($cusid,$carid,$staff,'$stat','$dat2');
+          INSERT INTO booking (cus_id,car_id,appointment_staff_id,status,customer_apointment_date,appointmentid)
+          VALUES ($cusid,'$carid',$staff,'$stat','$dat2','$appid');
         EOF;
 
           $ret = $db2->exec($sql);
@@ -128,15 +128,16 @@
        }
        $cusid = $_POST['cusid'];
        $carid = $_POST['car'];
+       strval($carid);
        $staff = $_POST['staf'];
        $stat = $_POST['sta'];
        $dat2 = $_POST['dat'];
        $appid = $_POST['appid'];
        //query modify data to database
        $sql =<<<EOF
-          UPDATE booking set cus_id = $cusid,car_id = $carid,
+          UPDATE booking set cus_id = $cusid,car_id = '$carid',
           appointment_staff_id = $staff , status = '$stat', customer_apointment_date = '$dat2'
-          WHERE appointmentid=$appid; 
+          WHERE appointmentid ='$appid';
        EOF;
     
        $ret = $db3->exec($sql);
@@ -171,7 +172,7 @@
      $appid = $_POST['appid'];
      //delete row data
      $sql =<<<EOF
-        DELETE FROM booking WHERE appointmentid=$appid;
+        DELETE FROM booking WHERE appointmentid='$appid';
         EOF;
   
      $ret = $db4->exec($sql);
