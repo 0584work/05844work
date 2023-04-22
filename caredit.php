@@ -104,7 +104,7 @@
       
          $sql =<<<EOF
             INSERT INTO tblproduct (carid,license_palate,series,year,color,name,image,car_mileage,car_defect,price,desc)
-            VALUES ($carid,'$lic', '$ser', $year, '$colo','$image',$mileage,'$nam','$def',$price,'$desc');
+            VALUES ($carid,'$lic', '$ser', $year, '$colo','$nam','$image',$mileage,'$def',$price,'$desc');
             EOF;
       
          $ret = $db2->exec($sql);
