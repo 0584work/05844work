@@ -15,7 +15,7 @@
    <form method='post'><!--form to insert car data-->
       <label>carid : </label>
       <input type='num' name ='carid' required="required"><br><br>
-      <label>License palate : </label>
+      <label>License plate : </label>
       <input type='text' name ='lic' required="required"><br><br>
       <label>name : </label>
       <input type='text' name ='nam' required="required"><br><br>

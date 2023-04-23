@@ -20,7 +20,7 @@
       <input type='num' name ='car' required="required"><br><br>
       <label>staffid : </label>
       <input type='num' name ='staf' required="required"><br><br>
-      <label for="cars">Choose a car:</label>
+      <label for="cars">status:</label>
       <select name="sta">
          <option value="complete">complete</option>
          <option value="booking">booking</option>

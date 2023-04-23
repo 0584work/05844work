@@ -25,6 +25,40 @@
 <body>
 <?php require_once("navuser.php"); ?>
 <?php
+   class MyDB2 extends SQLite3 {
+      function __construct() {
+         $this->open('db/db_member.sqlite3');
+      }
+   }
+   
+   
+   // Open Database 
+   $db2 = new MyDB2();
+   if(!$db2) {
+      echo $db->lastErrorMsg();
+   }
+   $temp = $_SESSION['user'];
+   $sql ="SELECT * from member where mem_id=$temp";
+   echo "<div class=\"center01\">
+   <table class=\"table ta\"'>
+   <tr><th>CUSTOMER</th></tr>
+   <tr><th>cusid</th>
+   <th>userneme</th>
+   <th>firstname</th>
+   <th>lastname</th>
+   <th>phonenumber</th></tr>";
+   $ret = $db2->query($sql);
+   //table to display all customer in database
+   while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
+      echo "<tr>";
+      echo "<td>". $row['mem_id'] . "</td>";
+      echo "<td>". $row['username']."</td>";
+      echo "<td>".$row['firstname'] ."</td>";
+      echo "<td>".$row['lastname'] ."</td>";
+      echo "<td>".$row['phonenumber'] ."</td>";
+      echo "</tr>";
+   }
+   echo "</table></div>";
    // Connect to Database 
    class MyDB extends SQLite3 {
       function __construct() {
@@ -44,7 +78,7 @@
    <thead>
    <tr>
    <th>cusid</th>
-   <th>carid</th>
+   <th>license plate</th>
    <th>status</th>
    <th>date</th>
    <th>appointmentid</th>

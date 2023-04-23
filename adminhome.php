@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,13 +32,31 @@
 		}
 	</style>
 </head>
+<?php
+   class MyDB2 extends SQLite3 {
+      function __construct() {
+         $this->open('db/db_member.sqlite3');
+      }
+   }
+   
+   
+   // Open Database 
+   $db2 = new MyDB2();
+   if(!$db2) {
+      echo $db->lastErrorMsg();
+   }
+   $temp = $_SESSION['user'];
+   $sql ="SELECT * from member where mem_id=$temp";
+   $ret = $db2->query($sql);
+   $row = $ret->fetchArray(SQLITE3_ASSOC);
+   ?>
 <body>
 	<div class="center01">
 		<div class = "circle">
 			<img src="photo/admin.png" class="rounded mx-auto d-block pic img-thumbnail img-fluid" alt="...">
 		</div>
 	</div>
-<h3 class="center01 m-3">Welcome,</h3>
+	<h3 class="center01 m-3">Welcome,<?php echo $row['username'];?></h3>
 
 
 <div class="container text-center center01">
@@ -59,4 +78,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>
-<?php session_start();?>
+

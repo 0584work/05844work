@@ -16,7 +16,7 @@
    <form method='post'><!--form to insert data to edit date-->
 	   <label>new date : </label>
       <input type='datetime-local' name ='dat' required="required"><br><br>
-      <label>id : </label>
+      <label>appointment id : </label>
       <input type='text' name ='cid' required="required"><br><br>
       <input type='submit' name='button2'value='modify'/><!--to modify date-->
       <input type='submit' name='button3'value='delete'/><!--to delete date-->

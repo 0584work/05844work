@@ -29,7 +29,7 @@
 		<input type="submit" class="btnadd" value="home">
 	</form>
     <!--form to add payment-->
-<div>uipayment wait</div>
+
 <?php
   $price = ceil(($productbycode['price'] * 0.01));
 ?>
@@ -47,6 +47,7 @@
             <button class="btn btn-primary" type="submit" name="pay">pay</button>
         </div>
 </form>
+<div><img src='photo/frame.png' alt='qrcode'></div>
 
     <?php   
     if(array_key_exists('pay', $_POST)) {
@@ -75,8 +76,8 @@
         if(!$ret) {
           echo $db2->lastErrorMsg();
         } else {
-          echo "Records created successfully<br>";
-          header( "refresh:3;url=afterpayment.php" );
+          echo "payment Recorded<br>";
+          header("refresh:3;url=afterpayment.php" );
         }      
         $db2->close();
      }
