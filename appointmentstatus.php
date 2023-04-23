@@ -17,7 +17,7 @@
    // Connect to Database 
    class MyDB extends SQLite3 {
       function __construct() {
-         $this->open('db/appointment.db');
+         $this->open('db/masterdata.db');
       }
    }
 

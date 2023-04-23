@@ -35,7 +35,7 @@
 <?php
    class MyDB2 extends SQLite3 {
       function __construct() {
-         $this->open('db/db_member.sqlite3');
+         $this->open('db/masterdata.db');
       }
    }
    
@@ -56,7 +56,7 @@
 			<img src="photo/admin.png" class="rounded mx-auto d-block pic img-thumbnail img-fluid" alt="...">
 		</div>
 	</div>
-	<h3 class="center01 m-3">Welcome,<?php echo $row['username'];?></h3>
+	<h3 class="center01 m-3">Welcome , <?php echo $row['username'];?></h3>
 
 
 <div class="container text-center center01">

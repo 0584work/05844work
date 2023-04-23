@@ -1,50 +1,96 @@
+<?php session_start();?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <title>จัดการรายละเอียดรถยนต์</title>
     <style>th, td {
-  border-bottom: 3px solid #ddd;
-}</style>
+               border-bottom: 3px solid #ddd;
+            }
+            .center01 {
+               display: flex;
+               justify-content: center;
+            }
+            .ta{
+               width:95%!important;
+            }
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  
 </head>
 <body>
-<form action="sellerhome.php?" method="post"><!--homebutton-->
-		<input type="submit" class="btnadd" value="sellerhome">
-	</form>
-   <form method='post'><!--form to insert car data-->
-      <label>carid : </label>
-      <input type='num' name ='carid' required="required"><br><br>
-      <label>License plate : </label>
-      <input type='text' name ='lic' required="required"><br><br>
-      <label>name : </label>
-      <input type='text' name ='nam' required="required"><br><br>
-      <label>series : </label>
-      <input type='text' name ='ser' required="required"><br><br>
-      <label>year : </label>
-      <input type='num' name ='year' required="required"><br><br>
-      <label>color : </label>
-      <input type='text' name ='colo' required="required"><br><br>
-      <label>pic : </label>
-      <input type='text' name ='pic'><br><br>
-      <label>mileage : </label>
-      <input type='num' name ='mill' required="required"><br><br>  
-      <label'>car deflect : </label>
-      <textarea cols="20" rows="5" name="def"></textarea><br><br>
-      <label>price : </label>
-      <input type='num' name ='pri' required="required"><br><br>
-      <label>desc : </label>
-      <textarea cols="20" rows="5" name="desc"></textarea><br><br>
-      <input type='submit' name='button1'value='add'/><!--add car data-->
-      <input type='submit' name='button2'value='modify'/><!--modify car data-->
-      <input type='submit' name='button3'value='delete'/><!--delete car data-->
-      <input type='submit' name='button4'value='end process'/><!--end database-->
-   </form>
+<br><br><a href="sellerhome.php" role="button" style="margin-left:5rem;"> &#9754; &nbsp; กลับเข้าสู่หน้าหลัก</a><br><br>
+   <h3 style="text-align:center;font-weight:600;"> จัดการรายละเอียดรถยนต์ </h3>
+<div class="center01 mt-4">
+   <div class="center01" style="width:60%;padding :3% 7%;background-color:#E8e8e8;border-radius:2rem;" >
+      <form class="row g-3 " action="sellerhome.php?" method="post" style="padding:5% 0 0 0;">
+      <div class="col-md-4">
+         <label for="inputEmail4" class="form-label">รหัสรถ :</label>
+         <input type='num' name ='carid' class="form-control" id="inputEmail4" placeholder="เพื่ออะไร ไม่ได้เจนให้หรอ">
+      </div>
+      <div class="col-md-4">
+         <label for="inputPassword4" class="form-label">ทะเบียนรถ :</label>
+         <input type='text' name ='lic' class="form-control" id="inputPassword4" placeholder="3XX-XXXX">
+      </div>
+      <div class="col-md-4">
+         <label for="inputAddress2" class="form-label">ยี่ห้อ :</label>
+         <input type="text" name ='ser' class="form-control" id="inputAddress2" placeholder="Mazda">
+      </div>
+      <div class="col-md-4">
+         <label for="inputAddress" class="form-label">ชื่อรุ่น :</label>
+         <input type="text" name ='nam' class="form-control" id="inputAddress" placeholder="Mazda Cx-5">
+      </div>
+      <div class="col-md-4">
+         <label for="inputAddress" class="form-label">ผลิตปี :</label>
+         <input type="text" name ='year' class="form-control" id="inputAddress" placeholder="2000">
+      </div>
+      <div class="col-md-4">
+         <label for="inputAddress" class="form-label">สี :</label>
+         <input type="text" name ='colo' class="form-control" id="inputAddress" placeholder="เปลี่ยนชื่อสีเป็นภาษาไทยด้วย">
+      </div>
+      <div class="col-md-4">
+         <label for="inputAddress" class="form-label">ราคา :</label>
+         <input type="text" name ='pri' class="form-control" id="inputAddress" placeholder="120000">
+      </div>
+      <div class="col-md-5">
+         <label for="inputAddress" class="form-label">รูป :</label>
+         <input type="file"  name ='pic'class="form-control" id="inputAddress" placeholder="ไฟล์ .png หรือ .jpg" accept="image/png, image/gif, image/jpeg">
+      </div>
+      <div class="col-12">
+         <label for="inputAddress" class="form-label">ร่องรอยเสียหาย/ตำหนิ :</label>
+         <textarea type="text" name="def" class="form-control" id="inputAddress" placeholder="ประตูด้านขวา-รอยครูด / ไม่มีตำหนิ"></textarea>
+      </div>
+      <div class="col-12">
+         <label for="inputAddress" class="form-label">รายละเอียดเพิ่มเติม : </label>
+         <textarea  type="text" name="desc" class="form-control" id="inputAddress" placeholder="ออกรถปีไหน พรบ.ถึงปีไหน รถยนต์ใช้ระบบเกียร์อะไร"></textarea>
+      </div>
+      <div class="center01" style="width:100%; margin:1rem 0 0 0;">
+            <input type='submit' style="width:15%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;"class="btn" name='button1'value='เพิ่มข้อมูล'/><!--add car data-->
+            <input type='submit' style="width:17%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;" class="btn" name='button2'value='แก้ไขข้อมูล'/><!--modify car data-->
+            <input type='submit' style="width:15%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;" class="btn" name='button3'value='ลบข้อมูล'/><!--delete car data-->
+            <input type='submit' style="width:20%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#Fc9d9e;" class="btn" name='button4'value='จบการทำงาน'/><!--end database-->
+      </div>
+
+      </form>
+   </div>
+</div>
+
+<br><br>
+   <div class="center01">
+   <hr style="width: 60rem;">
+   </div>
+
 <?php
    // Connect to Database 
    class MyDB extends SQLite3 {
       function __construct() {
-         $this->open('db/product.db');
+         $this->open('db/masterdata.db');
       }
    }
 
@@ -54,26 +100,43 @@
       echo $db->lastErrorMsg();
    }
    $sql ="SELECT * from tblproduct";
-   echo "<table id='table1'><tr><th>carid</th><th>License palate</th><th>series</th><th>name</th><th>year</th><th>color</th>
-   <th>image</th><th>mileage</th><th>car deflect</th><th>price</th><th>desc</th></tr>";
+   echo "
+   <br><br>
+   <h3 style=\"text-align:center;font-weight:600;\"> รายละเอียดรถยนต์ทั้งหมด </h3>
+   <br>
+   <div class=\"center01\" id=\"ses1\">
+   <table  class=\"table ta\">
+   <thead>
+   <tr>
+   <th style=\"width:8%;\">รหัสรถยนต์</th>
+   <th style=\"width:10%;\">ทะเบียนรถยนต์</th>
+   <th>ยี่ห้อ</th>
+   <th>ชื่อรุ่น</th>
+   <th style=\"width:5%;\">ผลิตปี</th>
+   <th>สี</th>
+   <th>รูป</th>
+   <th style=\"width:20%;\">ร่องรอยเสียหาย/ตำหนิ</th>
+   <th>ราคา</th>
+   <th>รายละเอียดเพิ่มเติม</th>
+   </tr></thead><tbody>";
    $ret = $db->query($sql);
    //table to display all car in database
    while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
       echo "<tr>";
-      echo "<td>". $row['carid'] . "</td>";
+      echo "<td>". $row['carid']."</td>";
       echo "<td>". $row['license_palate']."</td>";
-      echo "<td>". $row['series'] ."</td>";
+      echo "<td>". $row['series']."</td>";
       echo "<td>". $row['name']."</td>";
       echo "<td>".$row['year'] ."</td>";
       echo "<td>".$row['color'] ."</td>";
       echo "<td>".$row['image'] ."</td>";
-      echo "<td>".$row['car_mileage'] ."</td>";
+      // echo "<td>".$row['car_mileage'] ."</td>";                 wrong collunm
       echo "<td>".$row['car_defect'] ."</td>";
       echo "<td>".$row['price'] ."</td>";
       echo "<td>".$row['desc'] ."</td>";
       echo "</tr>";
    }
-   echo "</table>";
+   echo "</tbody></table></div>";
    //table data info
    if(array_key_exists('button1', $_POST)) {
       button1();
@@ -81,7 +144,7 @@
       function button1() {
          class MyDB2 extends SQLite3 {
             function __construct() {
-               $this->open('db/product.db');
+               $this->open('db/masterdata.db');
             }
          }
       
@@ -120,7 +183,7 @@
     function button2() {
        class MyDB3 extends SQLite3 {
           function __construct() {
-             $this->open('db/product.db');
+             $this->open('db/masterdata.db');
           }
        }
     
@@ -163,13 +226,13 @@
           echo "Records modify successfully<br>";
        }
  }
- if(array_key_exists('button3', $_POST)) {
+ if(array_key_exists('button2', $_POST)) {
   button3();
 }
   function button3() {
      class MyDB4 extends SQLite3 {
         function __construct() {
-           $this->open('db/product.db');
+           $this->open('db/masterdata.db');
         }
      }
   
@@ -190,7 +253,7 @@
   
      $sql =<<<EOF
         DELETE FROM tblproduct WHERE carid=$carid;
-      EOF;
+        EOF;
   
      $ret = $db4->exec($sql);
      if(!$ret) {

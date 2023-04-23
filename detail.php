@@ -17,7 +17,7 @@
 session_start();
     class MyDB extends SQLite3 {
         function __construct() {
-          $this->open('db/product.db');
+          $this->open('db/masterdata.db');
         }
         }
 
@@ -46,7 +46,7 @@ session_start();
 				</div>
 				<br>
 				<div class='product-price'>
-					<?php echo "ร่องรอย/ตำหนิ : " . $productbycode["car_defect"];?>
+					<?php echo "ร่องรอยเสียหาย/ตำหนิ : " . $productbycode["car_defect"];?>
 				</div>
 				<div class='product-price'>
 					<?php echo "รายละเอียดเพิ่มเติม : " . $productbycode["desc"];?>

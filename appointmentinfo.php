@@ -12,7 +12,7 @@
 session_start();
     class MyDB extends SQLite3 {
         function __construct() {
-          $this->open('db/product.db');
+          $this->open('db/masterdata.db');
         }
         }
 
@@ -52,7 +52,7 @@ session_start();
    
     class MyDB2 extends SQLite3 {
       function __construct() {
-         $this->open('db/appointment.db');
+         $this->open('db/masterdata.db');
       }
    }
     $db2 = new MyDB2();
@@ -75,7 +75,7 @@ session_start();
         function button1() { 
           class MyDB3 extends SQLite3 {
             function __construct() {
-               $this->open('db/appointment.db');
+               $this->open('db/masterdata.db');
             }
          }
         $db3 = new MyDB3();

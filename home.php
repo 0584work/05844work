@@ -2,7 +2,7 @@
     session_start();
     class MyDB extends SQLite3 {
         function __construct() {
-          $this->open('db/product.db');
+          $this->open('db/masterdata.db');
         }
         }
 
@@ -21,6 +21,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 	</head>
+  <title>Home</title>
 <body>
 <?php require_once("navuser.php"); ?>
 	

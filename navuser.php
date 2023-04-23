@@ -21,32 +21,20 @@
             เลือกรุ่นรถ
           </a>
           <ul class="dropdown-menu">
-          <li><form action="homebmw.php?" method="post">
-            <input class="dropdown-item" type="submit" class="btnadd" value="bmw">
-          </form></li>
           <li><form action="homehonda.php?" method="post">
             <input class="dropdown-item" type="submit" class="btnadd" value="honda">
           </form></li>
           <li><form action="homeisuzu.php?" method="post">
             <input class="dropdown-item" type="submit" class="btnadd" value="isuzu">
           </form></li>
-          <li><form action="homemasda.php?" method="post">
-            <input class="dropdown-item" type="submit" class="btnadd" value="masda">
-          </form></li>
-          <li><form action="homemg.php?" method="post">
-            <input class="dropdown-item" type="submit" class="btnadd" value="mg">
+          <li><form action="homemazda.php?" method="post">
+            <input class="dropdown-item" type="submit" class="btnadd" value="mazda">
           </form></li>
           <li><form action="homemitsu.php?" method="post">
             <input class="dropdown-item" type="submit" class="btnadd" value="mitsu">
           </form></li>
-          <li><form action="homenissan.php?" method="post">
-            <input class="dropdown-item" type="submit" class="btnadd" value="nissan">
-          </form></li>
           <li><form action="hometoyota.php?" method="post">
             <input class="dropdown-item" type="submit" class="btnadd" value="toyota">
-          </form></li>
-          <li><form action="homevolvo.php?" method="post">
-            <input class="dropdown-item" type="submit" class="btnadd" value="valvo">
           </form></li>
           </ul>
         </li>

@@ -39,7 +39,7 @@
    // Connect to Database 
    class MyDB extends SQLite3 {
       function __construct() {
-         $this->open('db/appointment.db');
+         $this->open('db/masterdata.db');
       }
    }
 
@@ -70,7 +70,7 @@
       function button1() {
          class MyDB2 extends SQLite3 {
             function __construct() {
-               $this->open('db/appointment.db');
+               $this->open('db/masterdata.db');
             }
          }
       
@@ -118,7 +118,7 @@
     function button2() {
        class MyDB3 extends SQLite3 {
           function __construct() {
-             $this->open('db/appointment.db');
+             $this->open('db/masterdata.db');
           }
        }
        // Open Database 
@@ -155,7 +155,7 @@
   function button3() {
      class MyDB4 extends SQLite3 {
         function __construct() {
-           $this->open('db/appointment.db');
+           $this->open('db/masterdata.db');
         }
      }
   
@@ -187,7 +187,7 @@
    // Connect to Database 
    class MyDB5 extends SQLite3 {
       function __construct() {
-         $this->open('db/payment.db');
+         $this->open('db/masterdata.db');
       }
    }
 
@@ -196,7 +196,7 @@
    if(!$db5) {
       echo $db5->lastErrorMsg();
    }
-   $sql ="SELECT * from tblpay";
+   $sql ="SELECT * from payment";
    echo "<table id='table1'><tr><th>PAYMENT</th></tr><tr><th>cusid</th><th>carid</th><th>staffid</th><th>รหัสอ้างอิง</th><th>total</th></tr>";
    $ret = $db5->query($sql);
    //table to display all payment in database

@@ -1,11 +1,11 @@
 <!--no frontend-->
 <?php
 	//check if the database file exists and create a new if not
-	if(!is_file('db/db_member.sqlite3')){
-		file_put_contents('db/db_member.sqlite3', null);
+	if(!is_file('db/masterdata.db')){
+		file_put_contents('db/masterdata.db', null);
 	}
 	// connecting the database
-	$conn = new PDO('sqlite:db/db_member.sqlite3');
+	$conn = new PDO('sqlite:db/masterdata.db');
 	//Setting connection attributes
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	//Query for creating reating the member table in the database if not exist yet.

@@ -2,7 +2,7 @@
     session_start();
     class MyDB extends SQLite3 {
         function __construct() {
-          $this->open('db/product.db');
+          $this->open('db/masterdata.db');
         }
         }
 
@@ -17,7 +17,7 @@
         $date = $_SESSION['bookingdate'];
         class MyDB2 extends SQLite3 {
             function __construct() {
-              $this->open('db/db_member.sqlite3');
+              $this->open('db/masterdata.db');
             }
             }
     

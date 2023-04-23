@@ -85,7 +85,7 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
    // Connect to Database 
    class MyDB extends SQLite3 {
       function __construct() {
-         $this->open('db/db_member.sqlite3');
+         $this->open('db/masterdata.db');
       }
    }
 
@@ -133,7 +133,7 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
    // Connect to Database 
    class MyDB2 extends SQLite3 {
       function __construct() {
-         $this->open('db/appointment.db');
+         $this->open('db/masterdata.db');
       }
    }
     $db2 = new MyDB2();
@@ -172,7 +172,7 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
    // Connect to Database 
    class MyDB5 extends SQLite3 {
       function __construct() {
-         $this->open('db/payment.db');
+         $this->open('db/masterdata.db');
       }
    }
 
@@ -181,7 +181,7 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
    if(!$db5) {
       echo $db5->lastErrorMsg();
    }
-   $sql ="SELECT * from tblpay";
+   $sql ="SELECT * from payment";
    echo "
    <div class=\"center01\" id=\"ses3\">
    <h4>

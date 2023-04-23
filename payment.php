@@ -2,7 +2,7 @@
     session_start();
     class MyDB extends SQLite3 {
         function __construct() {
-          $this->open('db/product.db');
+          $this->open('db/masterdata.db');
         }
         }
 
@@ -17,7 +17,7 @@
             $cid=$_SESSION['user'];
       class MyDB5 extends SQLite3 {
         function __construct() {
-          $this->open('db/db_member.sqlite3');
+          $this->open('db/masterdata.db');
           }
           }
       
@@ -57,7 +57,7 @@
     function button1() {
       class MyDB2 extends SQLite3 {
       function __construct() {
-       $this->open('db/payment.db');
+       $this->open('db/masterdata.db');
       }}
       $db2 = new MyDB2();
       ?>
