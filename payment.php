@@ -33,25 +33,26 @@
 <?php
   $price = ceil(($productbycode['price'] * 0.01));
 ?>
-<form class="d-flex flex-column w-50 align-items-center justify-content-center" method="POST">
+<form class="d-flex flex-column w-50 align-items-center justify-content-center" action="afterpayment.php" method="POST" id='qr'>
         <label for="">cusid</label>
         <input class="w-50" type="text" name="name" id="name" value="<?php echo $username['firstname'];?> <?php echo $username['lastname'];?>" readonly>
         <input type="hidden" name="cusid" id="cusid" value="<?php echo $cid;?>">
         <label for="">license_palate</label>
         <input class="w-50" type="text" name="carid" id="carid" value="<?php echo $productbycode['license_palate'];?>" readonly>
-        <label for="">รหัสอ้างอิง</label>
+        <label for="">ชื่อไฟล์สลิป</label>
         <input class="w-50" type="text" name="accn" id="accn" value="รหัสอ้างอิง" required="required">
         <label for="">total</label>
-        <input class="w-50" type="text" name="val" id="val" value="<?php echo $price;?>" readonly">
+        <input class="w-50" type="text" name="val" id="val" value="<?php echo $price;?>" readonly>
         <div class="d-flex justify-content-between w-50">
             <button class="btn btn-primary" type="submit" name="pay">pay</button>
-        </div>
+      </div>
 </form>
-<div><img src='photo/frame.png' alt='qrcode'></div>
-
+      <div><img src='photo/frame.png' alt='qrcode'></div>
     <?php  
     $db->close(); 
     $db5->close(); 
+ 
+  
     if(array_key_exists('pay', $_POST)) {
       button1();
       }
@@ -66,19 +67,18 @@
         $db2 = new MyDB2();
         $cusid = $_POST['cusid'];
         $carid = $_POST['carid'];
-        $acc = $_POST['accn'];
+        $acc = $_POST['accn'];  
         $total = $_POST['val'];
 
         $sql =<<<EOF
            INSERT INTO tblpay (cusid,carid,accountnumber,total)
-           VALUES ($cusid,'$carid',$acc,$total);
+           VALUES ($cusid,'$carid','$acc',$total);
         EOF;
         $ret = $db2->exec($sql);  
         if(!$ret) {
           echo $db2->lastErrorMsg();
         } else {
           echo "payment Recorded<br>";
-          header("refresh:3;url=afterpayment.php" );
         }      
         $db2->close();
      }

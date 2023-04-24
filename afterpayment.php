@@ -2,7 +2,11 @@
     session_start();
 ?>
   <!--form to add database and go to payment-->
-  <form class="d-flex flex-column w-50 align-items-center justify-content-center" >
-       <h1> payment complete </h1>
-       <?php header( "refresh:3;url=home.php" );?>
-    </form> 
+  <form action="afterpayment2.php" method="post" enctype="multipart/form-data">
+      <div class="col-md-5">
+         <label for="inputAddress" class="form-label">สลิป :</label>
+         <input type="file"  name ='fileToUpload' class="form-control" id="fileToUpload" placeholder="ไฟล์ .png หรือ .jpg" accept="image/png, image/gif, image/jpeg"
+         required="required">
+         <input type="submit" value="Upload Image" name="submit">
+        </form>
+      </div>
