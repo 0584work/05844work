@@ -85,7 +85,7 @@ session_start();
         $status = "pending";
         $appid = uniqid();
         strval($appid);
-        $sql ="SELECT * from booking where car_id = $carplate";
+        $sql ="SELECT * from booking where car_id = '$carplate'";
         $ret = $db3->query($sql);
         $check = 0;
         while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {

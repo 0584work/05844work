@@ -30,10 +30,10 @@
     ?>
   <!--form to add database and go to payment-->
   <form class="d-flex flex-column w-50 align-items-center justify-content-center" 
-  action="beforepayment.php?action=add&code=<?php echo $productbycode['carid'];?>" method="POST">
+      action="beforepayment.php?action=add&code=<?php echo $productbycode['license_palate'];?>" method="POST">
         <label for="">name</label>
         <input class="w-50" type="text" name="cusid" id="cusid" value="<?php echo $usser['firstname'];?> <?php echo $usser['lastname'];?>" readonly>
-        <label for="">license_palate</label>
+        <label for="">license_plate</label>
         <input class="w-50" type="text" name="carid" id="carid" value="<?php echo $productbycode['license_palate'];?>" readonly>
         <label for="">date</label>
         <input class="w-50" type="text" name="date" id="date" value="<?php echo $date;?>" readonly>

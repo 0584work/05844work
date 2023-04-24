@@ -196,7 +196,7 @@
    if(!$db5) {
       echo $db5->lastErrorMsg();
    }
-   $sql ="SELECT * from payment";
+   $sql ="SELECT * from tblpay";
    echo "<table id='table1'><tr><th>PAYMENT</th></tr><tr><th>cusid</th><th>carid</th><th>staffid</th><th>รหัสอ้างอิง</th><th>total</th></tr>";
    $ret = $db5->query($sql);
    //table to display all payment in database

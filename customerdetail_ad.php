@@ -127,16 +127,7 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
    }
    echo "</tbody></table></div></table></div><br><br><br><br><br><br><br><br><br>";
    //table data info
-   
-    ?>
-    <?php
-   // Connect to Database 
-   class MyDB2 extends SQLite3 {
-      function __construct() {
-         $this->open('db/masterdata.db');
-      }
-   }
-    $db2 = new MyDB2();
+
     $sql ="SELECT * from booking";
     echo "
     <div class=\"center01\"id=\"ses2\">
@@ -154,7 +145,7 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     <th>Status</th>
     <th>วันนัดทดลองขับรถยนต์</th>
     </tr>";
-    $ret = $db2->query($sql);
+    $ret = $db->query($sql);
    //table to display date that has been appoint by selected car
     while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
         echo "<tr>";
@@ -166,22 +157,8 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
      }
     // Close database
     echo "</tbody></table></div></table></div><br><br><br><br><br><br><br><br><br>";
-   
-    ?>
-<?php
-   // Connect to Database 
-   class MyDB5 extends SQLite3 {
-      function __construct() {
-         $this->open('db/masterdata.db');
-      }
-   }
 
-   // Open Database 
-   $db5 = new MyDB5();
-   if(!$db5) {
-      echo $db5->lastErrorMsg();
-   }
-   $sql ="SELECT * from payment";
+   $sql ="SELECT * from tblpay";
    echo "
    <div class=\"center01\" id=\"ses3\">
    <h4>
@@ -191,7 +168,7 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     <div class=\"center01\">
    <table  class=\"table ta\">
    <thead><tr><th>ไอดีผู้ใช้</th><th>ทะเบียนรถยนต์</th><th>หมายเลขอ้างอิง</th><th>ยอดชำระ</th></tr>";
-   $ret = $db5->query($sql);
+   $ret = $db->query($sql);
    //table to display all payment in database
    while($row = $ret->fetchArray(SQLITE3_ASSOC)) {
       echo "<tr>";
