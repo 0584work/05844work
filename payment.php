@@ -10,7 +10,7 @@
         if(($_GET["action"])){
             switch($_GET["action"]){
                 case "add":
-                    $ret = $db->query("SELECT * FROM tblproduct WHERE carid='".$_GET["code"]."'");
+                    $ret = $db->query("SELECT * FROM tblproduct WHERE license_palate='".$_GET["code"]."'");
                     $productbycode = $ret->fetchArray(SQLITE3_ASSOC);
                     
             }}

@@ -25,12 +25,12 @@ session_start();
         if($_GET["action"]){
             switch($_GET["action"]){
                 case "add":
-                    $ret = $db->query("SELECT * FROM tblproduct WHERE carid='".$_GET['code']."'");
+                    $ret = $db->query("SELECT * FROM tblproduct WHERE license_palate='".$_GET['code']."'");
                     $productbycode = $ret->fetchArray(SQLITE3_ASSOC);
             }}
 		?>
 	<div class="product_item" style="margin:0 10% 0 10%;">
-		<form action="appointmentinfo.php?action=add&code=<?php echo $productbycode['carid'];?>" method="post" style="display:flex;">
+		<form action="appointmentinfo.php?action=add&code=<?php echo $productbycode['license_palate'];?>" method="post" style="display:flex;">
 			<div class="product_image" style="width:50%;margin:0 2rem 0 0;"><!--imageproduct-->
 				<img src="<?php echo $productbycode['image'];?>" alt="image" style="width:100%;">
 			</div>

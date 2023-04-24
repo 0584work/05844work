@@ -20,7 +20,7 @@ session_start();
         if($_GET["action"]){
             switch($_GET["action"]){
                 case "add":
-                    $ret = $db->query("SELECT * FROM tblproduct WHERE carid='".$_GET['code']."'");
+                    $ret = $db->query("SELECT * FROM tblproduct WHERE license_palate='".$_GET['code']."'");
                     $productbycode = $ret->fetchArray(SQLITE3_ASSOC);
             }}
 		?>
@@ -32,7 +32,6 @@ session_start();
    <form method='post'>
       <label for='nam'>date : </label>
       <input type='datetime-local' name ='cardate' required="required"><br><br>
-      <input type='hidden' name ='carid' value="<?php echo $productbycode['carid'];?>">
       <input type='hidden' name ='carplate' value="<?php echo $productbycode['license_palate'];?>">
       <input type='submit' name='button1'value='Submit'/>
    </form>
@@ -55,7 +54,7 @@ session_start();
     $db2 = new MyDB2();
     $id = $_SESSION['user'];
     $sql ="SELECT * from booking where cus_id = $id";
-    echo "<table id='table1'><tr><th>cus_id</th><th>car_id</th><th>status</th><th>appointment_date</th></tr>";
+    echo "<table id='table1'><tr><th>cus_id</th><th>lisence_plate</th><th>status</th><th>appointment_date</th></tr>";
     $ret = $db2->query($sql);
    //table to display date that has been appoint by selected car
     while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
@@ -77,17 +76,16 @@ session_start();
          }
         $db3 = new MyDB3();
         $cusid = $_SESSION['user'];
-        $carid = $_POST['carid'];
         $date = $_POST['cardate'];
         $carplate = $_POST['carplate'];
         strval($carplate);
         strval($date);
         $_SESSION['bookingdate'] = $date;
-        $_SESSION['carid'] = $carid;
+        $_SESSION['carid'] = $carplate;
         $status = "pending";
         $appid = uniqid();
         strval($appid);
-        $sql ="SELECT * from booking where car_id = $carid";
+        $sql ="SELECT * from booking where car_id = $carplate";
         $ret = $db3->query($sql);
         $check = 0;
         while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {

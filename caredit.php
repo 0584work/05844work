@@ -32,7 +32,7 @@
       <form class="row g-3 " action="sellerhome.php?" method="post" style="padding:5% 0 0 0;">
       <div class="col-md-4">
          <label for="inputEmail4" class="form-label">รหัสรถ :</label>
-         <input type='num' name ='carid' class="form-control" id="inputEmail4" placeholder="เพื่ออะไร ไม่ได้เจนให้หรอ">
+         <input type='num' name ='carid' class="form-control" id="inputEmail4" placeholder="ไม่มีแล้ว ลบทิ้งได้">
       </div>
       <div class="col-md-4">
          <label for="inputPassword4" class="form-label">ทะเบียนรถ :</label>
@@ -80,7 +80,7 @@
       <form action="upload.php" method="post" enctype="multipart/form-data">
       <div class="col-md-5">
          <label for="inputAddress" class="form-label">รูป :</label>
-         <input type="file"  name ='pic'class="form-control" id="inputAddress" placeholder="ไฟล์ .png หรือ .jpg" accept="image/png, image/gif, image/jpeg">
+         <input type="file"  name ='fileToUpload' class="form-control" id="fileToUpload" placeholder="ไฟล์ .png หรือ .jpg" accept="image/png, image/gif, image/jpeg">
          <input type="submit" value="Upload Image" name="submit">
       </div>
    </form>
@@ -114,7 +114,6 @@
    <table  class=\"table ta\">
    <thead>
    <tr>
-   <th style=\"width:8%;\">รหัสรถยนต์</th>
    <th style=\"width:10%;\">ทะเบียนรถยนต์</th>
    <th>ยี่ห้อ</th>
    <th>ชื่อรุ่น</th>
@@ -130,7 +129,6 @@
    //table to display all car in database
    while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
       echo "<tr>";
-      echo "<td>". $row['carid']."</td>";
       echo "<td>". $row['license_palate']."</td>";
       echo "<td>". $row['series']."</td>";
       echo "<td>". $row['name']."</td>";
@@ -160,7 +158,6 @@
          if(!$db2) {
             echo $db2->lastErrorMsg();
          }
-         $carid = $_POST['carid'];
          $lic = $_POST['lic'];
          $ser = $_POST['ser'];
          $year = $_POST['year'];
@@ -173,8 +170,8 @@
          $desc = $_POST['desc'];
       
          $sql =<<<EOF
-            INSERT INTO tblproduct (carid,license_palate,series,year,color,name,image,car_mileage,car_defect,price,desc)
-            VALUES ($carid,'$lic', '$ser', $year, '$colo','$image',$mileage,'$nam','$def',$price,'$desc');
+            INSERT INTO tblproduct (license_palate,series,year,color,name,image,car_mileage,car_defect,price,desc)
+            VALUES ('$lic', '$ser', $year, '$colo','$image',$mileage,'$nam','$def',$price,'$desc');
             EOF;
       
          $ret = $db2->exec($sql);
@@ -199,7 +196,6 @@
        if(!$db3) {
           echo $db3->lastErrorMsg();
        }
-       $carid = $_POST['carid'];
        $lic = $_POST['lic'];
        $ser = $_POST['ser'];
        $year = $_POST['year'];
@@ -212,8 +208,7 @@
        $desc = $_POST['desc'];
     
        $sql =<<<EOF
-          UPDATE tblproduct set 
-          license_palate='$lic',
+          UPDATE tblproduct set
           series='$ser',
           year=$year,
           color='$colo',
@@ -223,7 +218,7 @@
           car_defect='$def',
           price=$price,
           desc='$desc'
-          WHERE carid=$carid;
+          WHERE license_palate='$lic';
           EOF;
     
        $ret = $db3->exec($sql);
@@ -248,7 +243,6 @@
      if(!$db4) {
         echo $db4->lastErrorMsg();
      }
-     $carid = $_POST['carid'];
      $lic = $_POST['lic'];
      $ser = $_POST['ser'];
      $year = $_POST['year'];
@@ -259,7 +253,7 @@
      $desc = $_POST['desc'];
   
      $sql =<<<EOF
-        DELETE FROM tblproduct WHERE carid=$carid;
+        DELETE FROM tblproduct WHERE license_palate='$lic';
         EOF;
   
      $ret = $db4->exec($sql);

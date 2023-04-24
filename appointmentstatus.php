@@ -27,7 +27,7 @@
       echo $db->lastErrorMsg();
    }
     $sql ="SELECT * from booking";
-    echo "<table id='table1'><tr><th>cus_id</th><th>car_id</th><th>status</th><th>appointment_date</th></tr>";
+    echo "<table id='table1'><tr><th>cus_id</th><th>license_plate</th><th>status</th><th>appointment_date</th></tr>";
     $ret = $db->query($sql);
    //table to display all appointment in database
     while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {

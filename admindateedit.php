@@ -49,7 +49,7 @@
       echo $db->lastErrorMsg();
    }
    $sql ="SELECT * from booking";
-   echo "<table id='table1'><tr><th>cusid</th><th>carid</th><th>staffid</th><th>status</th><th>date</th><th>appointmentid</th></tr>";
+   echo "<table id='table1'><tr><th>cusid</th><th>license palate</th><th>staffid</th><th>status</th><th>date</th><th>appointmentid</th></tr>";
    $ret = $db->query($sql);
    //table to display database
    while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
@@ -80,13 +80,13 @@
             echo $db2->lastErrorMsg();
          }
          $cusid = $_POST['cusid'];
-         $carid = $_POST['car'];
+         $lisence = $_POST['car'];
          $staff = $_POST['staf'];
          $stat = $_POST['sta'];
          $dat2 = $_POST['dat'];
          $appid = uniqid();
          //check duplicate day
-         $sql ="SELECT * from booking where car_id = '$carid'";
+         $sql ="SELECT * from booking where lisence_palate = '$lisence'";
         $ret = $db2->query($sql);
         $check = 0;
         while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
@@ -98,7 +98,7 @@
         if ($check == 0){
           $sql =<<<EOF
           INSERT INTO booking (cus_id,car_id,appointment_staff_id,status,customer_apointment_date,appointmentid)
-          VALUES ($cusid,'$carid',$staff,'$stat','$dat2','$appid');
+          VALUES ($cusid,'$lisence',$staff,'$stat','$dat2','$appid');
         EOF;
 
           $ret = $db2->exec($sql);

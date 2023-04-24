@@ -8,7 +8,7 @@
 
         $db = new MyDB();
         $caarr = $_SESSION['carid'];
-        $ret = $db->query("SELECT * FROM tblproduct WHERE carid=$caarr");
+        $ret = $db->query("SELECT * FROM tblproduct WHERE license_palate='$caarr'");
         $productbycode = $ret->fetchArray(SQLITE3_ASSOC);
         $cusid = $_SESSION['user'];
         $date = $_SESSION['bookingdate'];

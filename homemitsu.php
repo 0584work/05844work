@@ -28,12 +28,12 @@
   <div class="row row-cols-2 center01">
   <?php 
   
-    $ret = $db->query("SELECT * FROM tblproduct where series='mitsu'  ORDER BY carid ASC");
+    $ret = $db->query("SELECT * FROM tblproduct where series='mitsu'");
     while($product_array = $ret->fetchArray(SQLITE3_ASSOC)){
   ?>
     
       <div class="card col ms-2" style="width: 20rem; margin-bottom:10px;"  >
-        <form action="detail.php?action=add&code=<?php echo $product_array['carid'];?>" method="post">
+        <form action="detail.php?action=add&code=<?php echo $product_array['license_palate'];?>" method="post">
         <img src="<?php echo $product_array['image'];?>" alt="image" class="object-fit-fill border rounded" style="width: 18rem;"><!--image-->
           <div class="card-body">
             <h5 class="card-title"><?php echo $product_array["series"];?></h5>
