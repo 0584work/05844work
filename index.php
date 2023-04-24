@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <?php 
 //starting the session
-require_once 'startof.php';
 if (session_status() !== PHP_SESSION_ACTIVE) {
 	session_start();
+  }
+  if (!ISSET($_SESSION['unsucess'])) {
+	$_SESSION['unsucess'] = 'temp';
   }
 ?>
 <html lang="en">
@@ -50,7 +52,9 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 					if(ISSET($_SESSION['success'])){
 				?>
 				<!-- Display registration success message -->
+				<br><br>
 				<div class="alert alert-success"><?php echo $_SESSION['success']?></div>
+				<br><br>
 				<?php
 					//Unsetting the 'success' session after displaying the message. 
 					unset($_SESSION['success']);
@@ -62,7 +66,9 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 					if($temp == "Invalid phone number"){
 				?>
 				<!-- Display Login Error message -->
+					<br><br>
 					<div class="alert alert-danger"><?php echo $temp?></div>
+					<br><br>
 				<?php
 					}
 				?>

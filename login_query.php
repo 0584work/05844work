@@ -27,13 +27,15 @@
 		strval($role);
 		intval($memid);
 		$_SESSION['user'] = $memid;
-		$_SESSION['error'] = "complete";
 
 		if($count > 0 && $role == 'cus'){
+			$_SESSION['error'] = "complete";
 			header('location:home.php');
 		}else if($count > 0 && $role == 'app'){
+			$_SESSION['error'] = "complete";
 			header('location:adminhome.php');
 		}else if($count > 0 && $role == 'sel'){
+			$_SESSION['error'] = "complete";
 			header('location:sellerhome.php');
 		}else{
 			$_SESSION['error'] = "Invalid username or password";

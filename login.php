@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <?php 
-require_once 'startof.php';
 if (session_status() !== PHP_SESSION_ACTIVE) {
 	session_start();
+  }
+if (!ISSET($_SESSION['error'])) {
+	$_SESSION['error'] = 'temp';
   }
 //starting the session
 
@@ -40,7 +42,9 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 					if($errmas == "Invalid username or password"){
 				?>
 				<!-- Display Login Error message -->
+					<br><br>
 					<div class="alert alert-danger"><?php echo $errmas?></div>
+					<br><br>
 				<?php
 					}
 				?>

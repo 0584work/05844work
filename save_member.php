@@ -38,7 +38,7 @@
 	}
 	else{
 		$_SESSION['unsucess'] = "Invalid phone number";
-			header('location:index.php');
+		header('location:index.php');
 	}
 
 		
