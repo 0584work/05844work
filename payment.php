@@ -91,9 +91,12 @@
 </div></div>
       <div class="center01"><img src='photo/frame.png' alt='qrcode'></div>
       
+
     <?php  
     $db->close(); 
     $db5->close(); 
+ 
+  
     if(array_key_exists('pay', $_POST)) {
       button1();
       }

@@ -130,7 +130,7 @@ session_start();
           echo $db3->lastErrorMsg();
         } else {
           echo "Records created successfully<br>";
-          header( "refresh:3;url=appointmentuser.php");
+          header( "refresh:2;url=appointmentuser.php");
         }
       }
       else{
