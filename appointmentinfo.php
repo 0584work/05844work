@@ -36,9 +36,6 @@ session_start();
       <input type='hidden' name ='carplate' value="<?php echo $productbycode['license_palate'];?>">
       <input type='submit' name='button1'value='Submit'/>
    </form>
-   <form action="appointmentuser.php?action=add&code=<?php echo $productbycode['carid'];?>" method="post"><!--go nextbutton-->
-		<input type="submit" class="btnadd" value="next">
-	</form>
 
 <?php
    $db->close();
@@ -86,6 +83,7 @@ session_start();
         strval($carplate);
         strval($date);
         $_SESSION['bookingdate'] = $date;
+        $_SESSION['carid'] = $carid;
         $status = "pending";
         $appid = uniqid();
         strval($appid);

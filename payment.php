@@ -49,20 +49,21 @@
 </form>
 <div><img src='photo/frame.png' alt='qrcode'></div>
 
-    <?php   
+    <?php  
+    $db->close(); 
+    $db5->close(); 
     if(array_key_exists('pay', $_POST)) {
       button1();
       }
       //function to add payment
     function button1() {
       class MyDB2 extends SQLite3 {
-      function __construct() {
-       $this->open('db/masterdata.db');
-      }}
-      $db2 = new MyDB2();
-      ?>
-  
-      <?php
+        function __construct() {
+          $this->open('db/masterdata.db');
+        }
+        }
+
+        $db2 = new MyDB2();
         $cusid = $_POST['cusid'];
         $carid = $_POST['carid'];
         $acc = $_POST['accn'];
@@ -70,7 +71,7 @@
 
         $sql =<<<EOF
            INSERT INTO tblpay (cusid,carid,accountnumber,total)
-           VALUES ('$cusid','$carid','$acc','$total');
+           VALUES ($cusid,'$carid',$acc,$total);
         EOF;
         $ret = $db2->exec($sql);  
         if(!$ret) {

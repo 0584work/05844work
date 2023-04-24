@@ -7,12 +7,9 @@
         }
 
         $db = new MyDB();
-        if(($_GET["action"])){
-            switch($_GET["action"]){
-                case "add":
-                    $ret = $db->query("SELECT * FROM tblproduct WHERE carid='".$_GET["code"]."'");
-                    $productbycode = $ret->fetchArray(SQLITE3_ASSOC);
-            }}
+        $caarr = $_SESSION['carid'];
+        $ret = $db->query("SELECT * FROM tblproduct WHERE carid=$caarr");
+        $productbycode = $ret->fetchArray(SQLITE3_ASSOC);
         $cusid = $_SESSION['user'];
         $date = $_SESSION['bookingdate'];
         class MyDB2 extends SQLite3 {

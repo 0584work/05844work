@@ -59,8 +59,8 @@
          <input type="text" name ='pri' class="form-control" id="inputAddress" placeholder="120000">
       </div>
       <div class="col-md-5">
-         <label for="inputAddress" class="form-label">รูป :</label>
-         <input type="file"  name ='pic'class="form-control" id="inputAddress" placeholder="ไฟล์ .png หรือ .jpg" accept="image/png, image/gif, image/jpeg">
+         <label for="inputAddress" class="form-label">ชื่อรูป :</label>
+         <input type="text"  name ='pic' class="form-control" id="inputAddress" placeholder="ไฟล์ .png หรือ .jpg" accept="image/png, image/gif, image/jpeg">
       </div>
       <div class="col-12">
          <label for="inputAddress" class="form-label">ร่องรอยเสียหาย/ตำหนิ :</label>
@@ -76,8 +76,14 @@
             <input type='submit' style="width:15%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;" class="btn" name='button3'value='ลบข้อมูล'/><!--delete car data-->
             <input type='submit' style="width:20%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#Fc9d9e;" class="btn" name='button4'value='จบการทำงาน'/><!--end database-->
       </div>
-
       </form>
+      <form action="upload.php" method="post" enctype="multipart/form-data">
+      <div class="col-md-5">
+         <label for="inputAddress" class="form-label">รูป :</label>
+         <input type="file"  name ='pic'class="form-control" id="inputAddress" placeholder="ไฟล์ .png หรือ .jpg" accept="image/png, image/gif, image/jpeg">
+         <input type="submit" value="Upload Image" name="submit">
+      </div>
+   </form>
    </div>
 </div>
 
@@ -115,6 +121,7 @@
    <th style=\"width:5%;\">ผลิตปี</th>
    <th>สี</th>
    <th>รูป</th>
+   <th>เลขไมล์</th>
    <th style=\"width:20%;\">ร่องรอยเสียหาย/ตำหนิ</th>
    <th>ราคา</th>
    <th>รายละเอียดเพิ่มเติม</th>
@@ -130,7 +137,7 @@
       echo "<td>".$row['year'] ."</td>";
       echo "<td>".$row['color'] ."</td>";
       echo "<td>".$row['image'] ."</td>";
-      // echo "<td>".$row['car_mileage'] ."</td>";                 wrong collunm
+      echo "<td>".$row['car_mileage'] ."</td>";         //clear
       echo "<td>".$row['car_defect'] ."</td>";
       echo "<td>".$row['price'] ."</td>";
       echo "<td>".$row['desc'] ."</td>";
@@ -159,7 +166,7 @@
          $year = $_POST['year'];
          $colo = $_POST['colo'];
          $nam = $_POST['nam'];
-         $image = $_POST['pic'];
+         $image = "photo/".$_POST['pic'];
          $mileage = $_POST['mill'];
          $def = $_POST['def'];
          $price = $_POST['pri'];
@@ -197,7 +204,7 @@
        $ser = $_POST['ser'];
        $year = $_POST['year'];
        $colo = $_POST['colo'];
-       $image = $_POST['pic'];
+       $image = "photo/".$_POST['pic'];
        $nam = $_POST['nam'];
        $mileage = $_POST['mill'];
        $def = $_POST['def'];
