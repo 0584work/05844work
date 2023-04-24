@@ -123,7 +123,7 @@
           echo $db2->lastErrorMsg();
         } else {
           echo "payment Recorded<br>";
-          header("refresh:3;url=afterpayment.php");
+          header("refresh:1;url=afterpayment.php");
         }      
         $db2->close();
      }
