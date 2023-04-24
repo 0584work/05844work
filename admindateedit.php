@@ -1,40 +1,84 @@
 <?php session_start(); ?>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>th, td {
-  border-bottom: 3px solid #ddd;
-}</style>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+   <link rel="stylesheet" href="css/home.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+   <title>จัดการรายละเอียดรถยนต์</title>
+   <style>th, td {
+               border-bottom: 3px solid #ddd;
+            }
+            .center01 {
+               display: flex;
+               justify-content: center;
+            }
+            .ta{
+               width:95%!important;
+            }
+   </style>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  
 </head>
 <body>
-<form action="adminhome.php?" method="post"><!--homebutton-->
-		<input type="submit" class="btnadd" value="adminhome">
-	</form>
-   <form method='post'><!--form to insert data-->
-      <label>cusid : </label>
-      <input type='num' name ='cusid' required="required"><br><br>
-      <label>license_palate : </label>
-      <input type='num' name ='car' required="required"><br><br>
-      <label>staffid : </label>
-      <input type='num' name ='staf' required="required"><br><br>
-      <label for="cars">status:</label>
-      <select name="sta">
-         <option value="complete">complete</option>
-         <option value="booking">booking</option>
-         <option value="pending">pending</option>
-         <option value="cancel">cancel</option>
-      </select>
-      <label>date : </label>
-      <input type='datetime-local' name ='dat' required="required"><br><br>
-      <label>ID : </label>
-      <input type='int' name ='appid'><br><br>
-      <input type='submit' name='button1'value='add'/>
-      <input type='submit' name='button2'value='modify'/>
-      <input type='submit' name='button3'value='delete'/>
+<br><br><a href="adminhome.php" role="button" style="margin-left:5rem;"> &#9754; &nbsp; กลับเข้าสู่หน้าหลัก</a><br><br>
+   <h3 style="text-align:center;font-weight:600;"> จัดการรายละเอียดรถยนต์ </h3>
+
+<div class="center01 mt-4">
+<div class="center01" style="width:60%;padding :3% 7%;background-color:#E8e8e8;border-radius:2rem;" >
+<form class="row g-3 " method="post" style="padding:5% 0 0 0;">
+      <div class="col-md-4">
+         <label for="inputEmail4" class="form-label">รหัสรถ :</label>
+         <input type='num' name ='carid' class="form-control" id="inputEmail4">
+      </div>
+      <div class="col-md-4">
+         <label for="inputEmail4" class="form-label">cusid : </label>
+         <input type='num' name ='cusid' class="form-control" id="inputEmail4">
+      </div>
+      <div class="col-md-4">
+         <label for="inputEmail4" class="form-label">license_palate : </label>
+         <input type='num' name ='car' class="form-control" id="inputEmail4">
+      </div>
+      <div class="col-md-4">
+         <label for="inputEmail4" class="form-label">staffid : </label>
+         <input type='num' name ='staf' class="form-control" id="inputEmail4">
+      </div>
+      <div class="col-md-4">
+         <label for="inputEmail4" class="form-label">staffid : </label>
+         <select name="sta" class="form-select" aria-label="Default select example">
+            <option value="complete">complete</option>
+            <option value="booking">booking</option>
+            <option value="pending">pending</option>
+            <option value="cancel">cancel</option>
+         </select>
+      </div>
+      <div class="col-md-4">
+         <label for="inputEmail4" class="form-label">date : </label>
+         <input type='datetime-local' name ='dat' class="form-control" id="inputEmail4" >
+      </div>
+      <div class="col-md-4">
+         <label for="inputEmail4" class="form-label">ID : </label>
+         <input type='int' name ='appid' class="form-control" id="inputEmail4">
+      </div>
+      <div class="center01" style="width:100%; margin:1rem 0 0 0;">
+            <input type='submit' style="width:15%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;"class="btn" name='button1'value='เพิ่มข้อมูล'/><!--add car data-->
+            <input type='submit' style="width:17%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;" class="btn" name='button2'value='แก้ไขข้อมูล'/><!--modify car data-->
+            <input type='submit' style="width:15%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;" class="btn" name='button3'value='ลบข้อมูล'/><!--delete car data-->
+      </div>
    </form>
+   </div>
+   </div>
+
+   <br><br>
+   <div class="center01">
+   <hr style="width: 60rem;">
+   </div>
+
 <?php
    // Connect to Database 
    class MyDB extends SQLite3 {
@@ -49,7 +93,20 @@
       echo $db->lastErrorMsg();
    }
    $sql ="SELECT * from booking";
-   echo "<table id='table1'><tr><th>cusid</th><th>license palate</th><th>staffid</th><th>status</th><th>date</th><th>appointmentid</th></tr>";
+   echo "
+   <br><br>
+   <h3 style=\"text-align:center;font-weight:600;\"> รายละเอียดรถยนต์ทั้งหมด </h3>
+   <br>
+   <div class=\"center01\" id=\"ses1\">
+   <table  class=\"table ta\">
+   <thead>
+   <tr>
+      <th>cusid</th><th>license palate</th>
+      <th>staffid</th>
+      <th>status</th>
+      <th>date</th>
+      <th>appointmentid</th>
+   </tr></thead><tbody>";
    $ret = $db->query($sql);
    //table to display database
    while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
@@ -62,7 +119,7 @@
       echo "<td>".$row['appointmentid'] ."</td>";
       echo "</tr>";
    }
-   echo "</table>";
+   echo "</tbody></table></div>";
    //funcion to add data to database
    if(array_key_exists('button1', $_POST)) {
       button1();
@@ -197,7 +254,22 @@
       echo $db5->lastErrorMsg();
    }
    $sql ="SELECT * from tblpay";
-   echo "<table id='table1'><tr><th>PAYMENT</th></tr><tr><th>cusid</th><th>carid</th><th>staffid</th><th>รหัสอ้างอิง</th><th>total</th></tr>";
+   echo "
+   <br><br>
+   <h3 style=\"text-align:center;font-weight:600;\"> รายละเอียดรถยนต์ทั้งหมด </h3>
+   <br>
+   <div class=\"center01\" id=\"ses1\">
+   <table  class=\"table ta\">
+   <thead>
+   <tr>
+   <th>PAYMENT</th>
+   </tr><tr>
+   <th>cusid</th>
+   <th>carid</th>
+   <th>staffid</th>
+   <th>รหัสอ้างอิง</th>
+   <th>total</th>
+   </tr></thead><tbody>";
    $ret = $db5->query($sql);
    //table to display all payment in database
    while($row = $ret->fetchArray(SQLITE3_ASSOC)) {
@@ -208,7 +280,7 @@
       echo "<td>".$row['total'] ."</td>";
       echo "</tr>";
    }
-   echo "</table>";
+   "</tbody></table></div>";
    
     ?>    
 </body>
