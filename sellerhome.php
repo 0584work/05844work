@@ -63,6 +63,7 @@
 	<div class="row row-cols-2 center01" style="width: 30rem;">
 	<a href="customerdetail_se.php" role="button" class="btn btn-primary margin01 col " style="width: 12rem; margin-bottom:10px;">ข้อมูลลูกค้า</a>
 	<a href="caredit.php" role="button" class="btn btn-primary margin01 col " style="width: 12rem; margin-bottom:10px;">จัดการรายละเอียดรถยนต์</a>
+	<a href="sellcar.php" role="button" class="btn btn-primary margin01 col " style="width: 12rem; margin-bottom:10px;">ดูรายการรถยนต์</a>
 	</div>
 </div>
 <div class="container text-center center01">
