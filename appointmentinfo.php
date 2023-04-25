@@ -44,12 +44,14 @@ session_start();
 <div class="center01">
    <div class="center01 " style="width:40%;padding :3% 7%;background-color:#E8e8e8;border-radius:2rem;">
    <form method='post'><!--form to insert data to edit date-->
-	   <label class="form-label">วันและเวลานัดหมาย : </label>
-      <input type='datetime-local' name ='cardate' required="required" class="form-control">
+	   <label class="form-label">วันนัดหมาย : </label>
+      <input type='date' name ='cardate' required="required" class="form-control">
+      <label class="form-label">เวลานัดหมาย : </label>
+      <input type='time' name ='cartime' required="required" class="form-control">
          <input type='hidden' name ='carplate' value="<?php echo $productbycode['license_palate'];?>"><br>
       
          <div class="center01" style="width:100%; margin:1rem 0 0 0;">
-        <input type='submit' style="width:60%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;"class="btn" name='button1'value='นัดทดลองขับรถ'/><!--add car data-->
+        <input type='submit' style="width:80%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;"class="btn" name='button1'value='นัดทดลองขับรถ'/><!--add car data-->
         </div>
    </form>
    </div>
@@ -80,7 +82,7 @@ session_start();
     <div class=\"center01\" id=\"ses1\">
     <table class=\"table ta\" id='table1'>
     <thead>
-    <tr><th>ทะเบียนรถยนต์</th><th>status</th><th>appointment_date</th>
+    <tr><th>ทะเบียนรถยนต์</th><th>status</th><th>วันที่ทำการนัด</th><th>เวลาที่ทำการนัด</th>
     </tr> </thead> <tbody>";
     $ret = $db2->query($sql);
    //table to display date that has been appoint by selected car
@@ -88,7 +90,8 @@ session_start();
         echo "<tr>";
         echo "<td>". $row['car_id']."</td>";
         echo "<td>". $row['status'] ."</td>";
-        echo "<td>". $row['customer_apointment_date'] ."</td>";
+        echo "<td>". $row['apointment_date'] ."</td>";
+        echo "<td>". $row['apointment_time'] ."</td>";
         echo "</tr>";
      }
      echo "</tbody> </table> </div> ";
@@ -100,40 +103,44 @@ session_start();
             }
          }
         $db3 = new MyDB3();
+
         $cusid = $_SESSION['user'];
         $date = $_POST['cardate'];
+        $time = $_POST['cartime'];
         $carplate = $_POST['carplate'];
         strval($carplate);
         strval($date);
+        strval($time);
         $_SESSION['bookingdate'] = $date;
+        $_SESSION['bookingtime'] = $time;
         $_SESSION['carid'] = $carplate;
         $status = "กำลังทำการนัด";
         $appid = uniqid();
         strval($appid);
+        $_SESSION['bookid'] = $appid;
         $sql ="SELECT * from booking where car_id = '$carplate'";
         $ret = $db3->query($sql);
         $check = 0;
         while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
-        if ($date == $row['customer_apointment_date']){
+        if ($date == $row['apointment_date']){
           $check = 1;
           break;
         }
         }//check duplicate and add to database
         if ($check == 0){
           $sql =<<<EOF
-           INSERT INTO booking (cus_id,car_id,status,customer_apointment_date,appointmentid)
-           VALUES ($cusid,'$carplate','$status','$date','$appid');
-        EOF;
+           INSERT INTO booking (cus_id,car_id,status,apointment_date,apointment_time,appointmentid)
+           VALUES ($cusid,'$carplate','$status','$date','$time','$appid');
+          EOF;
         $ret = $db3->exec($sql);        
         if(!$ret) {
           echo $db3->lastErrorMsg();
         } else {
-          echo "Records created successfully<br>";
           header( "refresh:1;url=appointmentuser.php");
         }
       }
       else{
-        echo "data duplicate<br>";
+        echo "รถถูกจองนัดแล้ว กรุณาเลือกวันอื่น<br>";
       }
         $db3->close();
       }

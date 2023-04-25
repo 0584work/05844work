@@ -71,7 +71,6 @@
             <input type='submit' style="width:15%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;"class="btn" name='button1'value='เพิ่มข้อมูล'/><!--add car data-->
             <input type='submit' style="width:17%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;" class="btn" name='button2'value='แก้ไขข้อมูล'/><!--modify car data-->
             <input type='submit' style="width:15%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;" class="btn" name='button3'value='ลบข้อมูล'/><!--delete car data-->
-            <input type='submit' style="width:20%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#Fc9d9e;" class="btn" name='button4'value='จบการทำงาน'/><!--end database-->
       </div>
       </form>
      <div>
@@ -255,14 +254,6 @@
      } else {
         echo "Records delete successfully<br>";
      }
-  }
-  if(array_key_exists('button4', $_POST)) {
-    button4();
-  }
-  function button4() {
-    $db2->close();
-    $db3->close();
-    $db4->close();
   }
     ?>   
 </body>

@@ -127,7 +127,7 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
    //table data info
    
    // Connect to Database 
-    $sql ="SELECT * from booking";
+    $sql ="SELECT tblpay.*,booking.* from booking left join tblpay on tblpay.appointmentid = booking.appointmentid";
     echo "
     <div class=\"center01\"id=\"ses2\">
     <h4>
@@ -143,6 +143,9 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     <th>ทะเบียนรถยนต์</th>
     <th>Status</th>
     <th>วันนัดทดลองขับรถยนต์</th>
+    <th>เวลานัดทดลองขับรถยนต์</th>
+    <th>หมายเลขการจองนัด</th>
+    <th>หลักฐานการจองนัด</th>
     </tr>";
     $ret = $db->query($sql);
    //table to display date that has been appoint by selected car
@@ -151,32 +154,15 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
         echo "<td>". $row['cus_id'] . "</td>";
         echo "<td>". $row['car_id']."</td>";
         echo "<td>". $row['status'] ."</td>";
-        echo "<td>". $row['customer_apointment_date'] ."</td>";
+        echo "<td>". $row['apointment_date'] ."</td>";
+        echo "<td>". $row['apointment_time'] ."</td>";
+        echo "<td>".$row['appointmentid'] ."</td>";
+        echo "<td>".$row['accountnumber'] ."</td>";
         echo "</tr>";
      }
     // Close database
     echo "</tbody></table></div></table></div><br><br><br><br><br><br><br><br><br>";
    // Connect to Database 
-   $sql ="SELECT * from tblpay";
-   echo "
-   <div class=\"center01\" id=\"ses3\">
-   <h4>
-   Payment
-   </h4>
-    </div>
-    <div class=\"center01\">
-   <table  class=\"table ta\">
-   <thead><tr><th>ไอดีผู้ใช้</th><th>ทะเบียนรถยนต์</th><th>ยอดชำระ</th></tr>";
-   $ret = $db->query($sql);
-   //table to display all payment in database
-   while($row = $ret->fetchArray(SQLITE3_ASSOC)) {
-      echo "<tr>";
-      echo "<td>". $row['cusid'] . "</td>";
-      echo "<td>". $row['carid']."</td>";
-      echo "<td>".$row['total'] ."</td>";
-      echo "</tr>";
-   }
-   echo "</tbody></table></div><br><br><br><br><br><br><br><br><br>";
     ?>   
     </div>   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

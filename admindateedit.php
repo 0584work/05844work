@@ -70,7 +70,7 @@
    if(!$db) {
       echo $db->lastErrorMsg();
    }
-   $sql ="SELECT * from booking";
+   $sql ="SELECT tblpay.*,booking.* from booking left join tblpay on tblpay.appointmentid = booking.appointmentid";
    echo "
    <br><br>
    <h3 style=\"text-align:center;font-weight:600;\"> ตารางสถานะการจองนัด </h3>
@@ -81,7 +81,9 @@
    <tr><th>ทะเบียนรถยนต์</th>
       <th>สถานะของการนัด</th>
       <th>วันที่ทำการนัด</th>
+      <th>เวลาที่ทำการนัด</th>
       <th>หมายเลขการจองนัด</th>
+      <th>หลักฐานการจองนัด</th>
    </tr></thead><tbody>";
    $ret = $db->query($sql);
    //table to display database
@@ -89,59 +91,13 @@
       echo "<tr>";
       echo "<td>". $row['car_id']."</td>";
       echo "<td>".$row['status'] ."</td>";
-      echo "<td>".$row['customer_apointment_date'] ."</td>";
+      echo "<td>".$row['apointment_date'] ."</td>";
+      echo "<td>".$row['apointment_time'] ."</td>";
       echo "<td>".$row['appointmentid'] ."</td>";
+      echo "<td>".$row['accountnumber'] ."</td>";
       echo "</tr>";
    }
    echo "</tbody></table></div>";
-   //funcion to add data to database
-   if(array_key_exists('button1', $_POST)) {
-      button1();
-    }
-      function button1() {
-         class MyDB2 extends SQLite3 {
-            function __construct() {
-               $this->open('db/masterdata.db');
-            }
-         }
-      
-         // Open Database 
-         $db2 = new MyDB2();
-         if(!$db2) {
-            echo $db2->lastErrorMsg();
-         }
-         $cusid = $_POST['cusid'];
-         $lisence = $_POST['car'];
-         $staff = $_POST['staf'];
-         $stat = $_POST['sta'];
-         $dat2 = $_POST['dat'];
-         $appid = uniqid();
-         //check duplicate day
-         $sql ="SELECT * from booking where lisence_palate = '$lisence'";
-        $ret = $db2->query($sql);
-        $check = 0;
-        while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
-        if ($date == $row['customer_apointment_date']){
-          $check = 1;
-          break;
-        }
-        }//check duplicate and add to database
-        if ($check == 0){
-          $sql =<<<EOF
-          INSERT INTO booking (cus_id,car_id,appointment_staff_id,status,customer_apointment_date,appointmentid)
-          VALUES ($cusid,'$lisence',$staff,'$stat','$dat2','$appid');
-        EOF;
-
-          $ret = $db2->exec($sql);
-          if(!$ret) {
-             echo $db2->lastErrorMsg();
-          } else {
-           echo "Records created successfully<br>";
-          }
-      }else{
-         echo "Data duplicate<br>";
-      }
-   }
   //funcion to modify data to database
    if(array_key_exists('button2', $_POST)) {
     button2();
@@ -157,17 +113,12 @@
        if(!$db3) {
           echo $db3->lastErrorMsg();
        }
-       $cusid = $_POST['cusid'];
-       $carid = $_POST['car'];
-       strval($carid);
-       $staff = $_POST['staf'];
        $stat = $_POST['sta'];
-       $dat2 = $_POST['dat'];
        $appid = $_POST['appid'];
        //query modify data to database
        $sql =<<<EOF
-          UPDATE booking set cus_id = $cusid,car_id = '$carid',
-          appointment_staff_id = $staff , status = '$stat', customer_apointment_date = '$dat2'
+          UPDATE booking set
+          status = '$stat'
           WHERE appointmentid ='$appid';
        EOF;
     
@@ -179,78 +130,6 @@
        }
       }
       
- //funcion to delete data to database
- if(array_key_exists('button3', $_POST)) {
-  button3();
-}
-  function button3() {
-     class MyDB4 extends SQLite3 {
-        function __construct() {
-           $this->open('db/masterdata.db');
-        }
-     }
-  
-     // Open Database 
-     $db4 = new MyDB4();
-     if(!$db4) {
-        echo $db4->lastErrorMsg();
-     }
-     $cusid = $_POST['cusid'];
-     $carid = $_POST['car'];
-     $staff = $_POST['staf'];
-     $stat = $_POST['sta'];
-     $dat = $_POST['dat'];
-     $appid = $_POST['appid'];
-     //delete row data
-     $sql =<<<EOF
-        DELETE FROM booking WHERE appointmentid='$appid';
-        EOF;
-  
-     $ret = $db4->exec($sql);
-     if(!$ret) {
-        echo $db4->lastErrorMsg();
-     } else {
-        echo "Records delete successfully<br>";
-     }
-  }
     ?>  
-    <?php
-   // Connect to Database 
-   class MyDB5 extends SQLite3 {
-      function __construct() {
-         $this->open('db/masterdata.db');
-      }
-   }
-
-   // Open Database 
-   $db5 = new MyDB5();
-   if(!$db5) {
-      echo $db5->lastErrorMsg();
-   }
-   $sql ="SELECT DISTINCT * from tblpay join booking";
-   echo "
-   <br><br>
-   <h3 style=\"text-align:center;font-weight:600;\"> รายละเอียดการจ่ายเงินทั้งหมด </h3>
-   <br>
-   <div class=\"center01\" id=\"ses1\">
-   <table  class=\"table ta\">
-   <thead>
-   <tr>
-   <th>ทะเบียนรถยนต์</th>
-   <th>ยอดชำระ</th>
-   <th>หมายเลขการจองนัด</th>
-   </tr></thead><tbody>";
-   $ret = $db5->query($sql);
-   //table to display all payment in database
-   while($row = $ret->fetchArray(SQLITE3_ASSOC)) {
-      echo "<tr>";
-      echo "<td>".$row['accountnumber'] ."</td>";
-      echo "<td>".$row['total'] ."</td>";
-      echo "<td>".$row['appointmentid'] ."</td>";
-      echo "</tr>";
-   }
-   "</tbody></table></div>";
-   
-    ?>    
 </body>
 </html>

@@ -57,9 +57,6 @@
 
     <!--form to add payment-->
 
-<?php
-  $price = ceil(($productbycode['price'] * 0.01));
-?>
 
 <div class="center01 mt-4">
 <div class="center01" style="width:60%;padding :3% 7%;background-color:#E8e8e8;border-radius:2rem;" >
@@ -71,7 +68,7 @@
       </div>
     <div class="col-md-6">
          <label class="form-label">ทะเบียนรถยนต์ :</label>
-         <input  class="form-control" type='text' name ='carid' id="carid"value="<?php echo $productbycode['license_palate'];?>" readonly>
+         <input  class="form-control" type='text' name ='carid' id="carid" value="<?php echo $productbycode['license_palate'];?>" readonly>
       </div>
       <div class="col-md-6">
          <label for="inputAddress" class="form-label">สลิป :</label>
@@ -79,7 +76,7 @@
       </div>
     <div class="col-md-6">
          <label class="form-label">จำนวนเงินที่ต้องจ่าย :</label>
-         <input  class="form-control" type='text' name ='val' id="val"  value="<?php echo $price;?>" readonly>
+         <input  class="form-control" type='text' name ='val' id="val"  value="5,000" readonly>
       </div>
         
       <div class="center01" style="width:100%; margin:1rem 0 0 0;">
@@ -88,9 +85,7 @@
         </div>
 </form>
 </div></div>
-      <div class="center01"><img src='photo/frame.png' alt='qrcode'></div>
       
-
     <?php  
     $db->close(); 
     $db5->close(); 
@@ -108,21 +103,27 @@
         }
 
         $db2 = new MyDB2();
-        $cusid = $_POST['cusid'];
+        $appid = $_SESSION['bookid'];
+        strval($appid);
         $carid = $_POST['carid']; 
+        $accn = 'file.jpg';
         $total = $_POST['val'];
 
         $sql =<<<EOF
-           INSERT INTO tblpay (cusid,carid,total)
-           VALUES ($cusid,'$carid',$total);
+           INSERT INTO tblpay (appointmentid,carid,accountnumber,total)
+           VALUES ('$appid','$carid','$accn','$total');
         EOF;
         $ret = $db2->exec($sql);  
         if(!$ret) {
           echo $db2->lastErrorMsg();
         } else {
-          echo "การจองนัดสำเร็จ<br>";
+          echo "<div class='center01 mt-4'>
+          <div class='center01' style='width:60%;background-color:#E8e8e8;border-radius:2rem;' >
+            <form class='col-md-6' style='padding:5% 0 0 0;' >
+          <div class='alert alert-success' style='text-align: center;'>การจองนัดสำเร็จ<br></div></form></div></div>";
           header("refresh:2;url=home.php");
         }      
         $db2->close();
      }
       ?>  
+      <div class="center01"><img src='photo/frame.png' alt='qrcode'></div>

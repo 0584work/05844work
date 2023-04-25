@@ -37,7 +37,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 				</div>
 				<div class="form-group" style="margin-top:0.75rem;">
 					<label>Phone number</label>
-					<input type="num" name="phone" class="form-control" required="required"/>
+					<input type="text" name="phone" class="form-control" required="required"/>
 				</div>
 				<div class="form-group" style="margin-top:0.75rem;">
 					<label>Username</label>

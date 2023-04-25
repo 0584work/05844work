@@ -12,6 +12,7 @@
         $productbycode = $ret->fetchArray(SQLITE3_ASSOC);
         $cusid = $_SESSION['user'];
         $date = $_SESSION['bookingdate'];
+        $time = $_SESSION['bookingtime'];
         class MyDB2 extends SQLite3 {
             function __construct() {
               $this->open('db/masterdata.db');
@@ -52,9 +53,6 @@
 <br><br><a href="home.php" role="button" style="margin-left:5rem;"> &#9754; &nbsp; กลับเข้าสู่หน้าหลัก</a><br><br>
    <h3 style="text-align:center;font-weight:600;">จองนัดทดลองขับรถยนต์</h3>
 
-    <?php
-        $price = ceil(($productbycode['price'] * 0.01));
-    ?>
   <!--form to add database and go to payment-->
   <div class="center01 mt-4">
 <div class="center01" style="width:60%;padding :3% 7%;background-color:#E8e8e8;border-radius:2rem;" >
@@ -72,8 +70,12 @@
          <input type='text' name ='date' class="form-control" id="cusid"readonly value="<?php echo $date;?>">
       </div>
       <div class="col-md-6">
+         <label for="inputEmail4" class="form-label">วันที่ทำการนัด :</label>
+         <input type='text' name ='date' class="form-control" id="cusid"readonly value="<?php echo $date;?>">
+      </div>
+      <div class="col-md-6">
          <label for="inputEmail4" class="form-label">ราคา :</label>
-         <input type='text' name ='price' class="form-control" id="cusid"readonly value="<?php echo $price;?>">
+         <input type='text' name ='price' class="form-control" id="cusid"readonly value="5,000">
       </div>
 	    
       

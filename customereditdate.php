@@ -29,14 +29,15 @@
    <div class="center01">
    <div class="center01 " style="width:40%;padding :3% 7%;background-color:#E8e8e8;border-radius:2rem;">
    <form method='post'><!--form to insert data to edit date-->
-	   <label class="form-label">วันและเวลานัดใหม่ : </label>
-      <input type='datetime-local' name ='dat' required="required" class="form-control"><br>
+	   <label class="form-label">วันนัดใหม่ : </label>
+      <input type='date' name ='dat' required="required" class="form-control"><br>
+      <label class="form-label">เวลานัดใหม่ : </label>
+      <input type='time' name ='dat2' required="required" class="form-control"><br>
       <label class="form-label">หมายเลขการจองนัด : </label>
       <input type='text' name ='cid' required="required" class="form-control"><br>
    <div class="center01" style="width:100%; margin:1rem 0 0 0;">
       <input type='submit' name='button2'value='แก้ไขนัด' class="btn" style="width:50%;margin:0 0.5rem 0 0.5rem;background-color:#B0b8ff;"/><!--to modify date-->
       <input type='submit' name='button3'value='ยกเลิกนัด' class="btn" style="width:50%;margin:0 0.5rem 0 0.5rem;background-color:#B0b8ff;"/><!--to delete date-->
-      <input type='submit' name='button4'value='จบการทำงาน' class="btn" style="margin:0 0.5rem 0 0.5rem;background-color:#Fc9d9e;"/>
    </div>
    </form>
    </div>
@@ -47,45 +48,7 @@
    </div>
 
 <?php
-   // Connect to Database 
-   class MyDB extends SQLite3 {
-      function __construct() {
-         $this->open('db/masterdata.db');
-      }
-   }
-
-   // Open Database 
-   $db = new MyDB();
-   if(!$db) {
-      echo $db->lastErrorMsg();
-   }
-   $temp = $_SESSION['user'];
-   $sql ="SELECT * from booking where cus_id=$temp";
-   echo "
-   <br><br>
-   <h3 style=\"text-align:center;font-weight:600;\"> รายละเอียดรถยนต์ทั้งหมด </h3>
-   <br>
-   <div class=\"center01\" id=\"ses1\">
-   <table class=\"table ta\" id='table1'>
-   <thead>
-   <tr>
-   <th>ทะเบียนรถยนต์</th>
-   <th>status</th>
-   <th>วันที่และเวลานัด</th>
-   <th>หมายเลขการจองนัด</th>
-   </tr> </thead> <tbody>";
-   $ret = $db->query($sql);
-   //table to display all date
-   while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
-      echo "<tr>";
-      echo "<td>". $row['car_id']."</td>";
-      echo "<td>".$row['status'] ."</td>";
-      echo "<td>".$row['customer_apointment_date'] ."</td>";
-      echo "<td>".$row['appointmentid'] ."</td>";
-      echo "</tr>";
-   }
-   echo "</tbody> </table> </div> ";
-   //table data info
+   
    if(array_key_exists('button2', $_POST)) {
     button2();
   }
@@ -105,20 +68,23 @@
        $appid = $_POST['cid'];
        strval($appid);
        $dat = $_POST['dat'];
-
+       $dat2 = $_POST['dat2'];
+       strval($dat);
+       strval($dat2);
        $sql =<<<EOF
           UPDATE booking set 
-          customer_apointment_date=$dat
+          apointment_date='$dat',
+          apointment_time='$dat2'
           WHERE appointmentid='$appid' AND cus_id = $cusid;
-          EOF;
+         EOF;
           //query modify data to database
        $ret = $db3->exec($sql);
        if(!$ret) {
           echo $db3->lastErrorMsg();
        } else {
-          echo "Records modify successfully<br>";
+          echo "แก้ไขการจองนัดสำเร็จ<br>";
        }
- }
+      }
  if(array_key_exists('button3', $_POST)) {
   button3();
 }
@@ -137,7 +103,6 @@
      $cusid = $_SESSION['user'];
      $appid = $_POST['cid'];  
      strval($appid);
-     $dat = $_POST['dat'];
      $status='ยกเลิกการจองนัด';
 
      $sql =<<<EOF
@@ -150,16 +115,49 @@
      if(!$ret) {
         echo $db4->lastErrorMsg();
      } else {
-        echo "Records delete successfully<br>";
+        echo "ยกเลิกการจองนัดสำเร็จ<br>";
      }
-  }
-  if(array_key_exists('button4', $_POST)) {
-    button4();
-  }
-  function button4() {
-    $db3->close();
-    $db4->close();
-  }
+  }// Connect to Database 
+   class MyDB extends SQLite3 {
+      function __construct() {
+         $this->open('db/masterdata.db');
+      }
+   }
+
+   // Open Database 
+   $db = new MyDB();
+   if(!$db) {
+      echo $db->lastErrorMsg();
+   }
+   $temp = $_SESSION['user'];
+   $sql ="SELECT * from booking where cus_id=$temp";
+   echo "
+   <br><br>
+   <h3 style=\"text-align:center;font-weight:600;\"> รายละเอียดการจองนัดทั้งหมด </h3>
+   <br>
+   <div class=\"center01\" id=\"ses1\">
+   <table class=\"table ta\" id='table1'>
+   <thead>
+   <tr>
+   <th>ทะเบียนรถยนต์</th>
+   <th>status</th>
+   <th>วันที่นัด</th>
+   <th>เวลาที่นัด</th>
+   <th>หมายเลขการจองนัด</th>
+   </tr> </thead> <tbody>";
+   $ret = $db->query($sql);
+   //table to display all date
+   while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
+      echo "<tr>";
+      echo "<td>". $row['car_id']."</td>";
+      echo "<td>".$row['status'] ."</td>";
+      echo "<td>".$row['apointment_date'] ."</td>";
+      echo "<td>".$row['apointment_time'] ."</td>";
+      echo "<td>".$row['appointmentid'] ."</td>";
+      echo "</tr>";
+   }
+   echo "</tbody> </table> </div> ";
+   //table data info
     ?>   
 </body>
 </html>
