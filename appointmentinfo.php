@@ -49,7 +49,7 @@ session_start();
          <input type='hidden' name ='carplate' value="<?php echo $productbycode['license_palate'];?>"><br>
       
          <div class="center01" style="width:100%; margin:1rem 0 0 0;">
-        <input type='submit' style="width:50%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;"class="btn" name='button1'value='ลงทะเบียนข้อมูล'/><!--add car data-->
+        <input type='submit' style="width:60%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;"class="btn" name='button1'value='นัดทดลองขับรถ'/><!--add car data-->
         </div>
    </form>
    </div>
@@ -80,13 +80,12 @@ session_start();
     <div class=\"center01\" id=\"ses1\">
     <table class=\"table ta\" id='table1'>
     <thead>
-    <tr><th>cus_id</th><th>lisence_plate</th><th>status</th><th>appointment_date</th>
+    <tr><th>ทะเบียนรถยนต์</th><th>status</th><th>appointment_date</th>
     </tr> </thead> <tbody>";
     $ret = $db2->query($sql);
    //table to display date that has been appoint by selected car
     while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
         echo "<tr>";
-        echo "<td>". $row['cus_id'] . "</td>";
         echo "<td>". $row['car_id']."</td>";
         echo "<td>". $row['status'] ."</td>";
         echo "<td>". $row['customer_apointment_date'] ."</td>";

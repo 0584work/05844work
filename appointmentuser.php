@@ -64,7 +64,7 @@
          <input type='text' name ='cusid' class="form-control" id="cusid"readonly value="<?php echo $usser['firstname'];?> <?php echo $usser['lastname'];?>">
       </div>
       <div class="col-md-6">
-         <label for="inputEmail4" class="form-label">ป้ายทะเบียนรถยนต์ :</label>
+         <label for="inputEmail4" class="form-label">ทะเบียนรถยนต์ :</label>
          <input type='text' name ='carid' class="form-control" id="cusid"readonly value="<?php echo $productbycode['license_palate'];?>" >
       </div>
       <div class="col-md-6">

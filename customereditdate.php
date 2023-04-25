@@ -24,7 +24,7 @@
 </head>
 <body>
 <br><br><a href="home.php" role="button" style="margin-left:5rem;"> &#9754; &nbsp; กลับเข้าสู่หน้าหลัก</a><br><br>
-   <h3 style="text-align:center;font-weight:600;"> แก้ไขวันนัดทดลองขับรถยนต์ </h3>
+   <h3 style="text-align:center;font-weight:600;"> จัดการนัดทดลองขับรถยนต์ </h3>
    <br>
    <div class="center01">
    <div class="center01 " style="width:40%;padding :3% 7%;background-color:#E8e8e8;border-radius:2rem;">
@@ -34,8 +34,8 @@
       <label class="form-label">หมายเลขการจองนัด : </label>
       <input type='text' name ='cid' required="required" class="form-control"><br>
    <div class="center01" style="width:100%; margin:1rem 0 0 0;">
-      <input type='submit' name='button2'value='แก้ไขข้อมูล' class="btn" style="width:50%;margin:0 0.5rem 0 0.5rem;background-color:#B0b8ff;"/><!--to modify date-->
-      <input type='submit' name='button3'value='ลบข้อมูล' class="btn" style="width:50%;margin:0 0.5rem 0 0.5rem;background-color:#B0b8ff;"/><!--to delete date-->
+      <input type='submit' name='button2'value='แก้ไขนัด' class="btn" style="width:50%;margin:0 0.5rem 0 0.5rem;background-color:#B0b8ff;"/><!--to modify date-->
+      <input type='submit' name='button3'value='ยกเลิกนัด' class="btn" style="width:50%;margin:0 0.5rem 0 0.5rem;background-color:#B0b8ff;"/><!--to delete date-->
       <input type='submit' name='button4'value='จบการทำงาน' class="btn" style="margin:0 0.5rem 0 0.5rem;background-color:#Fc9d9e;"/>
    </div>
    </form>
