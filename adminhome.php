@@ -61,7 +61,7 @@
 
 <div class="container text-center center01">
 	<div class="row row-cols-2 center01" style="width: 30rem;">
-	<a href="customerdetail_ad.php" role="button" class="btn btn-primary margin01 col " style="width: 12rem; margin-bottom:10px;">ข้อมูลลูกค้า</a>
+	<a href="customerdetail_ad.php" role="button" class="btn btn-primary margin01 col " style="width: 12rem; margin-bottom:10px;">แสดงข้อมูลลูกค้า</a>
 	<a href="admindateedit.php" role="button" class="btn btn-primary margin01 col " style="width: 12rem; margin-bottom:10px;">จัดการสถานะการจองนัด</a>
 	</div>
 </div>

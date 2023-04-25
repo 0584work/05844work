@@ -11,10 +11,10 @@
           <a class="nav-link active" aria-current="page" href="home.php">หน้าหลัก</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="customereditdate.php">จัดการวันนัด</a>
+        <a class="nav-link active" aria-current="page" href="customereditdate.php">จัดการนัดทดลองขับรถยนต์</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="customercheckdate.php">เช็คสถานะการจองนัด</a>
+        <a class="nav-link active" aria-current="page" href="customercheckdate.php">สถานะการจองนัดทดลองขับรถยนต์</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
