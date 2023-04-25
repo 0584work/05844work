@@ -60,20 +60,20 @@
 <div class="center01" style="width:60%;padding :3% 7%;background-color:#E8e8e8;border-radius:2rem;" >
 <form class="row g-3 " method="post" style="padding:5% 0 0 0;" action="payment.php?action=add&code=<?php echo $productbycode['license_palate'];?>">
       <div class="col-md-6">
-         <label for="inputEmail4" class="form-label">Name :</label>
-         <input type='text' name ='cusid' class="form-control" id="cusid"readonly value="<?php echo $usser['firstname'];?> <?php echo $usser['lastname'];?>" placeholder="ไม่มีแล้ว ลบทิ้งได้">
+         <label for="inputEmail4" class="form-label">ชื่อลูกค้า :</label>
+         <input type='text' name ='cusid' class="form-control" id="cusid"readonly value="<?php echo $usser['firstname'];?> <?php echo $usser['lastname'];?>">
       </div>
       <div class="col-md-6">
-         <label for="inputEmail4" class="form-label">License_plate :</label>
-         <input type='text' name ='carid' class="form-control" id="cusid"readonly value="<?php echo $productbycode['license_palate'];?>" placeholder="ไม่มีแล้ว ลบทิ้งได้">
+         <label for="inputEmail4" class="form-label">ป้ายทะเบียนรถยนต์ :</label>
+         <input type='text' name ='carid' class="form-control" id="cusid"readonly value="<?php echo $productbycode['license_palate'];?>" >
       </div>
       <div class="col-md-6">
-         <label for="inputEmail4" class="form-label">Date :</label>
-         <input type='text' name ='date' class="form-control" id="cusid"readonly value="<?php echo $date;?>" placeholder="ไม่มีแล้ว ลบทิ้งได้">
+         <label for="inputEmail4" class="form-label">วันที่ทำการนัด :</label>
+         <input type='text' name ='date' class="form-control" id="cusid"readonly value="<?php echo $date;?>">
       </div>
       <div class="col-md-6">
-         <label for="inputEmail4" class="form-label">Price :</label>
-         <input type='text' name ='price' class="form-control" id="cusid"readonly value="<?php echo $price;?>" placeholder="ไม่มีแล้ว ลบทิ้งได้">
+         <label for="inputEmail4" class="form-label">ราคา :</label>
+         <input type='text' name ='price' class="form-control" id="cusid"readonly value="<?php echo $price;?>">
       </div>
 	    
       

@@ -56,7 +56,7 @@
 			<img src="photo/seller.png" class="rounded mx-auto d-block pic img-thumbnail img-fluid" alt="...">
 		</div>
 	</div>
-<h3 class="center01 m-3">Welcome , <?php echo $row['username'];?></h3>
+<h3 class="center01 m-3">ยินดีต้อนรับ , <?php echo $row['username'];?></h3>
 
 
 <div class="container text-center center01">

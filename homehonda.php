@@ -28,7 +28,7 @@
   <div class="row row-cols-2 center01">
   <?php 
   
-    $ret = $db->query("SELECT * FROM tblproduct where series='honda'");
+    $ret = $db->query("SELECT * FROM tblproduct where series='Honda'");
     while($product_array = $ret->fetchArray(SQLITE3_ASSOC)){
   ?>
     
@@ -37,8 +37,8 @@
         <img src="<?php echo $product_array['image'];?>" alt="image" class="object-fit-fill border rounded" style="width: 18rem;"><!--image-->
           <div class="card-body">
             <h5 class="card-title"><?php echo $product_array["series"];?></h5>
-            <p class="card-text"><?php echo $product_array["price"] . " Bath";?></p>
-            <input type="submit" class="btn btn-primary" value="Detail"><!--button to go to Detail page-->
+            <p class="card-text"><?php echo $product_array["price"] . " บาท";?></p>
+            <input type="submit" class="btn btn-primary" value="รายละเอียด"><!--button to go to Detail page-->
           </div>
         </form>
       </div>

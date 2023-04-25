@@ -68,7 +68,7 @@
    <thead>
    <tr>
    <th>ทะเบียนรถยนต์</th>
-   <th>status</th>
+   <th>สถานะการจอง</th>
    <th>วันที่</th>
    <th>หมายเลขการจองนัด</th>
    </tr></thead><tbody>";

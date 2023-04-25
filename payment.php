@@ -74,9 +74,9 @@
          <input  class="form-control" type='text' name ='carid' id="carid"value="<?php echo $productbycode['license_palate'];?>" readonly>
       </div>
       <div class="col-md-6">
-         <label style="width:100%;margin:0.5rem 0.5rem 0 0.5rem;" for="inputAddress" class="form-label"><h2>สลิป :</h2></label>
+         <label for="inputAddress" class="form-label">สลิป :></label>
          <input type='file' name ='fileToUpload' class="form-control" id="fileToUpload"placeholder="ไฟล์.png หรือ ไฟล์.jpg" accept="image/png, image/gif, image/jpeg"
-         style="width:300%;margin:0.5rem 0.5rem 0 0.5rem;"> 
+         style="width:100%;margin:0.5rem 0.5rem 0 0.5rem;"> 
       </div>
     <div class="col-md-6">
          <label class="form-label">จำนวนเงินที่ต้องจ่าย</label>
@@ -112,12 +112,10 @@
         $cusid = $_POST['cusid'];
         $carid = $_POST['carid']; 
         $total = $_POST['val'];
-        $payid = uniqid();
-        $_SESSION['payid'] = $payid;
 
         $sql =<<<EOF
-           INSERT INTO tblpay (cusid,carid,total,payid)
-           VALUES ($cusid,'$carid',$total,'$payid');
+           INSERT INTO tblpay (cusid,carid,total)
+           VALUES ($cusid,'$carid',$total,);
         EOF;
         $ret = $db2->exec($sql);  
         if(!$ret) {

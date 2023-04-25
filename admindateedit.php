@@ -27,7 +27,7 @@
 </head>
 <body>
 <br><br><a href="adminhome.php" role="button" style="margin-left:5rem;"> &#9754; &nbsp; กลับเข้าสู่หน้าหลัก</a><br><br>
-   <h3 style="text-align:center;font-weight:600;"> จัดการรายละเอียดการนัด </h3>
+   <h3 style="text-align:center;font-weight:600;"> จัดการนัดทดลองขับรถยนต์ </h3>
 
 <div class="center01 mt-4">
 <div class="center01" style="width:60%;padding :3% 7%;background-color:#E8e8e8;border-radius:2rem;" >
@@ -37,7 +37,7 @@
          <input type='num' name ='cusid' class="form-control" id="inputEmail4">
       </div>
       <div class="col-md-4">
-         <label for="inputEmail4" class="form-label">ป้ายทะเบียนรถยนต์ : </label>
+         <label for="inputEmail4" class="form-label">ทะเบียนรถยนต์ : </label>
          <input type='num' name ='car' class="form-control" id="inputEmail4">
       </div>
       <div class="col-md-4">
@@ -45,16 +45,16 @@
          <input type='num' name ='staf' class="form-control" id="inputEmail4">
       </div>
       <div class="col-md-4">
-         <label for="inputEmail4" class="form-label">Status : </label>
+         <label for="inputEmail4" class="form-label">สถานะลูกค้า : </label>
          <select name="sta" class="form-select" aria-label="Default select example">
-            <option value="complete">Complete</option>
-            <option value="booking">Booking</option>
-            <option value="pending">Pending</option>
-            <option value="cancel">Cancel</option>
+            <option value="complete">เสร็จสิ้น</option>
+            <option value="booking">กำลังทำการนัด</option>
+            <option value="pending">รอการยืนยัน</option>
+            <option value="cancel">ยกเลิกการนัด</option>
          </select>
       </div>
       <div class="col-md-4">
-         <label for="inputEmail4" class="form-label">Date : </label>
+         <label for="inputEmail4" class="form-label">วันที่ทำการนัด : </label>
          <input type='datetime-local' name ='dat' class="form-control" id="inputEmail4" >
       </div>
       <div class="col-md-4">
@@ -91,17 +91,17 @@
    $sql ="SELECT * from booking";
    echo "
    <br><br>
-   <h3 style=\"text-align:center;font-weight:600;\"> รายละเอียดการนัดทั้งหมด </h3>
+   <h3 style=\"text-align:center;font-weight:600;\"> ตารางสถานะการจองนัด </h3>
    <br>
    <div class=\"center01\" id=\"ses1\">
    <table  class=\"table ta\">
    <thead>
    <tr>
-      <th>cusid</th><th>license palate</th>
-      <th>staffid</th>
-      <th>status</th>
-      <th>date</th>
-      <th>appointmentid</th>
+      <th>รหัสลูกค้า</th><th>ทะเบียนรถยนต์</th>
+      <th>รหัสพนักงาน</th>
+      <th>สถานะของการนัด</th>
+      <th>วันที่ทำการนัด</th>
+      <th>รหัสการนัดหมาย</th>
    </tr></thead><tbody>";
    $ret = $db->query($sql);
    //table to display database

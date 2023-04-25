@@ -47,7 +47,7 @@
     <br>
     <div class=\"center01\" id=\"ses1\">
     <table  class=\"table ta\">
-    <thead><tr><th>cus_id</th><th>license_plate</th><th>status</th><th>appointment_date</th>
+    <thead><tr><th>รหัสลูกค้า</th><th>ป้ายทะเบียนรถยนต์</th><th>สถานะการนัด</th><th>วันที่ทำการนัด</th>
     </tr></thead><tbody>";
     $ret = $db->query($sql);
    //table to display all appointment in database

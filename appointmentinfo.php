@@ -49,7 +49,7 @@ session_start();
          <input type='hidden' name ='carplate' value="<?php echo $productbycode['license_palate'];?>"><br>
       
          <div class="center01" style="width:100%; margin:1rem 0 0 0;">
-        <input type='submit' style="width:50%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;"class="btn" name='button1'value='Submit'/><!--add car data-->
+        <input type='submit' style="width:50%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;"class="btn" name='button1'value='ลงทะเบียนข้อมูล'/><!--add car data-->
         </div>
    </form>
    </div>
@@ -108,7 +108,7 @@ session_start();
         strval($date);
         $_SESSION['bookingdate'] = $date;
         $_SESSION['carid'] = $carplate;
-        $status = "pending";
+        $status = "กำลังทำการนัด";
         $appid = uniqid();
         strval($appid);
         $sql ="SELECT * from booking where car_id = '$carplate'";
