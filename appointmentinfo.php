@@ -39,12 +39,12 @@ session_start();
 		?>
 <body>
 <br><br><a href="home.php" role="button" style="margin-left:5rem;"> &#9754; &nbsp; กลับเข้าสู่หน้าหลัก</a><br><br>
-   <h3 style="text-align:center;font-weight:600;"> แก้ไขวันนัดทดลองขับรถยนต์ </h3>
+   <h3 style="text-align:center;font-weight:600;"> นัดวันทดลองขับรถยนต์ </h3>
    <br>
 <div class="center01">
    <div class="center01 " style="width:40%;padding :3% 7%;background-color:#E8e8e8;border-radius:2rem;">
    <form method='post'><!--form to insert data to edit date-->
-	   <label class="form-label">วันและเวลานัดใหม่ : </label>
+	   <label class="form-label">วันและเวลานัดหมาย : </label>
       <input type='datetime-local' name ='cardate' required="required" class="form-control">
          <input type='hidden' name ='carplate' value="<?php echo $productbycode['license_palate'];?>"><br>
       

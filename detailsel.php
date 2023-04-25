@@ -46,10 +46,10 @@ session_start();
 				</div>
 				<br>
 				<div class='product-price'>
-					<?php echo "ร่องรอยเสียหาย/ตำหนิ : " . $productbycode["car_defect"];?>
+					<?php echo "<b>ร่องรอยเสียหาย/ตำหนิ : </b>" . $productbycode["car_defect"];?>
 				</div>
 				<div class='product-price'>
-					<?php echo "รายละเอียดเพิ่มเติม : " . $productbycode["desc"];?>
+					<?php echo "<b>รายละเอียดเพิ่มเติม : </b>" . $productbycode["desc"];?>
 				</div>
 				<br>
 			</div>

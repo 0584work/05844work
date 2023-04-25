@@ -32,12 +32,8 @@
 <div class="center01 mt-4">
 <div class="center01" style="width:60%;padding :3% 7%;background-color:#E8e8e8;border-radius:2rem;" >
 <form class="row g-3 " method="post" style="padding:5% 0 0 0;">
-      <div class="col-md-4">
-         <label for="inputEmail4" class="form-label">รหัสรถ :</label>
-         <input type='num' name ='carid' class="form-control" id="inputEmail4">
-      </div>
-      <div class="col-md-4">
-         <label for="inputEmail4" class="form-label">cusid : </label>
+     <div class="col-md-4">
+         <label for="inputEmail4" class="form-label">รหัสลูกค้า : </label>
          <input type='num' name ='cusid' class="form-control" id="inputEmail4">
       </div>
       <div class="col-md-4">
@@ -45,11 +41,11 @@
          <input type='num' name ='car' class="form-control" id="inputEmail4">
       </div>
       <div class="col-md-4">
-         <label for="inputEmail4" class="form-label">staffid : </label>
+         <label for="inputEmail4" class="form-label">รหัสพนักงาน : </label>
          <input type='num' name ='staf' class="form-control" id="inputEmail4">
       </div>
       <div class="col-md-4">
-         <label for="inputEmail4" class="form-label">staffid : </label>
+         <label for="inputEmail4" class="form-label">status : </label>
          <select name="sta" class="form-select" aria-label="Default select example">
             <option value="complete">complete</option>
             <option value="booking">booking</option>
@@ -62,7 +58,7 @@
          <input type='datetime-local' name ='dat' class="form-control" id="inputEmail4" >
       </div>
       <div class="col-md-4">
-         <label for="inputEmail4" class="form-label">ID : </label>
+         <label for="inputEmail4" class="form-label">รหัสการนัดหมาย : </label>
          <input type='int' name ='appid' class="form-control" id="inputEmail4">
       </div>
       <div class="center01" style="width:100%; margin:1rem 0 0 0;">
@@ -276,6 +272,7 @@
       echo "<tr>";
       echo "<td>". $row['cusid'] . "</td>";
       echo "<td>". $row['carid']."</td>";
+      echo "<td>". $row['staffid']."</td>";
       echo "<td>".$row['accountnumber'] ."</td>";
       echo "<td>".$row['total'] ."</td>";
       echo "</tr>";

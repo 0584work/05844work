@@ -66,11 +66,11 @@
 <form class="row g-3 " method="post" style="padding:5% 0 0 0;" >
     <input type="hidden" name="cusid" id="cusid" value="<?php echo $cid;?>">
     <div class="col-md-6">
-         <label class="form-label">cusid</label>
+         <label class="form-label">ชื่อของลูกค้า</label>
          <input  class="form-control" type='text' name ='name' id="name"value="<?php echo $username['firstname'];?> <?php echo $username['lastname'];?>" readonly>
       </div>
     <div class="col-md-6">
-         <label class="form-label">license_palate</label>
+         <label class="form-label">license_plate</label>
          <input  class="form-control" type='text' name ='carid' id="carid"value="<?php echo $productbycode['license_palate'];?>" readonly>
       </div>
     <div class="col-md-6">
@@ -79,7 +79,7 @@
       </div>
       
     <div class="col-md-6">
-         <label class="form-label">total</label>
+         <label class="form-label">จำนวนเงินที่ต้องจ่าย</label>
          <input  class="form-control" type='text' name ='val' id="val"  value="<?php echo $price;?>" readonly>
       </div>
         

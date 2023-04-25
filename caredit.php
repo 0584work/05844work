@@ -29,12 +29,8 @@
    <h3 style="text-align:center;font-weight:600;"> จัดการรายละเอียดรถยนต์ </h3>
 
    <div class="center01 mt-4">
-   <div class="center01" style="width:60%;padding :3% 7%;background-color:#E8e8e8;border-radius:2rem;" >
+   <div class="center01" style="width:80%;padding :3% 7%;background-color:#E8e8e8;border-radius:2rem;" >
       <form class="row g-3 " method="post" style="padding:5% 0 0 0;">
-      <div class="col-md-4">
-         <label for="inputEmail4" class="form-label">รหัสรถ :</label>
-         <input type='num' name ='carid' class="form-control" id="inputEmail4" placeholder="ไม่มีแล้ว ลบทิ้งได้">
-      </div>
       <div class="col-md-4">
          <label for="inputPassword4" class="form-label">ทะเบียนรถ :</label>
          <input type='text' name ='lic' class="form-control" id="inputPassword4" placeholder="3XX-XXXX">
@@ -61,7 +57,7 @@
       </div>
       <div class="col-md-5">
          <label for="inputAddress" class="form-label">ชื่อรูป :</label>
-         <input type="text"  name ='pic' class="form-control" id="inputAddress" placeholder="ไฟล์ .png หรือ .jpg" accept="image/png, image/gif, image/jpeg">
+         <input type="text"  name ='pic' class="form-control" id="inputAddress"  placeholder="file.png หรือ file.jpg" accept="image/png, image/gif, image/jpeg">
       </div>
       <div class="col-12">
          <label for="inputAddress" class="form-label">ร่องรอยเสียหาย/ตำหนิ :</label>
@@ -78,16 +74,20 @@
             <input type='submit' style="width:20%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#Fc9d9e;" class="btn" name='button4'value='จบการทำงาน'/><!--end database-->
       </div>
       </form>
+     <div>
       <form action="upload.php" method="post" enctype="multipart/form-data">
-      <div class="col-md-5">
+      <div>
+         <br><br>
          <label for="inputAddress" class="form-label">รูป :</label>
-         <input type="file"  name ='fileToUpload' class="form-control" id="fileToUpload" placeholder="ไฟล์ .png หรือ .jpg" accept="image/png, image/gif, image/jpeg">
-         <input type="submit" value="Upload Image" name="submit">
+         <input type="file"  name ='fileToUpload' class="form-control" id="fileToUpload" style="width:150%;margin:0.5rem 0.5rem 0 0.5rem;" placeholder="ไฟล์ .png หรือ .jpg" accept="image/png, image/gif, image/jpeg">
+         <input type="submit" value="Upload Image" style="width:70%;margin:0.5rem 0.5rem 0 0.5rem;" name="submit">
       </div>
-   </form>
-   </div>
+      </form>
+      </div>
+   </div> 
+   
 </div>
-
+      
 <br><br>
    <div class="center01">
    <hr style="width: 60rem;">
