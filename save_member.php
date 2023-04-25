@@ -30,7 +30,7 @@
 	   // Check if the execution of query is success
 	   if($stmt->execute()){
 		   //setting a 'success' session to save our insertion success message.
-		   $_SESSION['success'] = "Successfully created an account";
+		   $_SESSION['success'] = "ลงทะเบียนสำเร็จ";
 
 		   //redirecting to the index.php 
 		   header('location: index.php');

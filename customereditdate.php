@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
-    <title>แก้ไขวันนัด</title>
+    <title>จัดการนัดทดลองขับรถยนต์</title>
     <style>th, td {
                border-bottom: 3px solid #ddd;
             }

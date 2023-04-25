@@ -18,6 +18,7 @@ if (!ISSET($_SESSION['error'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 	</head>
+	<title>Login</title>
 <body>
 	<div class="col-md-6 well" style="margin:auto;width:80%;">
 		<hr style="border-top:1px dotted #ccc;"/>

@@ -18,6 +18,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 	</head>
+	<Title>Register</Title>
 <body>
 	<div class="col-md-6 well" style="margin:auto;width:80%;">
 		<!-- Link for redirecting to Login Page -->

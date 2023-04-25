@@ -21,6 +21,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 	</head>
+  <title>Isuzu</title>
 <body>
 <?php require_once("navseller.php"); ?>
 	
@@ -36,7 +37,7 @@
         <form action="detailsel.php?action=add&code=<?php echo $product_array['license_palate'];?>" method="post">
         <img src="<?php echo $product_array['image'];?>" alt="image" class="object-fit-fill border rounded" style="width: 18rem;"><!--image-->
           <div class="card-body">
-            <h5 class="card-title"><?php echo $product_array["series"];?></h5>
+            <h5 class="card-title"><?php echo $product_array["name"];?></h5>
             <p class="card-text"><?php echo $product_array["price"] . " บาท";?></p>
             <input type="submit" class="btn btn-primary" value="รายละเอียด"><!--button to go to detail page-->
           </div>
