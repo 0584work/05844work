@@ -36,9 +36,9 @@
          <label for="inputEmail4" class="form-label">สถานะลูกค้า : </label>
          <select name="sta" class="form-select" aria-label="Default select example">
             <option value="0000">-----</option>
-            <option value="complete">สิ้นสุดการนัด</option>
-            <option value="booking">ยืนยันการนัด</option>
-            <option value="pending">รอการยืนยัน</option>
+            <option value="สิ้นสุดการนัด">สิ้นสุดการนัด</option>
+            <option value="ยืนยันการนัด">ยืนยันการนัด</option>
+            <option value="รอการยืนยัน">รอการยืนยัน</option>
          </select>
       </div>
       <div class="col-md-4">
@@ -58,7 +58,42 @@
    </div>
 
 <?php
-   // Connect to Database 
+  
+  //funcion to modify data to database
+   if(array_key_exists('button2', $_POST)) {
+    button2();
+  }
+    function button2() {
+       class MyDB3 extends SQLite3 {
+          function __construct() {
+             $this->open('db/masterdata.db');
+          }
+       }
+       // Open Database 
+       $db3 = new MyDB3();
+       if(!$db3) {
+          echo $db3->lastErrorMsg();
+       }
+       $stat = $_POST['sta'];
+       $appid = $_POST['appid'];
+       //query modify data to database
+       $sql =<<<EOF
+          UPDATE booking set
+          status = '$stat'
+          WHERE appointmentid ='$appid';
+       EOF;
+    
+       $ret = $db3->exec($sql);
+       if(!$ret) {
+          echo $db3->lastErrorMsg();
+       } else {
+         echo "<div class='center01 mt-3'>
+         <div class='center01' style='width:60%;background-color:#E8e8e8;border-radius:2rem;' >
+           <form class='col-md-4' style='padding:5% 0 0 0;' >
+         <div class='alert alert-success' style='text-align: center;'>เสร็จสิ้น<br></div></form></div></div>";
+       }
+      }
+       // Connect to Database 
    class MyDB extends SQLite3 {
       function __construct() {
          $this->open('db/masterdata.db');
@@ -98,38 +133,6 @@
       echo "</tr>";
    }
    echo "</tbody></table></div>";
-  //funcion to modify data to database
-   if(array_key_exists('button2', $_POST)) {
-    button2();
-  }
-    function button2() {
-       class MyDB3 extends SQLite3 {
-          function __construct() {
-             $this->open('db/masterdata.db');
-          }
-       }
-       // Open Database 
-       $db3 = new MyDB3();
-       if(!$db3) {
-          echo $db3->lastErrorMsg();
-       }
-       $stat = $_POST['sta'];
-       $appid = $_POST['appid'];
-       //query modify data to database
-       $sql =<<<EOF
-          UPDATE booking set
-          status = '$stat'
-          WHERE appointmentid ='$appid';
-       EOF;
-    
-       $ret = $db3->exec($sql);
-       if(!$ret) {
-          echo $db3->lastErrorMsg();
-       } else {
-          echo "Records modify successfully<br>";
-       }
-      }
-      
     ?>  
 </body>
 </html>

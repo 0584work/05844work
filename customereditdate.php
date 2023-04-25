@@ -82,7 +82,10 @@
        if(!$ret) {
           echo $db3->lastErrorMsg();
        } else {
-          echo "แก้ไขการจองนัดสำเร็จ<br>";
+         echo "<div class='center01 mt-3'>
+         <div class='center01' style='width:60%;background-color:#E8e8e8;border-radius:2rem;' >
+           <form class='col-md-4' style='padding:5% 0 0 0;' >
+         <div class='alert alert-success' style='text-align: center;'>แก้ไขการจองนัดสำเร็จ<br></div></form></div></div>";
        }
       }
  if(array_key_exists('button3', $_POST)) {
@@ -115,7 +118,10 @@
      if(!$ret) {
         echo $db4->lastErrorMsg();
      } else {
-        echo "ยกเลิกการจองนัดสำเร็จ<br>";
+      echo "<div class='center01 mt-3'>
+      <div class='center01' style='width:60%;background-color:#E8e8e8;border-radius:2rem;' >
+        <form class='col-md-4' style='padding:5% 0 0 0;' >
+      <div class='alert alert-success' style='text-align: center;'>ยกเลิกการจองนัดสำเร็จ<br></div></form></div></div>";
      }
   }// Connect to Database 
    class MyDB extends SQLite3 {
@@ -140,7 +146,7 @@
    <thead>
    <tr>
    <th>ทะเบียนรถยนต์</th>
-   <th>status</th>
+   <th>สถานะของการนัด</th>
    <th>วันที่นัด</th>
    <th>เวลาที่นัด</th>
    <th>หมายเลขการจองนัด</th>

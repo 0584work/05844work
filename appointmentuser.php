@@ -70,8 +70,8 @@
          <input type='text' name ='date' class="form-control" id="cusid"readonly value="<?php echo $date;?>">
       </div>
       <div class="col-md-6">
-         <label for="inputEmail4" class="form-label">วันที่ทำการนัด :</label>
-         <input type='text' name ='date' class="form-control" id="cusid"readonly value="<?php echo $date;?>">
+         <label for="inputEmail4" class="form-label">เวลาที่ทำการนัด :</label>
+         <input type='text' name ='date' class="form-control" id="cusid"readonly value="<?php echo $time;?>">
       </div>
       <div class="col-md-6">
          <label for="inputEmail4" class="form-label">ราคา :</label>

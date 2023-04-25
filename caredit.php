@@ -45,7 +45,7 @@
       </div>
       <div class="col-md-4">
          <label for="inputAddress" class="form-label">ผลิตปี :</label>
-         <input type="text" name ='year' class="form-control" id="inputAddress" placeholder="2000">
+         <input type="num" name ='year' class="form-control" id="inputAddress" placeholder="2000">
       </div>
       <div class="col-md-4">
          <label for="inputAddress" class="form-label">สี :</label>
@@ -53,11 +53,15 @@
       </div>
       <div class="col-md-4">
          <label for="inputAddress" class="form-label">ราคา :</label>
-         <input type="text" name ='pri' class="form-control" id="inputAddress" placeholder="120000">
+         <input type="text" name ='pri' class="form-control" id="inputAddress" placeholder="120,000">
       </div>
       <div class="col-md-5">
          <label for="inputAddress" class="form-label">ชื่อรูป :</label>
          <input type="file"  name ='fileToUpload' class="form-control" id="fileToUpload" placeholder="ไฟล์ .png หรือ .jpg" accept="image/png, image/gif, image/jpeg">
+      </div>
+      <div class="col-md-4">
+         <label for="inputAddress" class="form-label">เลขไมล์ :</label>
+         <input type="text" name ='mill' class="form-control" id="inputAddress" placeholder="12,000">
       </div>
       <div class="col-12">
          <label for="inputAddress" class="form-label">ร่องรอยเสียหาย/ตำหนิ :</label>
@@ -73,11 +77,6 @@
             <input type='submit' style="width:15%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;" class="btn" name='button3'value='ลบข้อมูล'/><!--delete car data-->
       </div>
       </form>
-     <div>
-      <form action="upload.php" method="post" enctype="multipart/form-data">
-      
-      </form>
-      </div>
    </div> 
    
 </div>
@@ -88,6 +87,132 @@
    </div>
 
 <?php
+   if(array_key_exists('button1', $_POST)) {
+      button1();
+    }
+      function button1() {
+         class MyDB2 extends SQLite3 {
+            function __construct() {
+               $this->open('db/masterdata.db');
+            }
+         }
+      
+         // Open Database 
+         $db2 = new MyDB2();
+         if(!$db2) {
+            echo $db2->lastErrorMsg();
+         }
+         $lic = $_POST['lic'];
+         $ser = $_POST['ser'];
+         $year = $_POST['year'];
+         $colo = $_POST['colo'];
+         $nam = $_POST['nam'];
+         $mileage = $_POST['mill'];
+         $def = $_POST['def'];
+         $price = $_POST['pri'];
+         $desc = $_POST['desc'];
+      
+         $sql =<<<EOF
+           INSERT INTO tblproduct (license_palate,name,year,color,car_mileage,car_defect,price,desc,series)
+           VALUES ('$lic','$nam','$year','$colo','$mileage','$def','$price','$desc','$ser');
+          EOF;
+      
+         $ret = $db2->exec($sql);
+         if(!$ret) {
+            echo $db2->lastErrorMsg();
+         } else {
+            echo "<div class='center01 mt-3'>
+            <div class='center01' style='width:60%;background-color:#E8e8e8;border-radius:2rem;' >
+              <form class='col-md-4' style='padding:5% 0 0 0;' >
+            <div class='alert alert-success' style='text-align: center;'>การจัดการเสร็จสิ้น<br></div></form></div></div>";
+         }
+   }
+   if(array_key_exists('button2', $_POST)) {
+    button2();
+  }
+    function button2() {
+       class MyDB3 extends SQLite3 {
+          function __construct() {
+             $this->open('db/masterdata.db');
+          }
+       }
+    
+       // Open Database 
+       $db3 = new MyDB3();
+       if(!$db3) {
+          echo $db3->lastErrorMsg();
+       }
+       $lic = $_POST['lic'];
+       $ser = $_POST['ser'];
+       $year = $_POST['year'];
+       $colo = $_POST['colo'];
+       $nam = $_POST['nam'];
+       $mileage = $_POST['mill'];
+       $def = $_POST['def'];
+       $price = $_POST['pri'];
+       $desc = $_POST['desc'];
+    
+       $sql =<<<EOF
+          UPDATE tblproduct set
+          series='$ser',
+          year='$year',
+          color='$colo',
+          name='$nam',
+          car_mileage='$mileage',
+          car_defect='$def',
+          price='$price',
+          desc='$desc'
+          WHERE license_palate='$lic';
+          EOF;
+    
+       $ret = $db3->exec($sql);
+       if(!$ret) {
+          echo $db3->lastErrorMsg();
+       } else {
+         echo "<div class='center01 mt-3'>
+         <div class='center01' style='width:60%;background-color:#E8e8e8;border-radius:2rem;' >
+           <form class='col-md-4' style='padding:5% 0 0 0;' >
+         <div class='alert alert-success' style='text-align: center;'>การจัดการเสร็จสิ้น<br></div></form></div></div>";
+       }
+ }
+ if(array_key_exists('button3', $_POST)) {
+  button3();
+}
+  function button3() {
+     class MyDB4 extends SQLite3 {
+        function __construct() {
+           $this->open('db/masterdata.db');
+        }
+     }
+  
+     // Open Database 
+     $db4 = new MyDB4();
+     if(!$db4) {
+        echo $db4->lastErrorMsg();
+     }
+     $lic = $_POST['lic'];
+     $ser = $_POST['ser'];
+     $year = $_POST['year'];
+     $colo = $_POST['colo'];
+     $mileage = $_POST['mill'];
+     $def = $_POST['def'];
+     $price = $_POST['pri'];
+     $desc = $_POST['desc'];
+  
+     $sql =<<<EOF
+        DELETE FROM tblproduct WHERE license_palate='$lic';
+        EOF;
+  
+     $ret = $db4->exec($sql);
+     if(!$ret) {
+        echo $db4->lastErrorMsg();
+     } else {
+      echo "<div class='center01 mt-3'>
+      <div class='center01' style='width:60%;background-color:#E8e8e8;border-radius:2rem;' >
+        <form class='col-md-3' style='padding:5% 0 0 0;' >
+      <div class='alert alert-success' style='text-align: center;'>การจัดการเสร็จสิ้น<br></div></form></div></div>";
+     }
+  }
    // Connect to Database 
    class MyDB extends SQLite3 {
       function __construct() {
@@ -138,123 +263,7 @@
    }
    echo "</tbody></table></div>";
    //table data info
-   if(array_key_exists('button1', $_POST)) {
-      button1();
-    }
-      function button1() {
-         class MyDB2 extends SQLite3 {
-            function __construct() {
-               $this->open('db/masterdata.db');
-            }
-         }
-      
-         // Open Database 
-         $db2 = new MyDB2();
-         if(!$db2) {
-            echo $db2->lastErrorMsg();
-         }
-         $lic = $_POST['lic'];
-         $ser = $_POST['ser'];
-         $year = $_POST['year'];
-         $colo = $_POST['colo'];
-         $nam = $_POST['nam'];
-         $mileage = $_POST['mill'];
-         $def = $_POST['def'];
-         $price = $_POST['pri'];
-         $desc = $_POST['desc'];
-      
-         $sql =<<<EOF
-            INSERT INTO tblproduct (license_palate,series,year,color,name,car_mileage,car_defect,price,desc)
-            VALUES ('$lic', '$ser', $year, '$colo',$mileage,'$nam','$def',$price,'$desc');
-            EOF;
-      
-         $ret = $db2->exec($sql);
-         if(!$ret) {
-            echo $db2->lastErrorMsg();
-         } else {
-            echo "Records created successfully<br>";
-         }
-   }
-   if(array_key_exists('button2', $_POST)) {
-    button2();
-  }
-    function button2() {
-       class MyDB3 extends SQLite3 {
-          function __construct() {
-             $this->open('db/masterdata.db');
-          }
-       }
-    
-       // Open Database 
-       $db3 = new MyDB3();
-       if(!$db3) {
-          echo $db3->lastErrorMsg();
-       }
-       $lic = $_POST['lic'];
-       $ser = $_POST['ser'];
-       $year = $_POST['year'];
-       $colo = $_POST['colo'];
-       $nam = $_POST['nam'];
-       $mileage = $_POST['mill'];
-       $def = $_POST['def'];
-       $price = $_POST['pri'];
-       $desc = $_POST['desc'];
-    
-       $sql =<<<EOF
-          UPDATE tblproduct set
-          series='$ser',
-          year=$year,
-          color='$colo',
-          name='$nam',
-          car_mileage=$mileage,
-          car_defect='$def',
-          price=$price,
-          desc='$desc'
-          WHERE license_palate='$lic';
-          EOF;
-    
-       $ret = $db3->exec($sql);
-       if(!$ret) {
-          echo $db3->lastErrorMsg();
-       } else {
-          echo "Records modify successfully<br>";
-       }
- }
- if(array_key_exists('button2', $_POST)) {
-  button3();
-}
-  function button3() {
-     class MyDB4 extends SQLite3 {
-        function __construct() {
-           $this->open('db/masterdata.db');
-        }
-     }
-  
-     // Open Database 
-     $db4 = new MyDB4();
-     if(!$db4) {
-        echo $db4->lastErrorMsg();
-     }
-     $lic = $_POST['lic'];
-     $ser = $_POST['ser'];
-     $year = $_POST['year'];
-     $colo = $_POST['colo'];
-     $mileage = $_POST['mill'];
-     $def = $_POST['def'];
-     $price = $_POST['pri'];
-     $desc = $_POST['desc'];
-  
-     $sql =<<<EOF
-        DELETE FROM tblproduct WHERE license_palate='$lic';
-        EOF;
-  
-     $ret = $db4->exec($sql);
-     if(!$ret) {
-        echo $db4->lastErrorMsg();
-     } else {
-        echo "Records delete successfully<br>";
-     }
-  }
+   
     ?>   
 </body>
 </html>

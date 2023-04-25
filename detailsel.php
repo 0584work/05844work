@@ -48,6 +48,7 @@ session_start();
 				<div class='product-price'>
 					<?php echo "<b>ร่องรอยเสียหาย/ตำหนิ : </b>" . $productbycode["car_defect"];?>
 				</div>
+				<br>
 				<div class='product-price'>
 					<?php echo "<b>รายละเอียดเพิ่มเติม : </b>" . $productbycode["desc"];?>
 				</div>

@@ -68,8 +68,9 @@
    <thead>
    <tr>
    <th>ทะเบียนรถยนต์</th>
-   <th>สถานะการจอง</th>
-   <th>วันที่</th>
+   <th>สถานะของการนัด</th>
+   <th>วันที่จองนัด</th>
+   <th>เวลาที่</th>
    <th>หมายเลขการจองนัด</th>
    </tr></thead><tbody>";
    $ret = $db->query($sql);
@@ -79,7 +80,8 @@
       echo "<tr>";
       echo "<td>". $row['car_id']."</td>";
       echo "<td>".$row['status'] ."</td>";
-      echo "<td>".$row['customer_apointment_date'] ."</td>";
+      echo "<td>".$row['apointment_date'] ."</td>";
+      echo "<td>".$row['apointment_time'] ."</td>";
       echo "<td>".$row['appointmentid'] ."</td>";
       echo "</tr>";
    }
