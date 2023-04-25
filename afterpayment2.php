@@ -4,7 +4,7 @@
   <!--form to add database and go to payment-->
   <form class="d-flex flex-column w-50 align-items-center justify-content-center" >
        <h1> payment complete </h1>
-    </form> 
+  </form> 
     <?php
 $target_dir = "qr/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -49,6 +49,7 @@ if ($uploadOk == 0) {
 } else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     echo "The file ". htmlspecialchars(   basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+    echo "<br>Thank you for buying";
     header( "refresh:2;url=home.php" );
   } else {
     echo "Sorry, there was an error uploading your file.";
