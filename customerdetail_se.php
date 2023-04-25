@@ -107,7 +107,6 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
       <tr>
       <th scope=\"col\">ไอดีผู้ใช้</th>
       <th scope=\"col\">Username</th>
-      <th scope=\"col\">Password</th>
       <th scope=\"col\">ชื่อจริง</th>
       <th scope=\"col\">นามสกุล</th>
       <th scope=\"col\">เบอร์โทรศัพท์</th>
@@ -119,7 +118,6 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
       echo "<tr>";
       echo "<td>". $row['mem_id'] . "</td>";
       echo "<td>". $row['username']."</td>";
-      echo "<td>". $row['password'] ."</td>";
       echo "<td>".$row['firstname'] ."</td>";
       echo "<td>".$row['lastname'] ."</td>";
       echo "<td>".$row['phonenumber'] ."</td>";

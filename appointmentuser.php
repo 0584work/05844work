@@ -50,7 +50,7 @@
 </head>
 <body>
 <br><br><a href="home.php" role="button" style="margin-left:5rem;"> &#9754; &nbsp; กลับเข้าสู่หน้าหลัก</a><br><br>
-   <h3 style="text-align:center;font-weight:600;">ยืนยันการจอง</h3>
+   <h3 style="text-align:center;font-weight:600;">จองนัดทดลองขับรถยนต์</h3>
 
     <?php
         $price = ceil(($productbycode['price'] * 0.01));
@@ -78,7 +78,7 @@
 	    
       
          <div class="center01" style="width:100%; margin:1rem 0 0 0;">
-         <button  type="submit" name="button1" class="btn" style="width:20%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;">Book</button>
+         <button  type="submit" name="button1" class="btn" style="width:25%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;">ยืนยันการจองนัด</button>
          
         </div>
    </form>

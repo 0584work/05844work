@@ -49,7 +49,7 @@
       </div>
       <div class="col-md-4">
          <label for="inputAddress" class="form-label">สี :</label>
-         <input type="text" name ='colo' class="form-control" id="inputAddress" placeholder="เปลี่ยนชื่อสีเป็นภาษาไทยด้วย">
+         <input type="text" name ='colo' class="form-control" id="inputAddress" placeholder="ดำ">
       </div>
       <div class="col-md-4">
          <label for="inputAddress" class="form-label">ราคา :</label>

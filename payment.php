@@ -66,25 +66,24 @@
 <form class="row g-3 " method="post" style="padding:5% 0 0 0;" >
     <input type="hidden" name="cusid" id="cusid" value="<?php echo $cid;?>">
     <div class="col-md-6">
-         <label class="form-label">ชื่อของลูกค้า</label>
+         <label class="form-label">ชื่อลูกค้า :</label>
          <input  class="form-control" type='text' name ='name' id="name"value="<?php echo $username['firstname'];?> <?php echo $username['lastname'];?>" readonly>
       </div>
     <div class="col-md-6">
-         <label class="form-label">ทะเบียนรถ</label>
+         <label class="form-label">ทะเบียนรถยนต์ :</label>
          <input  class="form-control" type='text' name ='carid' id="carid"value="<?php echo $productbycode['license_palate'];?>" readonly>
       </div>
       <div class="col-md-6">
-         <label for="inputAddress" class="form-label">สลิป :></label>
-         <input type='file' name ='fileToUpload' class="form-control" id="fileToUpload"placeholder="ไฟล์.png หรือ ไฟล์.jpg" accept="image/png, image/gif, image/jpeg"
-         style="width:100%;margin:0.5rem 0.5rem 0 0.5rem;"> 
+         <label for="inputAddress" class="form-label">สลิป :</label>
+         <input type='file' name ='fileToUpload' class="form-control" id="fileToUpload"placeholder="ไฟล์.png หรือ ไฟล์.jpg" accept="image/png, image/gif, image/jpeg"> 
       </div>
     <div class="col-md-6">
-         <label class="form-label">จำนวนเงินที่ต้องจ่าย</label>
+         <label class="form-label">จำนวนเงินที่ต้องจ่าย :</label>
          <input  class="form-control" type='text' name ='val' id="val"  value="<?php echo $price;?>" readonly>
       </div>
         
       <div class="center01" style="width:100%; margin:1rem 0 0 0;">
-         <button  type="submit" name="pay" class="btn" style="width:20%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;">Pay</button>
+         <button  type="submit" name="pay" class="btn" style="width:20%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;">ชำระเงิน</button>
          
         </div>
 </form>
@@ -115,14 +114,14 @@
 
         $sql =<<<EOF
            INSERT INTO tblpay (cusid,carid,total)
-           VALUES ($cusid,'$carid',$total,);
+           VALUES ($cusid,'$carid',$total);
         EOF;
         $ret = $db2->exec($sql);  
         if(!$ret) {
           echo $db2->lastErrorMsg();
         } else {
-          echo "payment Recorded<br>";
-          header("refresh:1;url=home.php");
+          echo "การจองนัดสำเร็จ<br>";
+          header("refresh:2;url=home.php");
         }      
         $db2->close();
      }
