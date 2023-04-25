@@ -54,7 +54,7 @@ session_start();
 				</div>
 				<br>
 				<div class='card_action d-grid'>
-					<input type="submit" class="btn btn-primary" value="จองวันทดลองขับ">
+					<input type="submit" class="btn btn-primary" value="นัดวันทดลองขับรถ">
 				</div>
 			</div>
 		</form>	

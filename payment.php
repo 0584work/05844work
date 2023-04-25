@@ -72,19 +72,14 @@
     <div class="col-md-6">
          <label class="form-label">license_plate</label>
          <input  class="form-control" type='text' name ='carid' id="carid"value="<?php echo $productbycode['license_palate'];?>" readonly>
-      </div>
-    <div class="col-md-6">
-         <label class="form-label">ชื่อไฟล์สลิป</label>
-         <input  class="form-control" type='text' name ='accn' id="accn"value=""  required="required">
-      </div>
-      
+    </div>
     <div class="col-md-6">
          <label class="form-label">จำนวนเงินที่ต้องจ่าย</label>
          <input  class="form-control" type='text' name ='val' id="val"  value="<?php echo $price;?>" readonly>
       </div>
         
       <div class="center01" style="width:100%; margin:1rem 0 0 0;">
-         <button  type="submit" name="pay" class="btn" style="width:20%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;">pay</button>
+         <button  type="submit" name="pay" class="btn" style="width:20%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;">Pay</button>
          
         </div>
 </form>
@@ -113,10 +108,12 @@
         $carid = $_POST['carid'];
         $acc = $_POST['accn'];  
         $total = $_POST['val'];
+        $payid = uniqid();
+        $_SESSION['payid'] = $payid;
 
         $sql =<<<EOF
-           INSERT INTO tblpay (cusid,carid,accountnumber,total)
-           VALUES ($cusid,'$carid','$acc',$total);
+           INSERT INTO tblpay (cusid,carid,total,payid)
+           VALUES ($cusid,'$carid',$total,'$payid');
         EOF;
         $ret = $db2->exec($sql);  
         if(!$ret) {

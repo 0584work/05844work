@@ -75,7 +75,7 @@ session_start();
     $id = $_SESSION['user'];
     $sql ="SELECT * from booking where cus_id = $id";
     echo "<br><br>
-    <h3 style=\"text-align:center;font-weight:600;\"> รายละเอียดรถยนต์ทั้งหมด </h3>
+    <h3 style=\"text-align:center;font-weight:600;\"> รายการนัดทั้งหมด </h3>
     <br>
     <div class=\"center01\" id=\"ses1\">
     <table class=\"table ta\" id='table1'>
