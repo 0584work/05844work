@@ -35,12 +35,10 @@
 <form action="afterpayment2.php" enctype="multipart/form-data"  class="row g-3 " method="post" style="padding:5% 0 0 0;">
   <form action="afterpayment2.php" method="post">
       <div class="col-md-4">
-         <label for="inputAddress" class="form-label">สลิป :</label>
+         <label style="width:100%;margin:0.5rem 0.5rem 0 0.5rem;" for="inputAddress" class="form-label"><h2>สลิป :</h2></label>
          <input type='file' name ='fileToUpload' class="form-control" id="fileToUpload"placeholder="ไฟล์ .png หรือ .jpg" accept="image/png, image/gif, image/jpeg"
-         required="required"> 
-      </div>
-      <div class="col-md-4">
-      <input type='submit' style="width:80%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;"class="btn" name='submit'value='Upload Image'/><!--add car data-->
+         style="width:300%;margin:0.5rem 0.5rem 0 0.5rem;" required="required"> 
+         <input type='submit' style="width:120%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;"class="btn" name='submit'value='Upload Image'/><!--add car data-->
       </div>
     </form> 
     </div>
