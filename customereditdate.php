@@ -138,7 +138,7 @@
      $appid = $_POST['cid'];  
      strval($appid);
      $dat = $_POST['dat'];
-     $status='cancel';
+     $status='ยกเลิกการจองนัด';
 
      $sql =<<<EOF
      UPDATE booking set 
