@@ -38,8 +38,8 @@
         <img src="<?php echo $product_array['image'];?>" alt="image" class="object-fit-fill border rounded" style="width: 18rem;"><!--image-->
           <div class="card-body">
             <h5 class="card-title"><?php echo $product_array["series"];?></h5>
-            <p class="card-text"><?php echo $product_array["price"] . " bath";?></p>
-            <input type="submit" class="btn btn-primary" value="detail"><!--button to go to detail page-->
+            <p class="card-text"><?php echo $product_array["price"] . " Bath";?></p>
+            <input type="submit" class="btn btn-primary" value="Detail"><!--button to go to detail page-->
           </div>
         </form>
       </div>

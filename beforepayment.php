@@ -53,7 +53,7 @@
 
   <h3 style="text-align:center;font-weight:600;">การจองเสร็จสิ้น</h3>
   <div class="center01" style="width:100%; margin:1rem 0 0 0;">
-         <button  type="submit" name="send" class="btn" style="width:40%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;">next</button>
+         <button  type="submit" name="send" class="btn" style="width:40%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;">Next</button>
          
         </div>
     </form> 

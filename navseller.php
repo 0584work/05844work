@@ -12,23 +12,23 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            เลือกรุ่นรถ
+            เลือกยี่ห้อรถยนต์
           </a>
           <ul class="dropdown-menu">
           <li><form action="homehondasel.php?" method="post">
-            <input class="dropdown-item" type="submit" class="btnadd" value="honda">
+            <input class="dropdown-item" type="submit" class="btnadd" value="Honda">
           </form></li>
           <li><form action="homeisuzusel.php?" method="post">
-            <input class="dropdown-item" type="submit" class="btnadd" value="isuzu">
+            <input class="dropdown-item" type="submit" class="btnadd" value="Isuzu">
           </form></li>
           <li><form action="homemazdasel.php?" method="post">
-            <input class="dropdown-item" type="submit" class="btnadd" value="mazda">
+            <input class="dropdown-item" type="submit" class="btnadd" value="Mazda">
           </form></li>
           <li><form action="homemitsusel.php?" method="post">
-            <input class="dropdown-item" type="submit" class="btnadd" value="mitsu">
+            <input class="dropdown-item" type="submit" class="btnadd" value="Mitsu">
           </form></li>
           <li><form action="hometoyotasel.php?" method="post">
-            <input class="dropdown-item" type="submit" class="btnadd" value="toyota">
+            <input class="dropdown-item" type="submit" class="btnadd" value="Toyota">
           </form></li>
           </ul>
         </li>

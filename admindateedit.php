@@ -37,7 +37,7 @@
          <input type='num' name ='cusid' class="form-control" id="inputEmail4">
       </div>
       <div class="col-md-4">
-         <label for="inputEmail4" class="form-label">license_palate : </label>
+         <label for="inputEmail4" class="form-label">License_plate : </label>
          <input type='num' name ='car' class="form-control" id="inputEmail4">
       </div>
       <div class="col-md-4">
@@ -45,16 +45,16 @@
          <input type='num' name ='staf' class="form-control" id="inputEmail4">
       </div>
       <div class="col-md-4">
-         <label for="inputEmail4" class="form-label">status : </label>
+         <label for="inputEmail4" class="form-label">Status : </label>
          <select name="sta" class="form-select" aria-label="Default select example">
-            <option value="complete">complete</option>
-            <option value="booking">booking</option>
-            <option value="pending">pending</option>
-            <option value="cancel">cancel</option>
+            <option value="complete">Complete</option>
+            <option value="booking">Booking</option>
+            <option value="pending">Pending</option>
+            <option value="cancel">Cancel</option>
          </select>
       </div>
       <div class="col-md-4">
-         <label for="inputEmail4" class="form-label">date : </label>
+         <label for="inputEmail4" class="form-label">Date : </label>
          <input type='datetime-local' name ='dat' class="form-control" id="inputEmail4" >
       </div>
       <div class="col-md-4">

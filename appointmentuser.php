@@ -60,25 +60,25 @@
 <div class="center01" style="width:60%;padding :3% 7%;background-color:#E8e8e8;border-radius:2rem;" >
 <form class="row g-3 " method="post" style="padding:5% 0 0 0;" action="beforepayment.php?action=add&code=<?php echo $productbycode['license_palate'];?>">
       <div class="col-md-6">
-         <label for="inputEmail4" class="form-label">name :</label>
+         <label for="inputEmail4" class="form-label">Name :</label>
          <input type='text' name ='cusid' class="form-control" id="cusid"readonly value="<?php echo $usser['firstname'];?> <?php echo $usser['lastname'];?>" placeholder="ไม่มีแล้ว ลบทิ้งได้">
       </div>
       <div class="col-md-6">
-         <label for="inputEmail4" class="form-label">license_plate :</label>
+         <label for="inputEmail4" class="form-label">License_plate :</label>
          <input type='text' name ='carid' class="form-control" id="cusid"readonly value="<?php echo $productbycode['license_palate'];?>" placeholder="ไม่มีแล้ว ลบทิ้งได้">
       </div>
       <div class="col-md-6">
-         <label for="inputEmail4" class="form-label">date :</label>
+         <label for="inputEmail4" class="form-label">Date :</label>
          <input type='text' name ='date' class="form-control" id="cusid"readonly value="<?php echo $date;?>" placeholder="ไม่มีแล้ว ลบทิ้งได้">
       </div>
       <div class="col-md-6">
-         <label for="inputEmail4" class="form-label">price :</label>
+         <label for="inputEmail4" class="form-label">Price :</label>
          <input type='text' name ='price' class="form-control" id="cusid"readonly value="<?php echo $price;?>" placeholder="ไม่มีแล้ว ลบทิ้งได้">
       </div>
 	    
       
          <div class="center01" style="width:100%; margin:1rem 0 0 0;">
-         <button  type="submit" name="button1" class="btn" style="width:20%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;">book</button>
+         <button  type="submit" name="button1" class="btn" style="width:20%;margin:0.5rem 0.5rem 0 0.5rem;background-color:#B0b8ff;">Book</button>
          
         </div>
    </form>

@@ -11,30 +11,30 @@
           <a class="nav-link active" aria-current="page" href="home.php">หน้าหลัก</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="customereditdate.php">แก้ไขวันนัด</a>
+        <a class="nav-link active" aria-current="page" href="customereditdate.php">จัดการวันนัด</a>
         </li>
         <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="customercheckdate.php">เช็คสถานะการจองนัด</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            เลือกรุ่นรถ
+            เลือกยี่ห้อรถยนต์
           </a>
           <ul class="dropdown-menu">
           <li><form action="homehonda.php?" method="post">
-            <input class="dropdown-item" type="submit" class="btnadd" value="honda">
+            <input class="dropdown-item" type="submit" class="btnadd" value="Honda">
           </form></li>
           <li><form action="homeisuzu.php?" method="post">
-            <input class="dropdown-item" type="submit" class="btnadd" value="isuzu">
+            <input class="dropdown-item" type="submit" class="btnadd" value="Isuzu">
           </form></li>
           <li><form action="homemazda.php?" method="post">
-            <input class="dropdown-item" type="submit" class="btnadd" value="mazda">
+            <input class="dropdown-item" type="submit" class="btnadd" value="Mazda">
           </form></li>
           <li><form action="homemitsu.php?" method="post">
-            <input class="dropdown-item" type="submit" class="btnadd" value="mitsu">
+            <input class="dropdown-item" type="submit" class="btnadd" value="Mitsu">
           </form></li>
           <li><form action="hometoyota.php?" method="post">
-            <input class="dropdown-item" type="submit" class="btnadd" value="toyota">
+            <input class="dropdown-item" type="submit" class="btnadd" value="Toyota">
           </form></li>
           </ul>
         </li>
