@@ -57,7 +57,7 @@
       </div>
       <div class="col-md-5">
          <label for="inputAddress" class="form-label">ชื่อรูป :</label>
-         <input type="text"  name ='pic' class="form-control" id="inputAddress"  placeholder="file.png หรือ file.jpg" accept="image/png, image/gif, image/jpeg">
+         <input type="file"  name ='fileToUpload' class="form-control" id="fileToUpload" placeholder="ไฟล์ .png หรือ .jpg" accept="image/png, image/gif, image/jpeg">
       </div>
       <div class="col-12">
          <label for="inputAddress" class="form-label">ร่องรอยเสียหาย/ตำหนิ :</label>
@@ -76,12 +76,7 @@
       </form>
      <div>
       <form action="upload.php" method="post" enctype="multipart/form-data">
-      <div>
-         <br><br>
-         <label for="inputAddress" class="form-label">รูป :</label>
-         <input type="file"  name ='fileToUpload' class="form-control" id="fileToUpload" style="width:150%;margin:0.5rem 0.5rem 0 0.5rem;" placeholder="ไฟล์ .png หรือ .jpg" accept="image/png, image/gif, image/jpeg">
-         <input type="submit" value="Upload Image" style="width:70%;margin:0.5rem 0.5rem 0 0.5rem;" name="submit">
-      </div>
+      
       </form>
       </div>
    </div> 
@@ -164,15 +159,14 @@
          $year = $_POST['year'];
          $colo = $_POST['colo'];
          $nam = $_POST['nam'];
-         $image = "photo/".$_POST['pic'];
          $mileage = $_POST['mill'];
          $def = $_POST['def'];
          $price = $_POST['pri'];
          $desc = $_POST['desc'];
       
          $sql =<<<EOF
-            INSERT INTO tblproduct (license_palate,series,year,color,name,image,car_mileage,car_defect,price,desc)
-            VALUES ('$lic', '$ser', $year, '$colo','$image',$mileage,'$nam','$def',$price,'$desc');
+            INSERT INTO tblproduct (license_palate,series,year,color,name,car_mileage,car_defect,price,desc)
+            VALUES ('$lic', '$ser', $year, '$colo',$mileage,'$nam','$def',$price,'$desc');
             EOF;
       
          $ret = $db2->exec($sql);
@@ -201,7 +195,6 @@
        $ser = $_POST['ser'];
        $year = $_POST['year'];
        $colo = $_POST['colo'];
-       $image = "photo/".$_POST['pic'];
        $nam = $_POST['nam'];
        $mileage = $_POST['mill'];
        $def = $_POST['def'];
@@ -213,7 +206,6 @@
           series='$ser',
           year=$year,
           color='$colo',
-          image='$image',
           name='$nam',
           car_mileage=$mileage,
           car_defect='$def',

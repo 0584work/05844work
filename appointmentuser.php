@@ -58,7 +58,7 @@
   <!--form to add database and go to payment-->
   <div class="center01 mt-4">
 <div class="center01" style="width:60%;padding :3% 7%;background-color:#E8e8e8;border-radius:2rem;" >
-<form class="row g-3 " method="post" style="padding:5% 0 0 0;" action="beforepayment.php?action=add&code=<?php echo $productbycode['license_palate'];?>">
+<form class="row g-3 " method="post" style="padding:5% 0 0 0;" action="payment.php?action=add&code=<?php echo $productbycode['license_palate'];?>">
       <div class="col-md-6">
          <label for="inputEmail4" class="form-label">Name :</label>
          <input type='text' name ='cusid' class="form-control" id="cusid"readonly value="<?php echo $usser['firstname'];?> <?php echo $usser['lastname'];?>" placeholder="ไม่มีแล้ว ลบทิ้งได้">

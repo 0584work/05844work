@@ -70,9 +70,14 @@
          <input  class="form-control" type='text' name ='name' id="name"value="<?php echo $username['firstname'];?> <?php echo $username['lastname'];?>" readonly>
       </div>
     <div class="col-md-6">
-         <label class="form-label">license_plate</label>
+         <label class="form-label">ทะเบียนรถ</label>
          <input  class="form-control" type='text' name ='carid' id="carid"value="<?php echo $productbycode['license_palate'];?>" readonly>
-    </div>
+      </div>
+      <div class="col-md-6">
+         <label style="width:100%;margin:0.5rem 0.5rem 0 0.5rem;" for="inputAddress" class="form-label"><h2>สลิป :</h2></label>
+         <input type='file' name ='fileToUpload' class="form-control" id="fileToUpload"placeholder="ไฟล์.png หรือ ไฟล์.jpg" accept="image/png, image/gif, image/jpeg"
+         style="width:300%;margin:0.5rem 0.5rem 0 0.5rem;"> 
+      </div>
     <div class="col-md-6">
          <label class="form-label">จำนวนเงินที่ต้องจ่าย</label>
          <input  class="form-control" type='text' name ='val' id="val"  value="<?php echo $price;?>" readonly>
@@ -105,8 +110,7 @@
 
         $db2 = new MyDB2();
         $cusid = $_POST['cusid'];
-        $carid = $_POST['carid'];
-        $acc = $_POST['accn'];  
+        $carid = $_POST['carid']; 
         $total = $_POST['val'];
         $payid = uniqid();
         $_SESSION['payid'] = $payid;
@@ -120,7 +124,7 @@
           echo $db2->lastErrorMsg();
         } else {
           echo "payment Recorded<br>";
-          header("refresh:1;url=afterpayment.php");
+          header("refresh:1;url=home.php");
         }      
         $db2->close();
      }

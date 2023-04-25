@@ -168,14 +168,13 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     </div>
     <div class=\"center01\">
    <table  class=\"table ta\">
-   <thead><tr><th>ไอดีผู้ใช้</th><th>ทะเบียนรถยนต์</th><th>เลขที่อ้างอิง</th><th>ยอดชำระ</th></tr>";
+   <thead><tr><th>ไอดีผู้ใช้</th><th>ทะเบียนรถยนต์</th><th>ยอดชำระ</th></tr>";
    $ret = $db->query($sql);
    //table to display all payment in database
    while($row = $ret->fetchArray(SQLITE3_ASSOC)) {
       echo "<tr>";
       echo "<td>". $row['cusid'] . "</td>";
       echo "<td>". $row['carid']."</td>";
-      echo "<td>".$row['accountnumber'] ."</td>";
       echo "<td>".$row['total'] ."</td>";
       echo "</tr>";
    }

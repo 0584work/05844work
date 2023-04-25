@@ -27,7 +27,7 @@
 </head>
 <body>
 <br><br><a href="adminhome.php" role="button" style="margin-left:5rem;"> &#9754; &nbsp; กลับเข้าสู่หน้าหลัก</a><br><br>
-   <h3 style="text-align:center;font-weight:600;"> จัดการรายละเอียดรถยนต์ </h3>
+   <h3 style="text-align:center;font-weight:600;"> จัดการรายละเอียดการนัด </h3>
 
 <div class="center01 mt-4">
 <div class="center01" style="width:60%;padding :3% 7%;background-color:#E8e8e8;border-radius:2rem;" >
@@ -37,7 +37,7 @@
          <input type='num' name ='cusid' class="form-control" id="inputEmail4">
       </div>
       <div class="col-md-4">
-         <label for="inputEmail4" class="form-label">License_plate : </label>
+         <label for="inputEmail4" class="form-label">ป้ายทะเบียนรถยนต์ : </label>
          <input type='num' name ='car' class="form-control" id="inputEmail4">
       </div>
       <div class="col-md-4">
@@ -91,7 +91,7 @@
    $sql ="SELECT * from booking";
    echo "
    <br><br>
-   <h3 style=\"text-align:center;font-weight:600;\"> รายละเอียดรถยนต์ทั้งหมด </h3>
+   <h3 style=\"text-align:center;font-weight:600;\"> รายละเอียดการนัดทั้งหมด </h3>
    <br>
    <div class=\"center01\" id=\"ses1\">
    <table  class=\"table ta\">
@@ -252,7 +252,7 @@
    $sql ="SELECT * from tblpay";
    echo "
    <br><br>
-   <h3 style=\"text-align:center;font-weight:600;\"> รายละเอียดรถยนต์ทั้งหมด </h3>
+   <h3 style=\"text-align:center;font-weight:600;\"> รายละเอียดการจ่ายเงินทั้งหมด </h3>
    <br>
    <div class=\"center01\" id=\"ses1\">
    <table  class=\"table ta\">
