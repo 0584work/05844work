@@ -73,9 +73,6 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
       <a href="#ses2" class="list-group-item list-group-item-action py-2 ripple">
          <span>Booking</span>
       </a>
-      <a href="#ses3" class="list-group-item list-group-item-action py-2 ripple">
-         <span>Payment</span>
-      </a>
         
       </div>
     </div>

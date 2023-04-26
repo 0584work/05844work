@@ -29,9 +29,9 @@
    <div class="center01">
    <div class="center01 " style="width:40%;padding :3% 7%;background-color:#E8e8e8;border-radius:2rem;">
    <form method='post'><!--form to insert data to edit date-->
-	   <label class="form-label">วันนัดใหม่ : </label>
+	   <label class="form-label">วันที่ยกเลิก/แก้ไข : </label>
       <input type='date' name ='dat' required="required" class="form-control"><br>
-      <label class="form-label">เวลานัดใหม่ : </label>
+      <label class="form-label">เวลาที่ยกเลิก/แก้ไข : </label>
       <input type='time' name ='dat2' required="required" class="form-control"><br>
       <label class="form-label">หมายเลขการจองนัด : </label>
       <input type='text' name ='cid' required="required" class="form-control"><br>

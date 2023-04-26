@@ -23,7 +23,7 @@
 		.center01 {
 		display: flex;
 		justify-content: center;
-		}
+		}	
 		.margin01{
 			margin: 0.2rem!important;
 		}
