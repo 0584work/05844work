@@ -27,17 +27,37 @@
    <h3 style="text-align:center;font-weight:600;"> จัดการนัดทดลองขับรถยนต์ </h3>
    <br>
    <div class="center01">
+      <br>
+      <div class="center01" style="width:60%; margin:1rem 0 0 0;">
+      <input type='submit' name='swapedit'value='ฟอร์มแก้ไขนัด' class="btn" 
+      style="width:25%;margin:0 0.5rem 0 0.5rem;background-color:#B0b8ff;" onclick='editdate()'/><!--to modify date-->
+      <input type='submit' name='swapdelete'value='ฟอร์มยกเลิกนัด' class="btn" 
+      style="width:25%;margin:0 0.5rem 0 0.5rem;background-color:#B0b8ff;" onclick='deletedate()'/><!--to delete date-->
+   </div>
+   </div>
+   <br>
+   <div class="center01">
+   
    <div class="center01 " style="width:40%;padding :3% 7%;background-color:#E8e8e8;border-radius:2rem;">
-   <form method='post'><!--form to insert data to edit date-->
+   
+   <form method='post' id='editform' style ='display:block;'><!--form to insert data to edit date-->
 	   <label class="form-label">วันที่ยกเลิก/แก้ไข : </label>
-      <input type='date' name ='dat' required="required" class="form-control"><br>
+      <input type='date' name ='dat' class="form-control" id='date'><br>
       <label class="form-label">เวลาที่ยกเลิก/แก้ไข : </label>
-      <input type='time' name ='dat2' required="required" class="form-control"><br>
+      <input type='time' name ='dat2' class="form-control" id='time'><br>
       <label class="form-label">หมายเลขการจองนัด : </label>
       <input type='text' name ='cid' required="required" class="form-control"><br>
    <div class="center01" style="width:100%; margin:1rem 0 0 0;">
-      <input type='submit' name='button2'value='แก้ไขนัด' class="btn" style="width:50%;margin:0 0.5rem 0 0.5rem;background-color:#B0b8ff;"/><!--to modify date-->
-      <input type='submit' name='button3'value='ยกเลิกนัด' class="btn" style="width:50%;margin:0 0.5rem 0 0.5rem;background-color:#B0b8ff;"/><!--to delete date-->
+      <input type='submit' name='button2'value='แก้ไขนัด' class="btn" 
+      style="width:50%;margin:0 0.5rem 0 0.5rem;background-color:#B0b8ff;"/><!--to modify date-->
+   </div>
+   </form>
+   <form method='post' id='delform' style ='display:none;'><!--form to insert data to edit date-->
+      <label class="form-label">หมายเลขการจองนัด : </label>
+      <input type='text' name ='cid2' required="required" class="form-control"><br>
+   <div class="center01" style="width:100%; margin:1rem 0 0 0;">
+      <input type='submit' name='button3'value='ยกเลิกนัด' class="btn" 
+      style="width:50%;margin:0 0.5rem 0 0.5rem;background-color:#B0b8ff;" id=delete/><!--to delete date-->
    </div>
    </form>
    </div>
@@ -46,7 +66,16 @@
    <div class="center01">
    <hr style="width: 50rem;">
    </div>
-
+<script>
+   function editdate(){
+      document.getElementById("editform").style.display="block";
+      document.getElementById("delform").style.display="none";
+   }
+   function deletedate(){
+      document.getElementById("editform").style.display="none";
+      document.getElementById("delform").style.display="block";
+   }
+</script>
 <?php
    
    if(array_key_exists('button2', $_POST)) {
@@ -104,7 +133,7 @@
         echo $db4->lastErrorMsg();
      }
      $cusid = $_SESSION['user'];
-     $appid = $_POST['cid'];  
+     $appid = $_POST['cid2'];  
      strval($appid);
      $status='ยกเลิกการจองนัด';
 
