@@ -30,9 +30,9 @@
       <br>
       <div class="center01" style="width:60%; margin:1rem 0 0 0;">
       <input type='submit' name='swapedit'value='ฟอร์มแก้ไขนัด' class="btn" id='btnedit'
-      style="width:25%;margin:0 0.5rem 0 0.5rem;background-color:LightGray;" onclick='editdate()' /><!--to modify date-->
+      style="width:25%;margin:0 0.5rem 0 0.5rem;background-color:#B0b8ff;" onclick='editdate()' /><!--to modify date-->
       <input type='submit' name='swapdelete'value='ฟอร์มยกเลิกนัด' class="btn" id='btndel'
-      style="width:25%;margin:0 0.5rem 0 0.5rem;background-color:#B0b8ff;" onclick='deletedate()' /><!--to delete date-->
+      style="width:25%;margin:0 0.5rem 0 0.5rem;background-color:LightGray;" onclick='deletedate()' /><!--to delete date-->
    </div>
    </div>
    <br>
@@ -70,14 +70,14 @@
    function editdate(){
       document.getElementById("editform").style.display="block";
       document.getElementById("delform").style.display="none";
-      document.getElementById("btnedit").style="width:25%;margin:0 0.5rem 0 0.5rem;background-color:LightGray";
-      document.getElementById("btndel").style="width:25%;margin:0 0.5rem 0 0.5rem;background-color:#B0b8ff;";
+      document.getElementById("btnedit").style="width:25%;margin:0 0.5rem 0 0.5rem;background-color:#B0b8ff;";
+      document.getElementById("btndel").style="width:25%;margin:0 0.5rem 0 0.5rem;background-color:LightGray";
    }
    function deletedate(){
       document.getElementById("editform").style.display="none";
       document.getElementById("delform").style.display="block";
-      document.getElementById("btnedit").style="width:25%;margin:0 0.5rem 0 0.5rem;background-color:#B0b8ff;";
-      document.getElementById("btndel").style="width:25%;margin:0 0.5rem 0 0.5rem;background-color:LightGray";
+      document.getElementById("btnedit").style="width:25%;margin:0 0.5rem 0 0.5rem;background-color:LightGray";
+      document.getElementById("btndel").style="width:25%;margin:0 0.5rem 0 0.5rem;background-color:#B0b8ff;";
    }
 </script>
 <?php
