@@ -118,7 +118,7 @@ session_start();
         $appid = uniqid();
         strval($appid);
         $_SESSION['bookid'] = $appid;
-        $sql ="SELECT * from booking where car_id = '$carplate'";
+        $sql ="SELECT * from booking where car_id = '$carplate' and status not in ('ยกเลิกการจองนัด')";
         $ret = $db3->query($sql);
         $check = 0;
         while($row = $ret->fetchArray(SQLITE3_ASSOC) ) {
